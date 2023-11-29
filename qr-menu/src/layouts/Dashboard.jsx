@@ -15,8 +15,8 @@ const Dashboard = () => {
       }}
     >
       <header>
-      <Header/>
-       <Navigation/>
+      {/* <Header/>
+       <Navigation/> */}
       </header>
       <main style={{ flex: 1 }}>
         <Suspense>
