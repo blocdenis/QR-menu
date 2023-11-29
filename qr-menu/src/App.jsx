@@ -5,9 +5,9 @@ import {
   Routes,
   createBrowserRouter,
 } from 'react-router-dom';
-import './App.css';
+import './Sing.css';
 import { useURL } from './hooks/useURL';
-
+import Sing from './pages/Sing';
 const DashboardLayout = lazy(() => import('./layouts/Dashboard'));
 
 const Menu = lazy(() => import('./pages/Menu'));
@@ -18,7 +18,7 @@ const Root = () => {
   return (
     <Routes>
       <Route path="/" element={<DashboardLayout />}>
-        <Route index element={<Home />} />
+        <Route index element={<Sing />} />
         <Route path={url.ModMenu.path} element={<ModMenu />} />
         <Route path={url.Menu.path} element={<Menu />} />
       </Route>
