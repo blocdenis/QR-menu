@@ -14,9 +14,9 @@ function RightImages(){
                 <img src={images.food1} alt="food frame" id="first" />
                 <img src={images.food2} alt="food frame" id="second" />
                 <img src={images.food3} alt="food frame" id="third" />
-                <img src={images.food3} alt="food frame" id="fourth" />
-                <img src={images.food1} alt="food frame" id="fifth" />
-                <img src={images.food3} alt="food frame" id="sixth" />
+                <img src={images.food4} alt="food frame" id="fourth" />
+                <img src={images.food5} alt="food frame" id="fifth" />
+                <img src={images.food6} alt="food frame" id="sixth" />
             </div>
             </div>
         </>
