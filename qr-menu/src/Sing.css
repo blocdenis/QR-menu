@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
@@ -65,16 +68,16 @@ body {
     top: 37%;
     left: 20%;
 
-    transform: var(--circle-scale) translate(750%);
+    transform: scale(0.45) translate(750%);
 
     animation: show-f-c 0.5s forwards ease-in-out 0.7s;
 }
 
 @keyframes show-f-c {
     from {
-        transform: var(--circle-scale) translate(750%);
+        transform: scale(0.45) translate(750%);
     } to {
-        transform: var(--circle-scale) translate(0);
+        transform: scale(0.45) translate(0);
     }
 }
 
@@ -82,7 +85,9 @@ body {
     top: 73%;
     left: 20%;
 
-    transform: var(--circle-scale) translate(750%);
+
+    
+    transform: scale(0.45) translate(750%);
 
     animation: show-s-c 0.5s forwards ease-in-out 0.3s;
 
@@ -91,9 +96,9 @@ body {
 
 @keyframes show-s-c {
     from {
-        transform: var(--circle-scale) translate(750%);
+        transform: scale(0.45) translate(750%);
     } to {
-        transform: var(--circle-scale) translate(0);
+        transform: scale(0.45) translate(0);
     }
 }
 
@@ -101,7 +106,7 @@ body {
     top: 59%;
     left: 3%;
 
-    transform: var(--circle-scale) translate(400%);
+    transform: scale(0.45) translate(400%);
 
     animation: show-t-c 0.7s forwards ease-in-out 0.9s;
 
@@ -109,9 +114,9 @@ body {
 
 @keyframes show-t-c {
     from {
-        transform: var(--circle-scale) translate(400%);
+        transform: scale(0.45) translate(400%);
     } to {
-        transform: var(--circle-scale) translate(0);
+        transform: scale(0.45) translate(0);
     }
 }
 
@@ -119,16 +124,16 @@ body {
     top: 43%;
     left: -4%;
 
-    transform: var(--circle-scale) translateY(-220%);
+    transform: scale(0.45) translateY(-220%);
 
     animation: show-fo-c 0.7s forwards ease-in-out 0.5s;
 }
 
 @keyframes show-fo-c {
     from {
-        transform: var(--circle-scale) translateY(-220%);
+        transform: scale(0.45) translateY(-220%);
     } to {
-        transform: var(--circle-scale) translateY(0);
+        transform: scale(0.45) translateY(0);
     }
 }
 
@@ -140,7 +145,7 @@ body {
     from {
         transform: translate(0);
     } to {
-        transform: translate(60%) translateY(-7%) scale(2.033);
+        transform: translate(60%) translateY(-7%) scale(2.0);
     }
 }
 
@@ -284,6 +289,8 @@ main {
 .sign-into-container > .sign-into-headers > h3 {
     font-size: 2rem;
     white-space: nowrap;
+    font-family: 'Playfair Display', serif;
+
 }
 
 @keyframes hide-h3 {
@@ -323,7 +330,23 @@ main {
     flex-flow: column nowrap;
 
     margin: 2rem 0;
+
 }
+
+.sign-into-container > .sign-into-inputs > .sign-into-input-email,
+.sign-into-container > .sign-into-inputs > .sign-into-input-confirm-password {
+    opacity: 0;
+    animation: show-s 0.3s forwards ease-in;
+}
+
+@keyframes show-s {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
 
 .sign-into-container > .sign-into-inputs > div > label {
     margin: 0 0 0.3rem 0;
@@ -342,14 +365,14 @@ main {
 
 }
 
-.sign-into-container > .sign-into-inputs > div > input {
+#sign input {
     padding: 0.8rem 1rem;
     outline: none;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
 }
 
-.sign-into-container > .sign-into-inputs > div > input:focus {
+#sign input:focus {
     border-color: var(--main-color);
 }
 
