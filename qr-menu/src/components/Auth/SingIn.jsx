@@ -60,7 +60,7 @@ const handleSubmit = (e) => {
   } else {
       console.log("Checkbox - false!");
   }
-  //Validate form fields
+  //VALIDATE form fields
     const error = validate(formValues);
     setFormErrors(error);
     if(Object.keys(error).length > 0){
