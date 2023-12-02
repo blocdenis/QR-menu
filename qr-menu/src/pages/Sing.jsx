@@ -1,29 +1,33 @@
 import { useState } from "react";
 import RightImages from "../components/Auth/RightImages";
-import SingIn from "../components/Auth/SingIn";
-import SingUp from "../components/Auth/SingUp";
+import SinSup from "./SignInSignUp";
+import SvgCircle from "../components/SvgCircle";
+
 function Sing(){
-    const [singCheck, setSingCheck] = useState(true)
+    const [singCheck, setSingCheck] = useState('in')
     function handleSingCheck(value){
         setSingCheck(value)
     }
+
+    const slideCircleClass = 'up';
+
     return(
         <>
-        <main>
-        <div id="sign">
-        <div className="sign-into-container">
-        <div className="sign-into-headers">
-        {singCheck &&<h3>Sign in to</h3>}
-        {!singCheck && <h3>Sign up to</h3>}
-                    <p>restourant control system</p>
+            <main>
+                <div id="sign">
+                    {singCheck === 'in' && <SinSup page={singCheck} func={handleSingCheck} /> || 
+                    singCheck === 'up' && <SinSup page={singCheck} func={handleSingCheck} /> ||
+                    singCheck === 'reset' && <SvgCircle page={singCheck} func={handleSingCheck} /> }
                 </div>
-        {singCheck && <SingIn checkUser={handleSingCheck}  /> }
-        {!singCheck && <SingUp /> }
-        </div>
-        </div>
-            <RightImages />
-        </main>
+
+                
+                {singCheck === 'reset' ? <RightImages page={singCheck} svgClass={slideCircleClass} /> :
+                <RightImages page={singCheck} />}
+            
+            </main>
         </>
     )
 }
+
+
 export default Sing;

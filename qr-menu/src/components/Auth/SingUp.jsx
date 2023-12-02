@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 //VALIDATION
   const validate = (values) => {
@@ -30,21 +31,18 @@ import { useState, useEffect } from "react";
   return errors;
 };
 
-function SingUp(){
+import CreateInput from "../CreateInput"
+
+function SingUp({checkUser}){
     const displayBlock = {
         display: 'block'
-    }
-    const displayNone = {
-        display: 'none'
-    }
-    const displayFlex = {
-        display: 'flex'
     }
     const styleFont = {
         fontWeight: 'bold',
         color: '#15C5CE',
         cursor: 'pointer'
     }
+
     //VRIFICATION OF FORM
     const [formValues, setFormValues] = useState(
       {
@@ -103,110 +101,92 @@ function SingUp(){
       console.log(formValues);   
     };      
 
-   function goToSingUp(value){
+   function goToSingIn(value){
     checkUser(value)
    }
    return (
     <>
     <div className="sign-into-inputs">
         <div className="sign-into-input-email" >
-            <label htmlFor="email" className="before-active">Email</label>
-            <input 
-                type="email"
-                placeholder="Enter your email"
-                name="email"
-                id="email"
-                onChange={handleChange}
-                value={formValues.email}
-                className={formErrors.email && 'input-error'}
-                style={formErrors.email ? { borderColor: "red" } : {}}
-               /><br/>
-               {formErrors.email && (
-                    <span className="error" style={{ color:"red"}}>{formErrors.email}</span>
-                )}
-            </div>
-            <div className="sign-into-input-username">
-            <label htmlFor="username" className="before-active">User name</label>
-            <input 
-                autoFocus="" 
-                type="text" 
-                placeholder="Enter your user name"
-                name="username"
-                id="username"
-                onChange={handleChange}
-                value={formValues.username}
-                className={formErrors.username && 'input-error'}
-                style={formErrors.username ? { borderColor: "red" } : {}}
-                /><br/>
+
+            <CreateInput 
+            focus={true} 
+            inputType='email' 
+            labeltxt='Email' 
+            placeholder='Enter your email' 
+            labelClass='before-active'
+            name='email'
+            id="email"
+            onChange={handleChange}
+            value={formValues.email}
+            className={formErrors.email && 'input-error'}
+            style={formErrors.email ? { borderColor: "red" } : {}} 
+            /><br/>
+            {formErrors.email && (
+                <span className="error" style={{ color:"red"}}>{formErrors.email}</span>
+            )}
+        </div>
+        <div className="sign-into-input-username">
+            <CreateInput 
+            inputType='text' 
+            labeltxt='User name' 
+            placeholder='Enter your user name' 
+            labelClass='before-active' 
+            name="username"
+            id="username"
+            onChange={handleChange}
+            value={formValues.username}
+            className={formErrors.username && 'input-error'}
+            style={formErrors.username ? { borderColor: "red" } : {}}
+            /><br/>
                 {formErrors.username && (
                     <span className="error" style={{ color:"red"}}>{formErrors.username}</span>
                 )}
         </div>
         <div className="sign-into-input-password">
-            <label htmlFor="password" className="before-active">Password</label>
-            <input 
-                type="password" 
-                name="password" 
-                id="password" 
-                placeholder="Enter your Password"
-                onChange={handleChange}
-                value={formValues.password}
-                className={formErrors.password && 'input-error'}
-                style={formErrors.password ? { borderColor: "red" } : {}}
+            <CreateInput 
+            inputType='password' 
+            labeltxt='Password' 
+            placeholder='Enter your Password' 
+            labelClass='before-active'
+            name="password" 
+            id="password" 
+            placeholder="Enter your Password"
+            onChange={handleChange}
+            value={formValues.password}
+            className={formErrors.password && 'input-error'}
+            style={formErrors.password ? { borderColor: "red" } : {}}
             /><br/>
             {formErrors.password && (
                 <span className="error" style={{ color:"red"}}>{formErrors.password}</span>
             )}
         </div>
-    <div className="sign-into-input-confirm-password">
-        <label htmlFor="password" className="before-active">Confirm Password</label>
-    <input 
-        type="password" 
-        placeholder="Confirm your password" 
-        name="confirmPassword" 
-        id="confirmPassword"
-        onChange={handleChange}
-        value={formValues.confirmPassword}
-        className={formErrors.confirmPassword && 'input-error'}
-        style={formErrors.confirmPassword ? { borderColor: "red" } : {}}
-        />
-        {formErrors.confirmPassword && (
-            <span className="error" style={{ color:"red"}}>{formErrors.confirmPassword}</span>
-        )}<br/>
-    </div></div>
-   
-   
-    <div classNameName="sign-into-remember-me-section" style={displayFlex}>
-        <div>
-            <input 
-            name="remember-me" 
-            type="checkbox" 
-            id="remember-me"
-            value={formValues.rememberMe}
-            onChange= {handleChange}
-            className= {formErrors.rememberMe && 'input-error'}
-            />
-            {formErrors.rememberMe && (
-            <span className="error" style={{ color:"red"}}>{formErrors.rememberMe}</span>
-            )}<br/>
-            <label htmlFor="remember-me">Remember me</label>
-        </div>
-        <div>
-            <span id="sign-into-forgot-password">Forgot Password?</span>
+        <div className="sign-into-input-confirm-password">
+            <CreateInput 
+            inputType='password' 
+            labeltxt='Confirm Password' 
+            placeholder='Confirm your password' 
+            labelClass='before-active' 
+            name="confirmPassword" 
+            id="confirmPassword"
+            onChange={handleChange}
+            value={formValues.confirmPassword}
+            className={formErrors.confirmPassword && 'input-error'}
+            style={formErrors.confirmPassword ? { borderColor: "red" } : {}}
+            /><br/>
+            {formErrors.confirmPassword && (
+                <span className="error" style={{ color:"red"}}>{formErrors.confirmPassword}</span>
+            )}
         </div>
     </div>
     
     <div className="sign-into-send-login-info">
-        <button onClick = {handleSubmit} id="sign-into-button" style={displayBlock}>Login</button>
-        <button style={displayNone} id="create-account-button">Register</button>
+        <button onClick = {handleSubmit} style={displayBlock} id="create-account-button">Register</button>
     </div>
    
     <div className="create-account-section-link">
-        <p className="sign-in" style={displayBlock}>Don'y have an Account ? <span id="sign-in" style={styleFont} onClick={()=> goToSingUp(false)}>Sign up</span></p>
-        <p className="sign-up" style={displayNone}>Already have an Account ? <span id="sign-up" style={styleFont}>Sign in</span></p>
+        <p className="sign-up" style={displayBlock}>Already have an Account ? <span id="sign-up" style={styleFont} onClick={() => goToSingIn('in')}>Sign in</span></p>
     </div>
-
-
     </>
    )
 }
