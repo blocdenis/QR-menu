@@ -61,7 +61,9 @@ function SingUp({checkUser}){
             setFormErrors(error);
             console.log(error)  
 
-            if(!Object.keys(error)){      
+             if(Object.keys(error).length === 0){ 
+              return
+            }     else{ 
             submitForm(formValues)  
             setFormValues(formValues)
             console.log(formValues)     
@@ -76,15 +78,18 @@ function SingUp({checkUser}){
               // setIsSubmiting(true) 
               // setTimeout(() => { 
                 // setIsSubmiting(false); 
-              // }, 2000) 
-            }     else{
-              console.log('its error')
+              // }, 2000)                 
             }
             }             
         //SENDING DATA 
         const submitForm = (formValues) => {   
           console.log(formValues);  
         };   
+        // useEffect(() => {
+//           if (Object.keys(error).length === 0) {
+            // submitForm(formValues);
+          // }
+        // }, [formErrors]);   
    function goToSingIn(value){
     checkUser(value)
    }
