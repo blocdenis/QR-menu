@@ -52,7 +52,7 @@ function SingUp({checkUser}){
         const handleChange = (e) => {    
           const { name, value } = e.target;      
             setFormValues({ ...formValues, [name]: value });          
-        console.log(formValues)
+            console.log(formValues)
           };
         //CKECKING THE FORM AND SENDING   
         const handleSubmit = (e) => {    
