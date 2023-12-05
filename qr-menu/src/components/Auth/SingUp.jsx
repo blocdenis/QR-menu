@@ -76,6 +76,7 @@ function SingUp({checkUser}){
         //SENDING DATA AND CLEAN FORM
         const submitForm = (value) => {
             setFormValues(formValues);
+            console.log(formValues)
         };      
    function goToSingIn(value){
     checkUser(value)
