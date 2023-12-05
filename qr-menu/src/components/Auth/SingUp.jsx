@@ -52,7 +52,8 @@ function SingUp({checkUser}){
         const handleChange = (e) => {    
           const { name, value } = e.target;      
             setFormValues({ ...formValues, [name]: value });          
-        };
+        console.log(formValues)
+          };
         //CKECKING THE FORM AND SENDING   
         const handleSubmit = (e) => {    
           e.preventDefault(); 
@@ -69,16 +70,12 @@ function SingUp({checkUser}){
             setFormErrors({});
             console.log('submitForm: OK' )  
           }  else{
-            console.log( 'its error')
+            console.log( 'its error', error)
           }
         };
         //SENDING DATA AND CLEAN FORM
         const submitForm = (value) => {
-          try {
-            submitForm(values);
-          } catch (error) {
-            console.error(error);
-          }
+            setFormValues(formValues);
         };      
    function goToSingIn(value){
     checkUser(value)
@@ -94,7 +91,7 @@ function SingUp({checkUser}){
             placeholder='Enter your email' 
             labelClass='before-active'
             name='email'
-            onChange={handleChange}
+            onChange={formValues.handleChange}
             value={formValues.email}
             style={formErrors.email ? { borderColor: "red" } : {}} 
             /><br/>
