@@ -1,5 +1,23 @@
 import CreateInput from "../CreateInput"
+import { useState, useEffect } from "react";
 
+//VALIDATION
+const validate = (values) => {
+  const errors = {};
+
+  if (!values.namerestaurant) {
+    errors.namerestaurant = "Name is Required!";
+  }
+  if (!values.password) {
+    errors.password = "Password is Required!";
+  } else if (values.password.length < 6) {
+    errors.password = "Password must be more than 6 sumbols!";
+  }
+  if (!values.rememberMe) {
+    errors.rememberMe = "It's imposible!";
+  }
+  return errors;
+};
 function SingIn({checkUser}){
     const displayBlock = {
         display: 'block'
@@ -21,7 +39,47 @@ function SingIn({checkUser}){
         justifyContent: 'center',
         alingItems: 'center'
     }
-
+//VRIFICATION OF FORM
+const [formValues, setFormValues] = useState({
+    namerestaurant: "",
+    password: "",
+    rememberMe: "",
+  });
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmiting, setIsSubmiting] = useState(false);
+  //MONITORING CHANGE
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+  //CKECKING THE FORM AND SENDING
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const error = validate(formValues);
+    setFormErrors(error);
+    console.log(error);
+    if (Object.keys(error).length === 0) {
+      return;
+    } else {
+      submitForm(formValues);
+      console.log(formValues);
+      setFormValues({
+        namerestaurant: "",
+        password: "",
+        rememberMe: "",
+      });
+      setFormErrors({});
+      console.log("its success", formValues);
+      setIsSubmiting(true);
+      setTimeout(() => {
+        setIsSubmiting(false);
+      }, 2000);
+    }
+  };
+  //SENDING DATA
+  const submitForm = (formValues) => {
+    console.log(formValues);
+  };
    function goToSingUp(value){
     checkUser(value)
    }
@@ -29,17 +87,53 @@ function SingIn({checkUser}){
     <>
         <div className="sign-into-inputs">
             <div className="sign-into-input-username">
-                <CreateInput focus={true} type='username' labeltxt="User name" placeholder="Enter your name or email" labelClass="" />
+            <CreateInput
+                  focus={true}
+                  type="namerestaurant"
+                  labeltxt="Name restaurant"
+                  placeholder="Enter your name restaurant"
+                  labelClass=""
+                />
+                <br />
+                {formErrors.namerestaurant && (
+                  <span className="error" style={{ color: "red" }}>
+                    {formErrors.namerestaurant}
+                  </span>
+                )}
             </div>
             <div className="sign-into-input-password">
-                <CreateInput type='password' labeltxt="Password" placeholder="Enter your Password" labelClass="" />
+            <CreateInput
+                  type="password"
+                  labeltxt="Password"
+                  placeholder="Enter your Password"
+                  labelClass=""
+                />
+                <br />
+                {formErrors.password && (
+                  <span className="error" style={{ color: "red" }}>
+                    {formErrors.password}
+                  </span>
+                )}
             </div>
         </div>
         
         <div className="sign-into-remember-me-section" style={displayFlex}>
             <div style={remember}>
-                <input name="remember-me" type="checkbox" id="remember-me" />
-                <label style={{margin: '0 0 0 0.2rem', cursor: 'pointer'}} htmlFor="remember-me">Remember me</label>
+                <input 
+                name="rememberMe" 
+                type="checkbox" 
+                id="remember-me" 
+                /><br/>
+                {formErrors.rememberMe && (
+                  <span className="error" style={{ color: "red" }}>
+                    {formErrors.rememberMe}
+                  </span>
+                )}
+                <label 
+                style={{margin: '0 0 0 0.2rem', cursor: 'pointer'}} 
+                htmlFor="remember-me"
+                >Remember me
+                </label>
             </div>
             <div>
                 <span id="sign-into-forgot-password" onClick={()=> goToSingUp('reset')}>Forgot Password?</span>
@@ -47,7 +141,14 @@ function SingIn({checkUser}){
         </div>
         
         <div className="sign-into-send-login-info">
-            <button id="sign-into-button" style={displayBlock}>Login</button>
+        <button
+          onClick={handleSubmit}
+          type="submit"
+          id="sign-into-button"
+          style={displayBlock}
+        >
+          Login
+        </button>
         </div>
         
         <div className="create-account-section-link">
