@@ -56,6 +56,8 @@ function SingIn({checkUser}){
 //CKECKING THE FORM AND SENDING     
     const handleSubmit = (e) => {      
         e.preventDefault();
+
+        
         const error = validate(formValues);       
         setFormErrors(error);
         console.log(error) 
@@ -88,24 +90,25 @@ function SingIn({checkUser}){
    return (
     <>
         <div className="sign-into-inputs">
-            <div className="sign-into-input-namerestaurant">
+            <div className="sign-into-input-email">
+                <label htmlFor="email">Email</label>
                 <CreateInput 
-                focus={true} 
-                type='namerestaurant' 
-                labeltxt="Name restaurant" 
-                placeholder="Enter your name restaurant" 
-                labelClass="" 
+                autoFocus={true} 
+                type='email'
+                name="email" 
+                placeholder="Enter your email" 
                 /><br/>
-                {formErrors.namerestaurant && (
-                    <span className="error" style={{ color:"red"}}>{formErrors.namerestaurant}</span>
+                {formErrors.email && (
+                    <span className="error" style={{ color:"red"}}>{formErrors.email}</span>
                 )}
             </div>
             <div className="sign-into-input-password">
+                <label htmlFor="password">Password</label>
+
                 <CreateInput 
                 type='password' 
-                labeltxt="Password" 
                 placeholder="Enter your Password" 
-                labelClass="" 
+                name="password"
                 /><br/>
                 {formErrors.password && (
                     <span className="error" style={{ color:"red"}}>{formErrors.password}</span>

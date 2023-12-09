@@ -1,5 +1,5 @@
 import CreateInput from "../CreateInput"
-import {useState,useEffect} from "react"
+import {useState, useEffect} from "react"
 
 //VALIDATION
 const validate = (values) => {
@@ -11,10 +11,10 @@ const validate = (values) => {
   } else if(!regexEmail.test(values.email)){
     errors.email = "Email is Entered Incorrectly!";
   }
-  if (!values.username) {
-    errors.username = "Name is Required!";
-  } else if(!regexName.test(values.username)){
-    errors.username = "Name is Entered Incorrectly!"
+  if (!values.restourant) {
+    errors.restourant = "Name is Required!";
+  } else if(!regexName.test(values.restourant)){
+    errors.restourant = "Name is Entered Incorrectly!"
   }
   if (!values.password) {
     errors.password = "Password is Required!";
@@ -42,16 +42,17 @@ function SingUp({checkUser}){
         const [formValues, setFormValues] = useState(
           {
             email: '',    
-            username: '',   
+            restourant: '',   
             password: '',    
             confirmPassword: '',         
         });  
         const [formErrors, setFormErrors] = useState({}); 
-        // const [isSubmiting, setIsSubmiting] = useState(false);           
+        
+        
         //MONITORING CHANGE
         const handleChange = (e) => {    
-          // const { name, value } = e.target;      
-            setFormValues({ ...formValues, [e.target.name]: e.target.value });          
+            setFormValues({ ...formValues, [e.target.name]: e.target.value }); 
+
         };  
         //CKECKING THE FORM AND SENDING     
         const handleSubmit = (e) => {      
@@ -59,37 +60,31 @@ function SingUp({checkUser}){
 
             const error = validate(formValues);       
             setFormErrors(error);
-            console.log(error)  
 
-             if(Object.keys(error).length === 0){ 
-              return
-            }     else{ 
-            submitForm(formValues)  
-            setFormValues(formValues)
-            console.log(formValues)     
-            setFormValues({  
-                email: "",    
-                username: "",    
-                password: "", 
-                confirmPassword: '',  
-              });    
+
+            if(Object.keys(error).length === 0){ 
+              submitForm(formValues)  
+  
+              setFormValues({  
+                  email: "",    
+                  restourant: "",    
+                  password: "", 
+                  confirmPassword: '',  
+                });   
+  
               setFormErrors({});  
-              console.log('its success', formValues)
-              // setIsSubmiting(true) 
-              // setTimeout(() => { 
-                // setIsSubmiting(false); 
-              // }, 2000)                 
+            } else{ 
+              return 'something not match'           
             }
-            }             
+          }             
         //SENDING DATA 
         const submitForm = (formValues) => {   
           console.log(formValues);  
         };   
-        // useEffect(() => {
-//           if (Object.keys(error).length === 0) {
-            // submitForm(formValues);
-          // }
-        // }, [formErrors]);   
+       
+        
+
+
    function goToSingIn(value){
     checkUser(value)
    }
@@ -97,15 +92,13 @@ function SingUp({checkUser}){
     <>
     <div className="sign-into-inputs">
         <div className="sign-into-input-email" >
+        <label htmlFor='email' className='before-active'>Email</label>
         <CreateInput 
-            focus={true} 
-            inputType='email' 
-            labeltxt='Email' 
+            autoFocus={true} 
+            type='email' 
             placeholder='Enter your email' 
-            labelClass='before-active'
-            name='email'
-            onChange={handleChange}
-            value={formValues.email}
+            onInput={handleChange}
+            name="email"
             className={formErrors.email}
             style={formErrors.email ? { borderColor: "red" } : {}} 
             /><br/>
@@ -114,14 +107,12 @@ function SingUp({checkUser}){
             )}
         </div>
         <div className="sign-into-input-username">
+        <label htmlFor='restourant' className='before-active'>Restourant name</label>
         <CreateInput 
-            inputType='text' 
-            labeltxt='User name' 
-            placeholder='Enter your user name' 
-            labelClass='before-active' 
-            name="username"
-            onChange={handleChange}
-            value={formValues.username}
+            type='restourant'  
+            placeholder='Enter your restourant name' 
+            name="restourant"
+            onInput={handleChange}
             className={formErrors.username}
             style={formErrors.username ? { borderColor: "red" } : {}}
             /><br/>
@@ -130,14 +121,13 @@ function SingUp({checkUser}){
             )}
         </div>
         <div className="sign-into-input-password">
+        <label htmlFor='password' className='before-active'>Password</label>
+
         <CreateInput 
-            inputType='password' 
-            labeltxt='Password' 
+            type='password' 
             placeholder='Enter your Password' 
-            labelClass='before-active'
             name="password" 
-            onChange={handleChange}
-            value={formValues.password}
+            onInput={handleChange}
             className={formErrors.password}
             style={formErrors.password ? { borderColor: "red" } : {}}
             /><br/>
@@ -146,14 +136,13 @@ function SingUp({checkUser}){
             )}
         </div>
         <div className="sign-into-input-confirm-password">
+        <label htmlFor='confirmPassword' className='before-active'>Confirm Password</label>
+
         <CreateInput 
-            inputType='confirmPassword' 
-            labeltxt='Confirm Password' 
+            type='password' 
             placeholder='Confirm your password' 
-            labelClass='before-active' 
             name="confirmPassword" 
-            onChange={handleChange}
-            value={formValues.confirmPassword}
+            onInput={handleChange}
             className={formErrors.confirmPassword}
             style={formErrors.confirmPassword ? { borderColor: "red" } : {}}
             /><br/>
