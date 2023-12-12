@@ -1,12 +1,13 @@
 import CreateInput from "../CreateInput"
 import {useState,useEffect} from "react"
+import { useNavigate } from "react-router-dom";
 
 //VALIDATION
 const validate = (values) => {
     const errors = {};
   
-    if (!values.namerestaurant) {  
-      errors.namerestaurant = "Name is Required!"; 
+    if (!values.email) {  
+      errors.email = "Name is Required!"; 
     }  
     if (!values.password) {
       errors.password = "Password is Required!";
@@ -19,6 +20,8 @@ const validate = (values) => {
     return errors;
   };  
 function SingIn({checkUser}){
+    const navigate = useNavigate();
+
     const displayBlock = {
         display: 'block'
     }
@@ -42,7 +45,7 @@ function SingIn({checkUser}){
 //VRIFICATION OF FORM
     const [formValues, setFormValues] = useState(
         {   
-            namerestaurant: '',
+            email: '',
             password: '',
             rememberMe: ''
       });  
@@ -63,12 +66,10 @@ function SingIn({checkUser}){
         console.log(error) 
 
         if(Object.keys(error).length === 0){ 
-          return
-        } else{ 
+        
         submitForm(formValues)  
-        console.log(formValues)     
         setFormValues({  
-            namerestaurant: "",    
+            email: "",    
             password: "", 
             rememberMe: '',
           });    
@@ -78,7 +79,9 @@ function SingIn({checkUser}){
           setTimeout(() => { 
             setIsSubmiting(false); 
           }, 2000)                  
-        } 
+        } else{ 
+            return 'something not match'    
+          }
         }              
   //SENDING DATA 
   const submitForm = (formValues) => {     
@@ -91,11 +94,14 @@ function SingIn({checkUser}){
     <>
         <div className="sign-into-inputs">
             <div className="sign-into-input-email">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email" className='before-active'>Email</label>
                 <CreateInput 
                 autoFocus={true} 
                 type='email'
-                name="email" 
+                name="email"
+                onChange={handleChange} 
+                className={formErrors.email}
+                style={formErrors.email ? { borderColor: "red" } : {}} 
                 placeholder="Enter your email" 
                 /><br/>
                 {formErrors.email && (
@@ -103,12 +109,15 @@ function SingIn({checkUser}){
                 )}
             </div>
             <div className="sign-into-input-password">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password" className='before-active'>Password</label>
 
                 <CreateInput 
                 type='password' 
                 placeholder="Enter your Password" 
                 name="password"
+                onChange={handleChange}
+                className={formErrors.password}
+                style={formErrors.password ? { borderColor: "red" } : {}}
                 /><br/>
                 {formErrors.password && (
                     <span className="error" style={{ color:"red"}}>{formErrors.password}</span>
@@ -122,7 +131,13 @@ function SingIn({checkUser}){
                 name="rememberMe" 
                 type="checkbox" 
                 id="remember-me" 
+                onChange={handleChange}
+                className={formErrors.rememberMe}
+                style={formErrors.rememberMe ? { borderColor: "red" } : {}}
                 /><br/>
+                {formErrors.rememberMe && (
+                    <span className="error" style={{ color:"red"}}>{formErrors.rememberMe}</span>
+                )}
                 <label style={{margin: '0 0 0 0.2rem', cursor: 'pointer'}} htmlFor="remember-me">Remember me</label>
             </div>
             <div>
@@ -133,7 +148,7 @@ function SingIn({checkUser}){
         <div className="sign-into-send-login-info">
             <button 
             onClick = {handleSubmit} 
-            ype="submit" 
+            type="submit" 
             id="sign-into-button" 
             style={displayBlock}
             >Login

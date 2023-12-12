@@ -1,5 +1,5 @@
 import CreateInput from "../CreateInput"
-import {useState, useEffect} from "react"
+import {useState} from "react"
 
 //VALIDATION
 const validate = (values) => {
@@ -30,6 +30,7 @@ const validate = (values) => {
 };
 
 function SingUp({checkUser}){
+
     const displayBlock = {
         display: 'block'
     }
@@ -61,24 +62,22 @@ function SingUp({checkUser}){
             const error = validate(formValues);       
             setFormErrors(error);
 
-
             if(Object.keys(error).length === 0){ 
               submitForm(formValues)  
-  
               setFormValues({  
                   email: "",    
                   restourant: "",    
                   password: "", 
                   confirmPassword: '',  
                 });   
-  
+               
               setFormErrors({});  
             } else{ 
               return 'something not match'           
             }
           }             
         //SENDING DATA 
-        const submitForm = (formValues) => {   
+        const submitForm = (formValues) => {
           console.log(formValues);  
         };   
        
@@ -97,7 +96,7 @@ function SingUp({checkUser}){
             autoFocus={true} 
             type='email' 
             placeholder='Enter your email' 
-            onInput={handleChange}
+            onChange={handleChange}
             name="email"
             className={formErrors.email}
             style={formErrors.email ? { borderColor: "red" } : {}} 
@@ -106,18 +105,18 @@ function SingUp({checkUser}){
                 <span className="error" style={{ color:"red"}}>{formErrors.email}</span>
             )}
         </div>
-        <div className="sign-into-input-username">
+        <div className="sign-into-input-restourant">
         <label htmlFor='restourant' className='before-active'>Restourant name</label>
         <CreateInput 
-            type='restourant'  
+            type='text'  
             placeholder='Enter your restourant name' 
             name="restourant"
-            onInput={handleChange}
-            className={formErrors.username}
-            style={formErrors.username ? { borderColor: "red" } : {}}
+            onChange={handleChange}
+            className={formErrors.restourant}
+            style={formErrors.restourant ? { borderColor: "red" } : {}}
             /><br/>
-            {formErrors.username && (
-                <span className="error" style={{ color:"red"}}>{formErrors.username}</span>
+            {formErrors.restourant && (
+                <span className="error" style={{ color:"red"}}>{formErrors.restourant}</span>
             )}
         </div>
         <div className="sign-into-input-password">
@@ -127,7 +126,7 @@ function SingUp({checkUser}){
             type='password' 
             placeholder='Enter your Password' 
             name="password" 
-            onInput={handleChange}
+            onChange={handleChange}
             className={formErrors.password}
             style={formErrors.password ? { borderColor: "red" } : {}}
             /><br/>
@@ -142,7 +141,7 @@ function SingUp({checkUser}){
             type='password' 
             placeholder='Confirm your password' 
             name="confirmPassword" 
-            onInput={handleChange}
+            onChange={handleChange}
             className={formErrors.confirmPassword}
             style={formErrors.confirmPassword ? { borderColor: "red" } : {}}
             /><br/>
@@ -153,14 +152,20 @@ function SingUp({checkUser}){
     </div>
     
     <div className="sign-into-send-login-info">
-        <button onClick = {handleSubmit} type='submit' style={displayBlock} id="create-account-button">Register</button>
+        <button 
+        onClick = {handleSubmit} 
+        type='submit' 
+        style={displayBlock} 
+        id="create-account-button"
+        >Register
+        </button>
     </div>
    
     <div className="create-account-section-link">
         <p className="sign-up" style={displayBlock}>Already have an Account ? <span id="sign-up" style={styleFont} onClick={() => goToSingIn('in')}>Sign in</span></p>
     </div>
 
-
+    
     </>
    )
 }
