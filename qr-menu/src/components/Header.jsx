@@ -1,9 +1,14 @@
+import SingIn from '../components/Auth/SingIn'
 
 function Header(){
    
     return(
         <>
-        <h1>QR-MENU</h1>
+        <div>
+
+        </div>
+        <h1>log out</h1>
+        
         </>
     )
 }

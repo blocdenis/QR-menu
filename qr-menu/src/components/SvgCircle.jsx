@@ -1,5 +1,5 @@
 import Forgot from "../pages/Forgot"
-import Succes from "./Auth/SuccesForgot"
+import Succes from "../components/Auth/SuccesForgot"
 
 import { useState } from "react"
 

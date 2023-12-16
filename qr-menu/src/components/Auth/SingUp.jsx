@@ -1,5 +1,6 @@
 import CreateInput from "../CreateInput"
 import {useState} from "react"
+import { useNavigate } from "react-router-dom";
 
 //VALIDATION
 const validate = (values) => {
@@ -30,7 +31,7 @@ const validate = (values) => {
 };
 
 function SingUp({checkUser}){
-
+  const navigate = useNavigate();
     const displayBlock = {
         display: 'block'
     }
@@ -53,12 +54,11 @@ function SingUp({checkUser}){
         //MONITORING CHANGE
         const handleChange = (e) => {    
             setFormValues({ ...formValues, [e.target.name]: e.target.value }); 
-
         };  
         //CKECKING THE FORM AND SENDING     
         const handleSubmit = (e) => {      
             e.preventDefault();
-
+            // useTransition();
             const error = validate(formValues);       
             setFormErrors(error);
 
@@ -70,11 +70,11 @@ function SingUp({checkUser}){
                   password: "", 
                   confirmPassword: '',  
                 });   
-               
               setFormErrors({});  
             } else{ 
               return 'something not match'           
             }
+        navigate('/home')
           }             
         //SENDING DATA 
         const submitForm = (formValues) => {

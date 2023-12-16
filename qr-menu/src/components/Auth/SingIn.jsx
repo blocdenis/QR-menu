@@ -82,6 +82,7 @@ function SingIn({checkUser}){
         } else{ 
             return 'something not match'    
           }
+          navigate('/home')
         }              
   //SENDING DATA 
   const submitForm = (formValues) => {     
