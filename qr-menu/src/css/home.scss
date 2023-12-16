@@ -1,0 +1,24 @@
+.home-wrap{
+    background-color: lightgray;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.circle-page{
+    width: 7rem;
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: white;
+    margin: 0 auto;
+}
+.circle-page > *{
+    align-self: center;
+
+}
