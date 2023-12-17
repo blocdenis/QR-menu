@@ -14,9 +14,7 @@ const validate = (values) => {
     } else if(values.password.length < 6){ 
       errors.password = "Password must be more than 6 sumbols!" 
      } 
-     if(!values.rememberMe){
-        errors.rememberMe = "It's imposible!"
-     }
+     
     return errors;
   };  
 function SingIn({checkUser}){
@@ -67,18 +65,21 @@ function SingIn({checkUser}){
 
         if(Object.keys(error).length === 0){ 
         
-        submitForm(formValues)  
-        setFormValues({  
-            email: "",    
-            password: "", 
-            rememberMe: '',
-          });    
-          setFormErrors({});  
-          console.log('its success', formValues)
-          setIsSubmiting(true) 
-          setTimeout(() => { 
-            setIsSubmiting(false); 
-          }, 2000)                  
+            submitForm(formValues) 
+
+            setFormValues({  
+                email: "",    
+                password: "", 
+                rememberMe: '',
+            });    
+            setFormErrors({}); 
+            
+            console.log('its success', formValues)
+            setIsSubmiting(true) 
+            
+            setTimeout(() => { 
+                setIsSubmiting(false); 
+            }, 2000)                  
         } else{ 
             return 'something not match'    
           }
@@ -95,7 +96,7 @@ function SingIn({checkUser}){
     <>
         <div className="sign-into-inputs">
             <div className="sign-into-input-email">
-                <label htmlFor="email" className='before-active'>Email</label>
+                <label htmlFor="email">Email</label>
                 <CreateInput 
                 autoFocus={true} 
                 type='email'
@@ -110,7 +111,7 @@ function SingIn({checkUser}){
                 )}
             </div>
             <div className="sign-into-input-password">
-                <label htmlFor="password" className='before-active'>Password</label>
+                <label htmlFor="password">Password</label>
 
                 <CreateInput 
                 type='password' 
@@ -136,9 +137,6 @@ function SingIn({checkUser}){
                 className={formErrors.rememberMe}
                 style={formErrors.rememberMe ? { borderColor: "red" } : {}}
                 /><br/>
-                {formErrors.rememberMe && (
-                    <span className="error" style={{ color:"red"}}>{formErrors.rememberMe}</span>
-                )}
                 <label style={{margin: '0 0 0 0.2rem', cursor: 'pointer'}} htmlFor="remember-me">Remember me</label>
             </div>
             <div>
