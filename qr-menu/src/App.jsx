@@ -15,6 +15,7 @@ const ModMenu = lazy(() => import('./pages/ModMenu'));
 const Home = lazy(() => import('./pages/Home'));
 const Table = lazy(() => import('./pages/Table'));
 const Settings = lazy(() => import('./pages/Settings'));
+const SingUp = lazy(() => import('./components/Auth/SingUp'));
 
 const Root = () => {
   const url = useURL();
@@ -28,6 +29,7 @@ const Root = () => {
          <Route path="/menu" element={<Menu />} />
          <Route path="/table" element={<Table />} />
          <Route path="/settings" element={<Settings />} />
+         <Route path="/singup" element={<SingUp />} />
       </Route>
      </Routes>
   );
