@@ -1,14 +1,13 @@
-import SingIn from '../components/Auth/SingIn'
+import { Link} from 'react-router-dom';
+import '../css/scss/header.scss';
 
 function Header(){
-   
+
     return(
         <>
         <div>
-
-        </div>
-        <h1>log out</h1>
-        
+        <Link to={'/singup'} className='header-link'><h3 className='header-log'><b>Log out</b></h3></Link>
+        </div>    
         </>
     )
 }

@@ -1,24 +1,64 @@
-.home-wrap{
-    background-color: lightgray;
-    padding: 30px;
+.home-page{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    min-height: 100vh;
+    height: 100%;
     width: 100%;
+    background: url('../assets/Banner image.png');
+
+.home-wrap{
+    padding: 50px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.6); 
+    border-radius: 5px;
+    gap: 30px;
     box-sizing: border-box;
 }
-.circle-page{
-    width: 7rem;
-    height: 7rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: white;
-    margin: 0 auto;
+    .home-title{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+    h1{
+        color: 1F1F1F;
+        font-family: 'Playfair Display';
+        font-size: 2.9rem;
+    }
+    h3{
+        color: 4B4B4B;
+        font-family: Poppins;
+        font-size: 1.2rem;
+        font-weight: Regular;
+    }
+    .home-logo{
+        width: 7rem;
+        height: 7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: white;
+        border: none;
+        margin: 0 auto;
+    }
+    .home-logo > *{
+        align-self: center; 
+    }
 }
-.circle-page > *{
-    align-self: center;
 
-}
+
+
+
+
+
+
+
+
+
+
+
