@@ -1,26 +1,7 @@
 Це документація для взаємодії з базою данних QR_MENU
 
-Для того щоб почати працювати з сервером потрібно закинути всі ваші html
-шаблони до папки /static/templates в поточній директорії та встановити python на ваш компьютер
-як встановити його можете глянути в YouTube
 
-Далі щоб працювали всі ваші шаблони стилізації для шаблонів потрібно закинути всі файли css,
-js і т.д до папки /static/ всередині вже самі робите иерархію ваших файлів та папок.
-
-Після відкрити термінал та впевнетись що ви знаходитесь в папці QR-menu та написати таку команду 'pip install -r requirements.txt'
-
-Також потрібно налаштувати мрашрутизацію щоб сервер міг знаходити ваші шаблони, для цього вам
-потрібно зайти в app.py та додати такий код:
-
-
-
-@app.route('your/example/path')
-    return render_template('your_template.html')
-
-
-І так з кожним шаблоном html
-
-url: ../api/authentication
+url: https://qrmenusystem-0deab66c00e0.herokuapp.com/api/authentication
     Цей метод працює тільки з POST запитом та має певну структуру body для того щоб успішно виконати регистрацію користувача - приклад запиту:
 
     fetch('/api/authentication', {
@@ -80,7 +61,7 @@ hash_key потрібно буде зберегти в локальному сх
 по ньому ви будете отримувати данні про самого користувача, ресторан
 та категорії ресторану
 
-url: ../api/login
+url: https://qrmenusystem-0deab66c00e0.herokuapp.com/api/login
 
     mathod: 'loginUser'
 
@@ -142,5 +123,5 @@ url: ../api/login
         'msg' : тут буде повідомлення про помилку, 
 
 
-url ../api/category
+url https://qrmenusystem-0deab66c00e0.herokuapp.com/api/category
 
