@@ -8,14 +8,35 @@ import Header from '../components/Header';
 
 const Home = () => {
   return (
+    <div className='home-page'>
+          <Header/>
     <div className='home-wrap'>
-    <Header/>
-    <h1>Welcome</h1>
-    <h3>to your restourant account </h3>
-      <button className='circle-page'>Your Logo</button>
-      <Link to={'/table'}> <button className='button-page'>Table</button></Link>
-      <Link to={'/menu'}> <button  className='button-page'>Menu</button></Link>
-      <Link to={'/settings'}> <button  className='button-page'>Settings</button></Link>
+        <div className='home-title'>
+            <h1>Welcome</h1>
+            <h3>to your restourant account </h3>
+        </div>
+          <button className='home-logo'
+            // onClick={() => window.open("file:///", "")}
+            >
+            Your Logo</button>
+          <Link to={'/table'}>
+           <button className='button-page'>
+           <img src='../assets/Vector(1).png' alt='card1'></img>
+           Table</button>
+           </Link>
+
+          <Link to={'/menu'}>
+           <button className='button-page'>
+           <img src='../assets/Vector(2).png' alt='card2'></img>
+           Menu</button>
+           </Link>
+
+          <Link to={'/settings'}>
+           <button  className='button-page'>
+           <img src='../assets/Group(1).png' alt='card3'></img>
+           Settings</button>
+           </Link>
+    </div>
     </div>
   );
 };
