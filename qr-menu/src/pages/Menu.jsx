@@ -1,10 +1,14 @@
 import React from 'react';
+import NavbarSystem from '../components/NavbarSystem';
+import HeaderSystem from '../components/HeaderSystem';
+import '../css/scss/menu.scss';
 
 const Menu = () => {
   return (<>
  
-    <div style={{ backgroundColor: 'lightgray', padding: '30px' }}>
-      <h2>Menu</h2>
+    <div className='menu-wrap'>
+    <HeaderSystem/>
+    <NavbarSystem/>
     </div>
   </>
    
