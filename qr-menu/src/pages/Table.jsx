@@ -1,7 +1,7 @@
 import React from 'react';
-import HeaderSystem from '../components/HeaderSystem';
 import '../css/scss/table.scss';
 import NavbarSystem from '../components/NavbarSystem';
+import HeaderSystem from '../components/HeaderSystem';
 
 function Table() {
   return (
