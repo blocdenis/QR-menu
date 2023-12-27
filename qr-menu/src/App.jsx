@@ -15,7 +15,9 @@ const ModMenu = lazy(() => import('./pages/ModMenu'));
 const Home = lazy(() => import('./pages/Home'));
 const Table = lazy(() => import('./pages/Table'));
 const Settings = lazy(() => import('./pages/Settings'));
-const SingUp = lazy(() => import('./components/Auth/SingUp'));
+const SignInSignUp = lazy(() => import('./pages/SignInSignUp'));
+const Orders = lazy(() => import('./pages/Orders'));
+const Categories = lazy(() => import('./pages/Categories'));
 
 const Root = () => {
   const url = useURL();
@@ -29,7 +31,9 @@ const Root = () => {
          <Route path="/menu" element={<Menu />} />
          <Route path="/table" element={<Table />} />
          <Route path="/settings" element={<Settings />} />
-         <Route path="/singup" element={<SingUp />} />
+         <Route path="/signinup" element={<SignInSignUp />} />
+         <Route path="/orders" element={<Orders />} />
+         <Route path="/categor" element={<Categories />} />
       </Route>
      </Routes>
   );

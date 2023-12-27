@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import HeaderSystem from '../components/HeaderSystem';
+import '../css/scss/table.scss';
+import NavbarSystem from '../components/NavbarSystem';
 
 function Table() {
   return (
-    <div style={{ backgroundColor: 'lightgray', padding: '30px' }}>
-      <h2>Table</h2>
+    <div className='table-wrap'>
+      <HeaderSystem/>
+      <NavbarSystem/>
     </div>
   )
 }

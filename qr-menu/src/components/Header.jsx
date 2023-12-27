@@ -6,7 +6,7 @@ function Header(){
     return(
         <>
         <div>
-        <Link to={'/singup'} className='header-link'><h3 className='header-log'><b>Log out</b></h3></Link>
+        <Link to={'/signinup'} className='header-link'><b className='header-log'>Log out</b></Link>
         </div>    
         </>
     )
