@@ -1,6 +1,6 @@
 import { useState } from "react";
 import RightImages from "../components/Auth/RightImages";
-import SinSup from "./SignInSignUp";
+import SignInSignUp from "./SignInSignUp";
 import SvgCircle from "../components/SvgCircle";
 
 function Sing(){
@@ -15,8 +15,8 @@ function Sing(){
         <>
             <main>
                 <div id="sign">
-                    {singCheck === 'in' && <SinSup page={singCheck} func={handleSingCheck} /> || 
-                    singCheck === 'up' && <SinSup page={singCheck} func={handleSingCheck} /> ||
+                    {singCheck === 'in' && <SignInSignUp page={singCheck} func={handleSingCheck} /> || 
+                    singCheck === 'up' && <SignInSignUp page={singCheck} func={handleSingCheck} /> ||
                     singCheck === 'reset' && <SvgCircle page={singCheck} func={handleSingCheck} /> }
                 </div>
 

@@ -1,3 +1,12 @@
+$Primary-600: #15C5CE;
+$Primary-100: #EEFCFC;
+$color-grey-text: #4B4B4B;
+$color-white: #FFF;
+$darc-grey-h1: #1F1F1F;
+$color-elips: #FFF6F3;
+$color-green: #47B881;
+$color-neutral: #FAFAFA;
+
 .menu-wrap{
     display: flex;
     flex-direction: column;
@@ -5,4 +14,24 @@
     height: 100%;
     width: 100%;
     padding: 0px;
+
+    .menu-page{
+        width: 100%;
+        background: $color-neutral;
+        
+        .page-left{
+        }
+       
+     }
+    .page-title{
+        padding-top: 57px;
+        padding-left: 88px;
+        color: $Primary-600;
+        // text-align: center;
+        font-family: 'Poppins';
+        font-size: 35px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
 }
