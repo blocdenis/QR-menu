@@ -1,7 +1,7 @@
 import SingIn from "../components/Auth/SingIn";
 import SingUp from "../components/Auth/SingUp";
 
-function SinSup({page, func}) {
+function SignInSignUp({page, func}) {
     
     return (
         <div className="sign-into-container">
@@ -16,4 +16,4 @@ function SinSup({page, func}) {
     )
 }
 
-export default SinSup;
+export default SignInSignUp;

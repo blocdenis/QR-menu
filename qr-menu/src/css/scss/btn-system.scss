@@ -1,0 +1,43 @@
+$Primary-600: #15C5CE;
+$color-white: #FFF;
+$color-grey-text: #4B4B4B;
+
+.block-btn-system{
+background: $color-white;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 100px;
+width: 361px;
+height: 57px;
+margin-left: 287px;
+margin-top: 100px;
+border: none;
+border-radius: 6px;
+
+.btn-back{
+    color: $color-grey-text;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    padding-left: 0px; 
+    border: none;
+    background: $color-white;
+}
+.btn-save{
+    width: 222px;
+    height: 57px;
+    background: $Primary-600;
+    color: $color-white;
+    padding: 17px 75px 16px 95px;
+    align-items: center;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500; 
+    border: none;
+    border-radius: 6px;
+}
+}
