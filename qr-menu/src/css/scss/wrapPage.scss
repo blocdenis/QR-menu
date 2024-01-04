@@ -1,0 +1,43 @@
+$Primary-600: #15C5CE;
+$Primary-100: #EEFCFC;
+$color-grey-text: #4B4B4B;
+$color-white: #FFF;
+$darc-grey-h1: #1F1F1F;
+$color-elips: #FFF6F3;
+$color-green: #47B881;
+$color-neutral: #FAFAFA;
+
+.container-wrap{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+}
+
+.container-page{
+    width: 100%;
+    background: $color-neutral;
+
+    .page-right{
+        width: 77%;
+        min-height: 100%;
+        float: right;
+        margin: 0;
+        padding: 0;
+        background: $color-white;
+
+        .page-title{
+            padding-top: 57px;
+            padding-left: 88px;
+            color: $Primary-600;
+            font-family: 'Poppins';
+            font-size: 35px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+    }
+} 
