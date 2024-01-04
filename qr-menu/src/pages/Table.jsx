@@ -1,15 +1,16 @@
 import React from 'react';
 import '../css/scss/table.scss';
+import '../css/scss/wrapPage.scss';
 import NavbarSystem from '../components/NavbarSystem';
 import HeaderSystem from '../components/HeaderSystem';
-import TableCrud from '../components/TableCrud';
+import TableQr from '../components/TableQr';
 import ButtonSystem from '../components/ButtonSystem';
 function Table() {
   return (
     <>
-    <div className='table-wrap'>
+    <div className='container-wrap'>
       <HeaderSystem/>
-      <div className='tables-page'>
+      <div className='container-page'>
         <div className='page-left'>
           <NavbarSystem/>
         </div>
@@ -24,15 +25,15 @@ function Table() {
                           <h3>Add a new table</h3>
                       </button>
                     </div>
-                  <div className='block-categ-table'>
-                      <div className='categ-table1'>All tables <span className='quantity-table'>(3)</span> </div>
-                      <div className='categ-table2'>Processing <span className='quantity-table'>(0)</span> </div>
-                      <div className='categ-table3'>Completed <span className='quantity-table'>(2)</span> </div>
-                      <div className='categ-table4'>Completed <span className='quantity-table'>(2)</span> </div>
-                  </div>  
+                  {/* <div className='block-categ-table'> */}
+                      {/* <div className='categ-table1'>All tables <span className='quantity-table'>(3)</span> </div> */}
+                      {/* <div className='categ-table2'>Processing <span className='quantity-table'>(0)</span> </div> */}
+                      {/* <div className='categ-table3'>Completed <span className='quantity-table'>(2)</span> </div> */}
+                      {/* <div className='categ-table4'>Completed <span className='quantity-table'>(2)</span> </div> */}
+                  {/* </div>   */}
 
                   <div>
-                  <TableCrud />
+                  <TableQr />
                   </div>
                   <div>
                  <ButtonSystem/> 
