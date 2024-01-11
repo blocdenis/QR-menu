@@ -1,6 +1,7 @@
 import CreateInput from "../CreateInput"
-import {useState} from "react"
+import {useState, useRef} from "react"
 import { useNavigate } from "react-router-dom";
+import { Toast } from 'primereact/toast';
 
 //VALIDATION
 const validate = (values) => {
@@ -31,6 +32,11 @@ const validate = (values) => {
 };
 
 function SingUp({checkUser}){
+  const toast = useRef(null);
+
+  const showSuccess = () => {
+    toast.current.show({severity:'success', summary: 'Success', detail:' Registration was successful !', life: 3000});
+  }
   const navigate = useNavigate();
     const displayBlock = {
         display: 'block'
@@ -61,20 +67,24 @@ function SingUp({checkUser}){
             // useTransition();
             const error = validate(formValues);       
             setFormErrors(error);
-
             if(Object.keys(error).length === 0){ 
-              submitForm(formValues)  
+             
+              submitForm(formValues)
               setFormValues({  
                   email: "",    
                   restourant: "",    
                   password: "", 
                   confirmPassword: '',  
                 });   
-              setFormErrors({});  
+              setFormErrors({});        
             } else{ 
               return 'something not match'           
             }
-        navigate('/home')
+            showSuccess(); 
+            setTimeout(() => {
+              navigate('/home');
+            }, 1000);
+           
           }             
         //SENDING DATA 
         const submitForm = (formValues) => {
@@ -89,6 +99,7 @@ function SingUp({checkUser}){
    }
    return (
     <>
+    <Toast ref={toast} />
     <div className="sign-into-inputs">
         <div className="sign-into-input-email" >
         <label htmlFor='email' className='before-active'>Email</label>
@@ -153,7 +164,7 @@ function SingUp({checkUser}){
     
     <div className="sign-into-send-login-info">
         <button 
-        onClick = {handleSubmit} 
+        onClick = {handleSubmit}
         type='submit' 
         style={displayBlock} 
         id="create-account-button"
