@@ -1,6 +1,7 @@
 import CreateInput from "../CreateInput"
-import {useState,useEffect} from "react"
+import {useState,useEffect, useRef} from "react"
 import { useNavigate } from "react-router-dom";
+import { Toast } from 'primereact/toast';
 
 //VALIDATION
 const validate = (values) => {
@@ -19,7 +20,11 @@ const validate = (values) => {
   };  
 function SingIn({checkUser}){
     const navigate = useNavigate();
-
+    const toast = useRef(null);
+    
+    const showSuccess = () => {
+        toast.current.show({severity:'success', summary: 'Success', detail:'Welcome to your account!', life: 3000});
+      } 
     const displayBlock = {
         display: 'block'
     }
@@ -64,7 +69,7 @@ function SingIn({checkUser}){
         console.log(error) 
 
         if(Object.keys(error).length === 0){ 
-        
+            showSuccess();
             submitForm(formValues) 
 
             setFormValues({  
@@ -83,7 +88,9 @@ function SingIn({checkUser}){
         } else{ 
             return 'something not match'    
           }
-          navigate('/home')
+          setTimeout(() => {
+            navigate('/home');
+          }, 1000);
         }              
   //SENDING DATA 
   const submitForm = (formValues) => {     
@@ -94,6 +101,7 @@ function SingIn({checkUser}){
    }
    return (
     <>
+    <Toast ref={toast} />
         <div className="sign-into-inputs">
             <div className="sign-into-input-email">
                 <label htmlFor="email">Email</label>
@@ -146,7 +154,7 @@ function SingIn({checkUser}){
         
         <div className="sign-into-send-login-info">
             <button 
-            onClick = {handleSubmit} 
+            onClick = {handleSubmit}
             type="submit" 
             id="sign-into-button" 
             style={displayBlock}

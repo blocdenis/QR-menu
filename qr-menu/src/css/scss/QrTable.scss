@@ -1,0 +1,53 @@
+$color-grey-text: #4B4B4B;
+.dataTable{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    max-width: 100%;
+    border-collapse: collapse;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 100px 79px 278px;
+    
+    @media (max-width: 992px) { 
+        max-width: 690px;
+        margin: 80px 48px 200px 48px;
+    }
+    
+    @media (max-width: 767px) {
+        max-width: 690px;
+        margin: 80px 35px 200px 35px; 
+    }
+    @media (max-width: 690px) {
+        max-width: 650px;
+        margin: 80px 25px 200px 25px; 
+    }
+    @media (max-width:575px) {
+        max-width: 650px;
+        margin: 80px 20px 200px 10px; 
+    }
+    @media (max-width:450px) {
+        max-width: 650px;
+        margin: 80px 20px 200px 0; 
+    }
+    .title{
+        color: $color-grey-text;
+        font-family: 'Poppins';
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 500;
+        margin: 0;
+        width: 100%;
+    }
+    @media (max-width: 767px) {
+        font-size: 0.9rem;
+    }
+    @media (max-width: 690px) {
+        font-size: 0.8rem;
+    }
+    @media (max-width: 575px) {
+        font-size: 0.7rem;
+    }
+    @media (max-width: 450px) {
+        font-size: 0.6rem;
+    }
+}
