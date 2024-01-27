@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/scss/navbarsystem.scss';
+import '../../css/scss/navbarsystem.scss';
 import { useState } from 'react';
 import { Link} from 'react-router-dom';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/scss/headerSystem.scss';
+import '../../css/scss/headerSystem.scss';
 import { Link} from 'react-router-dom';
 
 function HeaderSystem() {

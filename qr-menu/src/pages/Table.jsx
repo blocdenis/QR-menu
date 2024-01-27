@@ -2,10 +2,10 @@
 import React, {useState, useRef, useMemo, useEffect} from 'react';
 import '../css/scss/table.scss';
 import '../css/scss/wrapPage.scss';
-import NavbarSystem from '../components/NavbarSystem';
-import HeaderSystem from '../components/HeaderSystem';
-import TableQr from '../components/TableQr';
-import ButtonSystem from '../components/ButtonSystem';
+import NavbarSystem from '../components/NavBar/NavbarSystem.jsx';
+import HeaderSystem from '../components/Header/HeaderSystem.jsx';
+import TableQr from '../layouts/TableQr.jsx';
+import ButtonSystem from '../components/Button/ButtonSystem.jsx';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
@@ -14,7 +14,7 @@ import { InputText } from 'primereact/inputtext';
 import { Tag } from 'primereact/tag';
 import { InputTextarea } from 'primereact/inputtextarea';
 import {QRCodeSVG} from "qrcode.react";
-import CounterTable from '../components/CounterTable';
+import CounterTable from '../layouts/CounterTable.jsx';
       
 
 function Table() {
@@ -68,13 +68,12 @@ const generQr = (e)=>{
 const qrcode = (<QRCodeSVG 
         id= 'qrCodeId'
         size={500}
-        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+        style={{ height: "auto", maxWidth: "100%", width: "100%", paddingTop: "20px", paddingLeft: '0' }}
         value={urlState}
         viewBox={`0 0 256 256`}
         level= 'Q'
         width = {500}
         height= {500}
-        style={{paddingTop: "20px", paddingLeft: '0'}}
 /> )
 //BTN GENERAT.QR  
 const clickGenerateQrCode = (e) => {

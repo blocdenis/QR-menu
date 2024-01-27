@@ -1,5 +1,5 @@
 import React from 'react'
-import '../css/scss/btn-system.scss';
+import '../../css/scss/btn-system.scss';
 import { Button } from 'primereact/button';
 
 function ButtonSystem() {
