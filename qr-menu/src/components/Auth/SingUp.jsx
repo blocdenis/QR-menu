@@ -1,4 +1,4 @@
-import CreateInput from "../CreateInput"
+import CreateInput from "../Input/CreateInput"
 import {useState, useRef} from "react"
 import { useNavigate } from "react-router-dom";
 import { Toast } from 'primereact/toast';

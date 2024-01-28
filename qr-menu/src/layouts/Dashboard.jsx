@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import '../css/scss/dashboard.scss'
-import Header from '../components/Header';
+import Header from '../components/Header/Header.jsx';
 
-import Navigation from '../components/Navigation';
+import Navigation from './Navigation.jsx';
 const Dashboard = () => {
 
   return (

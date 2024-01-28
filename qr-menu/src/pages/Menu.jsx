@@ -1,9 +1,9 @@
 import React from 'react';
-import NavbarSystem from '../components/NavbarSystem';
-import HeaderSystem from '../components/HeaderSystem';
+import NavbarSystem from '../components/NavBar/NavbarSystem.jsx';
+import HeaderSystem from '../components/Header/HeaderSystem.jsx';
 import '../css/scss/menu.scss';
 import '../css/scss/wrapPage.scss';
-import ButtonSystem from '../components/ButtonSystem';
+import ButtonSystem from '../components/Button/ButtonSystem.jsx';
 
 const Menu = () => {
   return (<>

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import RightImages from "../components/Auth/RightImages";
-import SignInSignUp from "./SignInSignUp";
-import SvgCircle from "../components/SvgCircle";
+import RightImages from "../components/Auth/RightImages.jsx";
+import SignInSignUp from "./SignInSignUp.jsx";
+import SvgCircle from "../components/SvgCircle.jsx";
 
 function Sing(){
     const [singCheck, setSingCheck] = useState('in')
