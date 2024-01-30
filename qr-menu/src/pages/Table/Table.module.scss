@@ -1,0 +1,88 @@
+$Primary-600: #15c5ce;
+$Primary-100: #eefcfc;
+$color-grey-text: #4b4b4b;
+$color-white: #fff;
+$darc-grey-h1: #1f1f1f;
+$color-elips: #fff6f3;
+$color-green: #47b881;
+$color-neutral: #fafafa;
+.block_btn {
+  border-radius: 4px;
+  background: $Primary-600;
+  margin-top: 32px;
+  margin-left: 88px;
+  width: 151px;
+  height: 36px;
+
+  .btn_addtable {
+    display: flex;
+    justify-content: space-around;
+    border: none;
+    border-radius: 4px;
+    color: $color-white;
+    background: $Primary-600;
+    padding: 7px 8px;
+  }
+}
+.block_categ_table {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 88px;
+  margin-top: 33px;
+  width: 507px;
+  color: $Primary-600;
+
+  .quantity_table {
+    color: $color-grey-text;
+  }
+}
+
+.categ-table1:hover,
+.categ-table2:hover,
+.categ-table3:hover,
+.categ-table4:hover {
+  color: $color-grey-text;
+}
+$Primary-600: #15c5ce;
+$Primary-100: #eefcfc;
+$color-grey-text: #4b4b4b;
+$color-white: #fff;
+$darc-grey-h1: #1f1f1f;
+$color-elips: #fff6f3;
+$color-green: #47b881;
+$color-neutral: #fafafa;
+
+.container_wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+}
+
+.container_page {
+  width: 100%;
+  background: $color-neutral;
+
+  .page_right {
+    width: 77%;
+    min-height: 100%;
+    float: right;
+    margin: 0;
+    padding: 0;
+    background: $color-white;
+
+    .page_title {
+      padding-top: 57px;
+      padding-left: 88px;
+      color: $Primary-600;
+      font-family: 'Poppins';
+      font-size: 35px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+}
