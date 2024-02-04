@@ -8,6 +8,7 @@ import {
 import './Sing.css';
 import { useURL } from './hooks/useURL';
 import Sing from './pages/Sing';
+import { useCookies } from 'react-cookie';
 const DashboardLayout = lazy(() => import('./layouts/Dashboard'));
 
 const Menu = lazy(() => import('./pages/Menu'));

@@ -3,6 +3,7 @@ import {useState, useRef} from "react"
 import { useNavigate } from "react-router-dom";
 import { Toast } from 'primereact/toast';
 import {postData} from '../../Fetch/signUp.js'
+import { useCookies } from "react-cookie";
 //VALIDATION
 const validate = (values) => {
   const errors = {};
@@ -32,10 +33,20 @@ const validate = (values) => {
 };
 
 function SingUp({checkUser}){
+  //COOCKIE
+const [cookies, setCookie] = useCookies(["token"]);
   const toast = useRef(null);
-
+  async function someFunction(formValuesFilter) {
+    const token = await postData(formValuesFilter);
+    setCookie("token", token, { path: "/" });
+    //  setCookie("user_id", user_id, { path: "/" });
+  }
   const showSuccess = () => {
     toast.current.show({severity:'success', summary: 'Success', detail:' Registration was successful !', life: 3000});
+    const { email, password} = formValues;
+    const formValuesFilter = { email, password };
+    someFunction(formValuesFilter);
+    
   }
   const navigate = useNavigate();
     const displayBlock = {
@@ -65,7 +76,6 @@ function SingUp({checkUser}){
         const handleSubmit = (e) => {      
             e.preventDefault();
             // useTransition();
-            postData();
             const error = validate(formValues);       
             setFormErrors(error);
             if(Object.keys(error).length === 0){ 
