@@ -2,7 +2,7 @@ import CreateInput from "../Input/CreateInput"
 import {useState, useRef} from "react"
 import { useNavigate } from "react-router-dom";
 import { Toast } from 'primereact/toast';
-
+import {postData} from '../../Fetch/signUp.js'
 //VALIDATION
 const validate = (values) => {
   const errors = {};
@@ -65,6 +65,7 @@ function SingUp({checkUser}){
         const handleSubmit = (e) => {      
             e.preventDefault();
             // useTransition();
+            postData();
             const error = validate(formValues);       
             setFormErrors(error);
             if(Object.keys(error).length === 0){ 
@@ -88,6 +89,7 @@ function SingUp({checkUser}){
           }             
         //SENDING DATA 
         const submitForm = (formValues) => {
+         
           console.log(formValues);  
         };   
        
