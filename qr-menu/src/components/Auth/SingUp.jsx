@@ -2,7 +2,12 @@ import CreateInput from "../Input/CreateInput"
 import {useState, useRef} from "react"
 import { useNavigate } from "react-router-dom";
 import { Toast } from 'primereact/toast';
-import {postData} from '../../Fetch/signUp.js'
+import Cookies from "js-cookie"
+
+import {apiRequest} from '../../Fetch/signUp.js'
+import {USER_REGISTER, RESTAURANT_CREATE} from "../../Fetch/settings.js"
+
+
 //VALIDATION
 const validate = (values) => {
   const errors = {};
@@ -65,7 +70,7 @@ function SingUp({checkUser}){
         const handleSubmit = (e) => {      
             e.preventDefault();
             // useTransition();
-            postData();
+
             const error = validate(formValues);       
             setFormErrors(error);
             if(Object.keys(error).length === 0){ 
@@ -89,8 +94,23 @@ function SingUp({checkUser}){
           }             
         //SENDING DATA 
         const submitForm = (formValues) => {
-         
-          console.log(formValues);  
+
+          const registerUser = async (formValues) => {
+            const register = await apiRequest(USER_REGISTER,
+              "POST", {email: formValues.email, password: formValues.password, time: {}});
+            
+            Cookies.set("token", register.token, {expires: 1});
+          }
+
+          const registerRestaurant = async (restourant) => {
+            await apiRequest(RESTAURANT_CREATE,
+              "POST", {name: restourant})
+          }
+          
+          const restourant = String(formValues.restourant);
+
+          registerUser(formValues);
+          setTimeout(registerRestaurant, 500, restourant)
         };   
        
         
