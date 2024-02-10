@@ -3,6 +3,7 @@
 const API_DOMAIN = "http://localhost:8000"
 const API_PREFIX = "/api/admin/"
 const CONCATE = API_DOMAIN + API_PREFIX
+export const COOKIE_KEY = "token"
 
 // API METHODS URLS
 export const USER_REGISTER = CONCATE + "register"
@@ -11,7 +12,10 @@ export const USER_LOGIN_BY_TOKEN = CONCATE + "login/token"
 export const USER_GET_FULL_INFO = CONCATE + "get-full-info/user"
 export const USER_DELETE_SESSION = CONCATE + "delete/session/user"
 export const USER_DELETE = CONCATE + "delete/user"
+export const USER_RECOVERY_CODE_CHECK = CONCATE + "recovery/code/check"
+export const USER_SET_NEW_PASSWORD = CONCATE + "recovery/password"
 
+export const EMAIL_SET_RECOVERY_CODE = CONCATE + "set/recovery/code"
 export const EMAIL_SEND = CONCATE + "send_email"
 
 export const RESTAURANT_CREATE = CONCATE + "add/restaurant"

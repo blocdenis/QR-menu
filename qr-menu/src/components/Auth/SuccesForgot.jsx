@@ -16,7 +16,7 @@ const Succes = ({email, btnStyle}) => {
             <div className="reset-info-container" style={{margin: '2rem 0px', textAlign: 'center'}}>
 
                 <p style={{color: 'rgb(149, 152, 149)', lineHeight: '28px'}}>
-                    A email has been send to your {email}. Please check for an email from company and click on the included link to reset your password
+                    Password changed succesfully for {email}. Now you can back and login in your account.
                 </p>
 
             </div>

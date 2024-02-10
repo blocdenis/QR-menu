@@ -29,8 +29,8 @@ services:
       # for sending emails
       - SMTP_SERVER=smtp.gmail.com
       - SMTP_PORT=587
-      - SENDER_EMAIL=example@gmail.com
-      - SENDER_PASSWORD=your_password
+      - SENDER_EMAIL=dmshop1307@gmail.com
+      - SENDER_PASSWORD=wwxs sqhi qdrp bsnf
 
       # CORS
       - CROS_ORIGINS=["http://localhost:5173"]

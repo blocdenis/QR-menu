@@ -6,7 +6,18 @@ import IconMenu from "../SVG/IconMenu.jsx";
 import IconSetting from '../SVG/IconSetting.jsx';
 import IconTable from '../SVG/IconTable.jsx';
 
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import checkToken from "../Fetch/func/CheckToken.js"
+
+
 const Home = () => {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    checkToken(navigate)
+  }, [navigate])
+
   return (
     <div className='home-page'>
           <Header/>

@@ -1,5 +1,5 @@
-import SingIn from "../components/Auth/SingIn";
-import SingUp from "../components/Auth/SingUp";
+import SingIn from "../components/Auth/SignIn/SignIn.jsx";
+import SingUp from "../components/Auth/SignUp/SignUp.jsx";
 
 function SignInSignUp({page, func}) {
     
