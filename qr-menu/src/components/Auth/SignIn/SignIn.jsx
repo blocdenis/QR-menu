@@ -6,8 +6,7 @@ import CreateInput from "../../Input/CreateInput";
 import showSuccess from "../ShowSucces/func"
 
 import { apiRequest, obj } from "../../../Fetch/signUp";
-import { USER_LOGIN, COOKIE_KEY } from "../../../Fetch/settings";
-import Cookies from "js-cookie";
+import { USER_LOGIN } from "../../../Fetch/settings";
 
 import {displayBlock,
         displayFlex,
@@ -79,11 +78,9 @@ const SignIn = ({checkUser}) => {
         remember ? data.time = {type: "weeks", number: 2.0} : data.time = {}
     
         try {
-            const request = await apiRequest(USER_LOGIN, obj("POST", data));
-            Cookies.set(COOKIE_KEY, request.token, {expires: remember ? data.number * 7 : 1});
+            await apiRequest(USER_LOGIN, obj("POST", data));
             status = true;
         } catch (error) {
-            Cookies.remove(COOKIE_KEY);
             status = false;
             throw error;
         }

@@ -3,11 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
 import CreateInput from "../../Input/CreateInput";
 
-import checkToken from "../../../Fetch/func/CheckToken";
 import { apiRequest, obj } from "../../../Fetch/signUp";
-import { USER_REGISTER, USER_DELETE, COOKIE_KEY, RESTAURANT_CREATE } from "../../../Fetch/settings";
+import { USER_REGISTER, USER_DELETE, RESTAURANT_CREATE } from "../../../Fetch/settings";
 import delay from "../../../Fetch/func/delay";
-import Cookies from "js-cookie";
 
 import {displayBlock, styleFont} from "../css/funcs";
 import showSuccess from "../ShowSucces/func";
@@ -78,10 +76,8 @@ const SignUp = ({checkUser}) => {
         let status = false;
 
         try{
-            const register = await apiRequest(USER_REGISTER, 
+            await apiRequest(USER_REGISTER, 
             obj("POST", {email: formValues.email, password: formValues.password, time: {}}, undefined, false));
-            Cookies.set(COOKIE_KEY, register.token, {expires: 1});
-    
             status = true;
         } catch (error) {
             status = false;
@@ -95,7 +91,6 @@ const SignUp = ({checkUser}) => {
             status = true;
         } catch (error) {
             await apiRequest(USER_DELETE, obj("DELETE", {}));
-            Cookies.remove(COOKIE_KEY);
             status = false;
             throw error
         }
