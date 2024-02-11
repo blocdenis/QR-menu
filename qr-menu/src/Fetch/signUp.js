@@ -2,12 +2,20 @@
 // after downaload IMG by write command in Terminal: docker-compose up -d 
 // and wait a minute while api is started
 // and it is possible work with server 
+import Cookies from "js-cookie";
+import { COOKIE_KEY } from "./settings";
 
-export const obj = (method, body, headers = {"Content-type": "application/json"}) => {
-  return {method: method,
-          headers: headers,
-          credentials: "include",
-          body: JSON.stringify(body)}
+export const COOKIE_HEADERS = {"Cookie": `${COOKIE_KEY}=${Cookies.get(COOKIE_KEY)}`}
+
+export const obj = (method, body, headers = {"Content-type": "application/json"}, cookie = true) => {
+  const data = {method: method,
+              credentials: "include",
+              body: JSON.stringify(body)}
+
+  if (cookie) data.headers = {...headers, ...COOKIE_HEADERS};
+  else data.headers = headers;
+
+  return data
 }
 
 export async function apiRequest(url, obj) {

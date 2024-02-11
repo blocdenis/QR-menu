@@ -1,8 +1,18 @@
 import SingIn from "../components/Auth/SignIn/SignIn.jsx";
 import SingUp from "../components/Auth/SignUp/SignUp.jsx";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import checkToken from "../Fetch/func/CheckToken.js";
+
 
 function SignInSignUp({page, func}) {
-    
+    const navigate = useNavigate()
+
+
+    useEffect(() => {
+        checkToken(navigate, "/home");
+    }, [navigate])
+
     return (
         <div className="sign-into-container">
             <div className="sign-into-headers">

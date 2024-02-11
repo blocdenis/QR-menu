@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
 import CreateInput from "../../Input/CreateInput";
@@ -20,13 +20,7 @@ function goToSingIn(checkUser, value){
 
 const SignUp = ({checkUser}) => {
     const navigate = useNavigate()
-    
-    
-    useEffect(() => {
-        checkToken(navigate, "/home");
-    }, [navigate])
-    
-    
+
     const toast = useRef(null);
     const [formValues, setFormValues] = useState(
     {
@@ -85,7 +79,7 @@ const SignUp = ({checkUser}) => {
 
         try{
             const register = await apiRequest(USER_REGISTER, 
-            obj("POST", {email: formValues.email, password: formValues.password, time: {}}));
+            obj("POST", {email: formValues.email, password: formValues.password, time: {}}, undefined, false));
             Cookies.set(COOKIE_KEY, register.token, {expires: 1});
     
             status = true;
@@ -100,7 +94,7 @@ const SignUp = ({checkUser}) => {
             await apiRequest(RESTAURANT_CREATE,  obj("POST", {name: formValues.restourant}));
             status = true;
         } catch (error) {
-            await apiRequest(USER_DELETE, {method: "DELETE", credentials: "include"});
+            await apiRequest(USER_DELETE, obj("DELETE", {}));
             Cookies.remove(COOKIE_KEY);
             status = false;
             throw error

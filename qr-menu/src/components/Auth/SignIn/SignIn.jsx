@@ -1,11 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import {validate} from "./validation/func"
 import { Toast } from 'primereact/toast';
 import CreateInput from "../../Input/CreateInput";
 import showSuccess from "../ShowSucces/func"
 
-import checkToken from "../../../Fetch/func/CheckToken";
 import { apiRequest, obj } from "../../../Fetch/signUp";
 import { USER_LOGIN, COOKIE_KEY } from "../../../Fetch/settings";
 import Cookies from "js-cookie";
@@ -24,15 +23,8 @@ function goToSingUp(checkUser, value){
 
 const SignIn = ({checkUser}) => {
     const navigate = useNavigate()
-
-
-    useEffect(() => {
-        checkToken(navigate, "/home");
-    }, [navigate])
-
-
     const toast = useRef(null);
-
+    
     const [formValues, setFormValues] = useState(
         {   
             email: '',
