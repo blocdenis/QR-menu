@@ -16,7 +16,7 @@ function HeaderSystem() {
             <h3 className='header-title'>Restourant control system</h3>              
             </div>
     <div className='header-link-logout'>
-        <Link to={'/signinup'} ><b className='header-logout'>log out</b></Link>
+        <Link to={'/'} ><b className='header-logout'>log out</b></Link>
     </div>
     </div>
   )

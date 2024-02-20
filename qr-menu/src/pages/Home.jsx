@@ -5,8 +5,32 @@ import Header from '../components/Header/Header.jsx';
 import IconMenu from "../SVG/IconMenu.jsx";
 import IconSetting from '../SVG/IconSetting.jsx';
 import IconTable from '../SVG/IconTable.jsx';
+import { useRef } from 'react';
 
 const Home = () => {
+  const fileInputRef = useRef(null);
+
+  const handleClick = (event) => {
+    event.preventDefault(); // Запобігаємо перевантаженню сторінки
+
+    const fileInput = fileInputRef.current;
+    if (!fileInput) return; // Перевірка на наявність елемента
+
+    fileInput.click(); // Відкриваємо діалогове вікно вибору файлу
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (!file) return; // Перевірка на наявність файлу
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      // Зробити щось із завантаженим зображенням (зберегти в базу даних, відобразити на сторінці тощо)
+      console.log('Завантажено:', reader.result); // Приклад виводу файлу в консоль
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <div className='home-page'>
           <Header/>
@@ -15,10 +39,16 @@ const Home = () => {
             <h1>Welcome</h1>
             <h3>to your restourant account </h3>
         </div>
-          <button className='home-logo'
-            // onClick={() => window.open("file:///", "")}
-            >
-            Your Logo</button>
+            <a href="#" className='home-logo' onClick={handleClick}>
+              <img src="image.png" alt="Your logo"/>
+            </a>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              ref={fileInputRef}
+              style={{ display: 'none' }}
+            />
           <Link to={'/table'} style={{ textDecoration: 'none'}}>
            <button className='button-page'>
            <div className='home-vector'>

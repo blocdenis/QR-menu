@@ -16,9 +16,7 @@ const Menu = () => {
           <div className={styles.page_right}>
             <div className={styles.block_title}>
               <h1 className={styles.page_title}>Menu</h1>
-              <div>
-                <ButtonSystem />
-              </div>
+              
             </div>
           </div>
         </div>
