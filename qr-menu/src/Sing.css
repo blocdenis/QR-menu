@@ -553,3 +553,17 @@ main {
 }
 
 /* END RESET PAGE */
+
+
+
+
+
+
+.link {
+    color: cornflowerblue;
+}
+
+.link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
