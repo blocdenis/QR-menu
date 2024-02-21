@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../css/scss/button.scss';
-import '../css/home.scss';
+import styles from './Home.module.scss'
 import Header from '../../components/Header/Header.jsx';
 import IconMenu from '../../SVG/IconMenu.jsx';
 import IconSetting from '../../SVG/IconSetting.jsx';
@@ -18,22 +17,22 @@ const Home = () => {
   }, [navigate]);
 
   return (
-    <div className="home-page">
+    <div className={styles.home_page}>
       <Header />
-      <div className="home-wrap">
-        <div className="home-title">
+      <div className={styles.home_wrap}>
+        <div className={styles.home_title}>
           <h1>Welcome</h1>
           <h3>to your restourant account </h3>
         </div>
         <button
-          className="home-logo"
+          className={styles.home_logo}
           // onClick={() => window.open("file:///", "")}
         >
           Your Logo
         </button>
         <Link to={'/table'} style={{ textDecoration: 'none' }}>
-          <button className="button-page">
-            <div className="home-vector">
+          <button className={styles.button_page}>
+            <div className={styles.home_vector}>
               <IconTable />
             </div>
             Table
@@ -41,8 +40,8 @@ const Home = () => {
         </Link>
 
         <Link to={'/menu'} style={{ textDecoration: 'none' }}>
-          <button className="button-page">
-            <div className="home-vector">
+          <button className={styles.button_page}>
+            <div className={styles.home_vector}>
               <IconMenu />
             </div>
             Menu
@@ -50,8 +49,8 @@ const Home = () => {
         </Link>
 
         <Link to={'/settings'} style={{ textDecoration: 'none' }}>
-          <button className="button-page">
-            <div className="home-vector">
+          <button className={styles.button_page}>
+            <div className={styles.home_vector}>
               <IconSetting />
             </div>
             Settings
