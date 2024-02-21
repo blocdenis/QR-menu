@@ -1,0 +1,131 @@
+$Primary-600: #15c5ce;
+$Primary-100: #eefcfc;
+$color-grey-text: #4b4b4b;
+$color-white: #fff;
+$darc-grey-h1: #1f1f1f;
+$color-elips: #fff6f3;
+$color-green: #47b881;
+.navbar-wrap {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  min-height: 306px;
+  position: relative;
+  padding-top: 46px;
+  width: 22%;
+  float: left;
+  background: #fff;
+
+  .btn-nav {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    margin: 1px 12px;
+    max-height: auto;
+    border-radius: 4px;
+    background: $color-white;
+    border: none;
+  }
+  .btn-nav:hover {
+    background: var(--menu-active, $Primary-100);
+  }
+  .svg-table {
+    position: absolute;
+    width: 17px;
+    height: 14px;
+    padding-top: 15px;
+    padding-left: 8px;
+  }
+  .svg-menu,
+  .svg-settings {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    padding-top: 13px;
+    padding-left: 8px;
+  }
+  .btn-title {
+    color: $Primary-600;
+    font-family: 'Poppins';
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+    padding-top: 14px;
+    padding-left: 33px;
+  }
+  .svg-select {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    margin-top: 18px;
+    right: 18px;
+  }
+  .btn-link {
+    display: none;
+    // position: relative;
+    cursor: pointer;
+    margin: 0px 12px;
+
+    .btn-title-orders {
+      color: var(--text, $color-grey-text);
+      font-family: 'Poppins';
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      padding-top: 16px;
+      padding-left: 44px;
+    }
+  }
+  @media (min-width: 768px) {
+    .navbar-wrap {
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .navbar-wrap {
+      max-width: 100vw;
+
+      .btn-nav {
+        margin: 1rem 1rem;
+      }
+
+      .svg-table {
+        padding-top: 1.5rem;
+        padding-left: 1rem;
+      }
+
+      .svg-menu,
+      .svg-settings {
+        padding-top: 1.3rem;
+        padding-left: 1rem;
+      }
+
+      .btn-title {
+        padding-top: 1.4rem;
+        padding-left: 2.5rem;
+      }
+
+      .svg-select {
+        margin-top: 1.7rem;
+        right: 1.7rem;
+      }
+
+      .btn-link {
+        display: block;
+        margin: 0rem 1rem;
+
+        .btn-title-orders {
+          padding-top: 1.6rem;
+          padding-left: 4rem;
+        }
+      }
+    }
+  }
+  @media (max-width: 490px) {
+    .navbar-wrap {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
