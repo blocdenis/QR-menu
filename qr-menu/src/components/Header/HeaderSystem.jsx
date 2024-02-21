@@ -1,25 +1,22 @@
 import React from 'react';
-import '../../css/scss/headerSystem.scss';
-import { Link} from 'react-router-dom';
+// import '../../css/scss/headerSystem.scss';
+import { Link } from 'react-router-dom';
+import styles from './Header.module.scss';
 
 function HeaderSystem() {
   return (
-    <div className='headsystem'>
-    
-        <button className='header-logo'>
-            <h4 className='header-h4'>Your Logo</h4>
-        </button>
-        <svg className='svg-vector' xmlns="http://www.w3.org/2000/svg" width="1" height="16" viewBox="0 0 1 16" fill="none">
-            <rect width="1" height="16" fill="white"/>
-        </svg>
-        <div >
-            <h3 className='header-title'>Restourant control system</h3>              
-            </div>
-    <div className='header-link-logout'>
-        <Link to={'/signinup'} ><b className='header-logout'>log out</b></Link>
+    <div className={styles.headsystem}>
+      <div>
+        <h3 className={styles.header_title}>Name of the restaurant</h3>
+      </div>
+
+      <div className={styles.header_link_logout}>
+        <Link to={'/signinup'} className={styles.header_link}>
+          <span className={styles.header_logout}>Log out</span>
+        </Link>
+      </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default HeaderSystem
+export default HeaderSystem;

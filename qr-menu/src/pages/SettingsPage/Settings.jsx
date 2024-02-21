@@ -1,8 +1,7 @@
 import React from 'react';
 import NavbarSystem from '../../components/NavBar/NavbarSystem';
 import HeaderSystem from '../../components/Header/HeaderSystem';
-import '../css/scss/setting.scss';
-import '../css/scss/wrapPage.scss';
+import './Settings.scss';
 
 import ButtonSystem from '../../components/Button/ButtonSystem';
 

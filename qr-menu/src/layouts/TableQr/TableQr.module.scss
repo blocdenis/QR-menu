@@ -1,4 +1,4 @@
-$color-grey-text: #4b4b4b;
+@use '../../scss/abstracts/' as *;
 .dataTable {
   display: grid;
   grid-template-columns: auto auto auto;

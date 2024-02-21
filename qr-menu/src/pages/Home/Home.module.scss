@@ -1,0 +1,72 @@
+@use '../../scss/abstracts/' as *;
+.home_page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  background: url('../assets/Banner image.png');
+
+  .home_wrap {
+    padding: 50px;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    gap: 30px;
+    box-sizing: border-box;
+  }
+  .home_title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  h1 {
+    color: #1f1f1f;
+    font: $bold36;
+  }
+  h3 {
+    color: #4b4b4b;
+    font: $regular24;
+  }
+  .home_logo {
+    width: 7rem;
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #fff6f3;
+    border: none;
+    margin: 0 auto;
+    font: $regular14;
+  }
+  .home_logo > * {
+    align-self: center;
+  }
+  .home_vector {
+    margin-right: 10px;
+  }
+}
+.button_page {
+  background-color: rgb(21, 197, 206);
+  flex: 1;
+  padding: 15px;
+  width: 60%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font: $medium16;
+  border: none;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 0 auto;
+  text-decoration: none;
+}
