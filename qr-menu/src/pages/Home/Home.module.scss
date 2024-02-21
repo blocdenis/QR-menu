@@ -1,3 +1,4 @@
+@use '../../scss/abstracts/' as *;
 .home_page {
   display: flex;
   flex-direction: column;
@@ -25,14 +26,11 @@
   }
   h1 {
     color: #1f1f1f;
-    font-family: 'Playfair Display';
-    font-size: 2.9rem;
+    font: $bold36;
   }
   h3 {
     color: #4b4b4b;
-    font-family: Poppins;
-    font-size: 1.2rem;
-    font-weight: Regular;
+    font: $regular24;
   }
   .home_logo {
     width: 7rem;
@@ -42,15 +40,16 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: white;
+    background-color: #fff6f3;
     border: none;
     margin: 0 auto;
+    font: $regular14;
   }
   .home_logo > * {
     align-self: center;
   }
   .home_vector {
-    margin-right: 3px;
+    margin-right: 10px;
   }
 }
 .button_page {
@@ -62,8 +61,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  font-size: 1.1rem;
-  font-family: 'Poppins';
+  font: $medium16;
   border: none;
   border-radius: 5px;
   color: rgb(255, 255, 255);

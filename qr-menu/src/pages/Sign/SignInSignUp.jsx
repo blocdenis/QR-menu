@@ -1,17 +1,18 @@
+import React from 'react';
 import SingIn from '../../components/Auth/SingIn';
 import SingUp from '../../components/Auth/SingUp';
 
 function SignInSignUp({ page, func }) {
+  const isSignInPage = page === 'in';
+  const pageTitle = isSignInPage ? 'Sign in' : 'Sign up';
+
   return (
     <div className="sign-into-container">
       <div className="sign-into-headers">
-        {page === 'in' && <h3>Sign in to</h3>}
-        {page === 'up' && <h3>Sign up to</h3>}
-        {(page === 'up' && <p>restourant control system</p>) ||
-          (page === 'in' && <p>restourant control system</p>)}
+        <h3>{pageTitle}</h3>
+        <p>restaurant control system</p>
       </div>
-      {page === 'in' && <SingIn checkUser={func} />}
-      {page === 'up' && <SingUp checkUser={func} />}
+      {isSignInPage ? <SingIn checkUser={func} /> : <SingUp checkUser={func} />}
     </div>
   );
 }

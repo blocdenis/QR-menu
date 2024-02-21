@@ -1,11 +1,4 @@
-$Primary-600: #15c5ce;
-$Primary-100: #eefcfc;
-$color-grey-text: #4b4b4b;
-$color-white: #fff;
-$darc-grey-h1: #1f1f1f;
-$color-elips: #fff6f3;
-$color-green: #47b881;
-$color-neutral: #fafafa;
+@use '../../scss/abstracts/' as *;
 .block_btn {
   border-radius: 4px;
   background: $Primary-600;
