@@ -11,7 +11,7 @@ function HeaderSystem() {
       </div>
 
       <div className={styles.header_link_logout}>
-        <Link to={'/signinup'} className={styles.header_link}>
+        <Link to={'/'} className={styles.header_link}>
           <span className={styles.header_logout}>Log out</span>
         </Link>
       </div>
