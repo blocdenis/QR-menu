@@ -1,0 +1,92 @@
+// $Primary-600: #15c5ce;
+// $color-white: #fff;
+// $color-grey-text: #4b4b4b;
+
+// .block_btn_system {
+//   background: $color-white;
+//   display: inline-flex;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 100px;
+//   width: 361px;
+//   height: 57px;
+//   margin-left: 287px;
+//   margin-top: 100px;
+//   border: none;
+//   border-radius: 6px;
+
+//   .btn_back {
+//     color: $color-grey-text;
+//     text-align: center;
+//     font-family: 'Poppins';
+//     font-size: 1rem;
+//     font-style: normal;
+//     font-weight: 400;
+//     padding-left: 0px;
+//     border: none;
+//     background: $color-white;
+//   }
+//   .btn_save {
+//     width: 222px;
+//     height: 57px;
+//     background: $Primary-600;
+//     color: $color-white;
+//     padding: 17px 75px;
+//     align-items: center;
+//     font-family: 'Poppins';
+//     font-size: 1rem;
+//     font-style: normal;
+//     font-weight: 500;
+//     border: none;
+//     border-radius: 6px;
+//   }
+// }
+@use '../../scss/abstracts/' as *;
+
+.custom-button {
+  background-color: $Primary-600;
+  color: $color-white;
+  padding: 10px 15px;
+  font: $medium16;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #47cfd6;
+  }
+
+  &.disabled {
+    background-color: #b0ebec;
+    cursor: not-allowed;
+  }
+  &.small {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  &.medium {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+
+  &.large {
+    font-size: 16px;
+    padding: 17px 190px;
+  }
+  &.with-icon {
+    border-radius: 4px;
+    padding: 7px 8px;
+    display: flex;
+    align-items: center;
+  }
+  &.custom {
+    background-color: transparent;
+    color: #4b4b4b;
+  }
+
+  .icon {
+    margin-right: 8px;
+  }
+}
