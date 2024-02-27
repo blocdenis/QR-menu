@@ -3,7 +3,7 @@ import NavbarSystem from '../../components/NavBar/NavbarSystem';
 import HeaderSystem from '../../components/Header/HeaderSystem';
 import './Settings.scss';
 
-import ButtonSystem from '../../components/Button/ButtonSystem';
+import Button from '../../components/Button/Button';
 
 function Setting() {
   return (
@@ -17,7 +17,8 @@ function Setting() {
           <div className="block-title">
             <h1 className="page-title">Settings</h1>
             <div>
-              <ButtonSystem />
+              <Button variant="custom">Back</Button>
+              <Button>Save</Button>
             </div>
           </div>
         </div>
