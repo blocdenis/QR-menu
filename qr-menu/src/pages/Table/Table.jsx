@@ -3,9 +3,9 @@ import React, { useState, useRef, useMemo, useEffect } from 'react';
 import NavbarSystem from '../../components/NavBar/NavbarSystem.jsx';
 import HeaderSystem from '../../components/Header/HeaderSystem.jsx';
 import TableQr from '../../layouts/TableQr/TableQr.jsx';
-import ButtonSystem from '../../components/Button/ButtonSystem.jsx';
+import Button from '../../components/Button/Button.jsx';
 import { Dialog } from 'primereact/dialog';
-import { Button } from 'primereact/button';
+// import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { Toast } from 'primereact/toast';
 import { InputText } from 'primereact/inputtext';
@@ -190,8 +190,12 @@ function Table() {
   //BTN CANSEL/BACK
   const tableDialogFooter = (
     <React.Fragment>
-      <Button label="Back" icon="pi pi-times" outlined onClick={hideDialogNo} />
-      <Button label="Save" icon="pi pi-check" onClick={handleSave} />
+      <div>
+        <Button variant="custom" onClick={hideDialogNo}>
+          Back
+        </Button>
+        <Button onClick={handleSave}>Save</Button>
+      </div>
     </React.Fragment>
   );
   //BTN YES/NO
@@ -225,21 +229,7 @@ function Table() {
           <div className={styles.block_title}>
             <h1 className={styles.page_title}>Tables</h1>
             <div className={styles.block_btn}>
-              <button onClick={addTable} className={styles.btn_addtable}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                >
-                  <path
-                    d="M8.66665 1.33331H7.33331V7.33331H1.33331V8.66665H7.33331V14.6666H8.66665V8.66665H14.6666V7.33331H8.66665V1.33331Z"
-                    fill="white"
-                  />
-                </svg>
-                <h3>Add a new table</h3>
-              </button>
+              <Button leftIcon={true}>Add a new table </Button>
             </div>
             {/* CATEGORY-TABLE <div className='block-categ-table'> */}
             {/* <div className='categ-table1'>All tables <span className='quantity-table'>(3)</span> </div> */}
@@ -292,25 +282,9 @@ function Table() {
                       <small className="p-error">Name is required.</small>
                     )}
                   </div>
-                  <div className="btn-addtable">
-                    <Button
-                      onClick={clickGenerateQrCode}
-                      className="btn-addtable"
-                      style={{ width: '50%' }}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                      >
-                        <path
-                          d="M8.66665 1.33331H7.33331V7.33331H1.33331V8.66665H7.33331V14.6666H8.66665V8.66665H14.6666V7.33331H8.66665V1.33331Z"
-                          fill="white"
-                        />
-                      </svg>
-                      <h3>Generate QR-Code</h3>
+                  <div>
+                    <Button onClick={clickGenerateQrCode} leftIcon={true}>
+                      Generate QR-Code
                     </Button>
                   </div>
                 </div>
