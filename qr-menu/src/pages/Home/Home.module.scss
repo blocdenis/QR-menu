@@ -1,11 +1,11 @@
-@use '../../scss/abstracts/' as *;
+@use "../../scss/abstracts/" as *;
 .home_page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   height: 100%;
   width: 100%;
-  background: url('../assets/Banner image.png');
+  background: url("../assets/Banner image.png");
 
   .home_wrap {
     padding: 50px;
@@ -69,4 +69,15 @@
   cursor: pointer;
   margin: 0 auto;
   text-decoration: none;
+}
+// a {
+//   text-decoration: none;
+// }
+h4 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
 }
