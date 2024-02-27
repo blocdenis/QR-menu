@@ -29,7 +29,7 @@ const Root = () => {
         <Route path={url.Menu.path} element={<Menu />} />
         <Route path="/home" element={<Home />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/table" element={<Table />} />
+        <Route path={url.Table.path} element={<Table />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/signinup" element={<SignInSignUp />} />
         <Route path="/orders" element={<Orders />} />
