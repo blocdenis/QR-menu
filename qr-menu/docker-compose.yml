@@ -10,7 +10,9 @@ services:
 
   db:
     image: postgres
-    restart: always
+
+    restart: always 
+
     container_name: db
     command: -p 5435
     expose:
@@ -28,7 +30,10 @@ services:
     env_file:
       - .env
     ports:
-      - '8000:8080'
+
+      - "8000:8080"
+      - "5555:5555"
     depends_on:
       - db
       - re
+
