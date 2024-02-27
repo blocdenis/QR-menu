@@ -3,6 +3,6 @@ export const useURL = () => {
     ModMenu: { name: 'Moderator-Menu', path: '/modmenu' },
     Menu: { name: 'menu', path: '/menu' },
     Home: { name: 'Home', path: '/' },
-    Table: { name: 'Table', path: '/table' },
+    Table: { name: 'Table', path: '/tables' },
   };
 };
