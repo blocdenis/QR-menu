@@ -1,0 +1,32 @@
+@use '../../scss/abstracts/' as *;
+.sidebaritem {
+  align-items: center;
+  padding: 15px 54px 15px 30px;
+  width: 184px;
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  &:hover {
+    background-color: #eefcfc;
+    color: $Primary-600;
+  }
+}
+
+li {
+  list-style-type: none;
+}
+.content {
+  font: $medium16;
+  color: #4b4b4b;
+  &:hover {
+    background-color: #eefcfc;
+    color: $Primary-600;
+  }
+}
+.aside {
+  border-right: 1px solid #8e8e8e;
+}
