@@ -14,6 +14,7 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { QRCodeSVG } from 'qrcode.react';
 import CounterTable from '../../layouts/CounterTable/CounterTable.jsx';
 import styles from './Table.module.scss';
+import { AppLayout } from '../../layouts/AppLayout/AppLayout.jsx';
 function Table() {
   const [tables, setTables] = useState(null); //add tables to the browser table
   const [deleteTablesDialog, setDeleteTablesDialog] = useState(false);
@@ -217,99 +218,100 @@ function Table() {
   );
 
   return (
-    <div className={styles.container_wrap}>
-      <HeaderSystem />
-      <Toast ref={toast} />
+    <AppLayout>
+      <div className={styles.container_wrap}>
+        {/* <HeaderSystem /> */}
+        <Toast ref={toast} />
 
-      <div className={styles.container_page}>
-        <div className={styles.page_left}>
-          <NavbarSystem />
-        </div>
-        <div className={styles.page_right}>
-          <div className={styles.block_title}>
-            <h1 className={styles.page_title}>Tables</h1>
-            <div className={styles.block_btn}>
-              <Button leftIcon={true}>Add a new table </Button>
-            </div>
-            {/* CATEGORY-TABLE <div className='block-categ-table'> */}
-            {/* <div className='categ-table1'>All tables <span className='quantity-table'>(3)</span> </div> */}
-            {/* <div className='categ-table2'>Processing <span className='quantity-table'>(0)</span> </div> */}
-            {/* <div className='categ-table3'>Completed <span className='quantity-table'>(2)</span> </div> */}
-            {/* <div className='categ-table4'>Completed <span className='quantity-table'>(2)</span> </div> */}
-            {/* </div>   */}
-            <TableQr value={tableState} onChange={handleQuantityChange} />
+        {/* <div className={styles.container_page}> */}
+        <div>
+          <div className={styles.page_left}>{/* <NavbarSystem /> */}</div>
+          <div className={styles.page_right}>
+            <div className={styles.block_title}>
+              <h1 className={styles.page_title}>Tables</h1>
+              <div className={styles.block_btn}>
+                <Button leftIcon={true}>Add a new table </Button>
+              </div>
+              {/* CATEGORY-TABLE <div className='block-categ-table'> */}
+              {/* <div className='categ-table1'>All tables <span className='quantity-table'>(3)</span> </div> */}
+              {/* <div className='categ-table2'>Processing <span className='quantity-table'>(0)</span> </div> */}
+              {/* <div className='categ-table3'>Completed <span className='quantity-table'>(2)</span> </div> */}
+              {/* <div className='categ-table4'>Completed <span className='quantity-table'>(2)</span> </div> */}
+              {/* </div>   */}
+              <TableQr value={tableState} onChange={handleQuantityChange} />
 
-            <form onSubmit={generQr}>
-              <Dialog
-                visible={tableDialog}
-                style={{ width: '32rem' }}
-                breakpoints={{ '960px': '75vw', '641px': '90vw' }}
-                header="Add Tables"
-                modal
-                className="p-fluid"
-                footer={tableDialogFooter}
-                onHide={hideDialogNo}
-              >
-                <div className="field">
-                  <div className="tables-quant">
-                    <label htmlFor="name" className="font-bold">
-                      Tables Quantities
-                    </label>
-                    <CounterTable
-                      id="table"
-                      value={quantityState}
-                      onChange={e => handleQuantityChange(e, 'table')}
-                    />
-                    <span>enter the quantity of tables</span>
-                    <br />
+              <form onSubmit={generQr}>
+                <Dialog
+                  visible={tableDialog}
+                  style={{ width: '32rem' }}
+                  breakpoints={{ '960px': '75vw', '641px': '90vw' }}
+                  header="Add Tables"
+                  modal
+                  className="p-fluid"
+                  footer={tableDialogFooter}
+                  onHide={hideDialogNo}
+                >
+                  <div className="field">
+                    <div className="tables-quant">
+                      <label htmlFor="name" className="font-bold">
+                        Tables Quantities
+                      </label>
+                      <CounterTable
+                        id="table"
+                        value={quantityState}
+                        onChange={e => handleQuantityChange(e, 'table')}
+                      />
+                      <span>enter the quantity of tables</span>
+                      <br />
+                    </div>
+
+                    <div>
+                      <label htmlFor="menu link" className="font-bold">
+                        Menu Link
+                      </label>
+                      <InputText
+                        id="menulink"
+                        value={tableState.urlState}
+                        type="text"
+                        onChange={e => onInputChange(e, 'urlState')}
+                        placeholder="https://example.com"
+                        className={classNames({
+                          'p-invalid': submitted && !tableState.urlState,
+                        })}
+                      />
+                      {submitted && !tableState.urlState && (
+                        <small className="p-error">Name is required.</small>
+                      )}
+                    </div>
+                    <div>
+                      <Button onClick={clickGenerateQrCode} leftIcon={true}>
+                        Generate QR-Code
+                      </Button>
+                    </div>
                   </div>
+                  <div id="qr-code">{qrcode}</div>
+                </Dialog>
+              </form>
 
-                  <div>
-                    <label htmlFor="menu link" className="font-bold">
-                      Menu Link
-                    </label>
-                    <InputText
-                      id="menulink"
-                      value={tableState.urlState}
-                      type="text"
-                      onChange={e => onInputChange(e, 'urlState')}
-                      placeholder="https://example.com"
-                      className={classNames({
-                        'p-invalid': submitted && !tableState.urlState,
-                      })}
-                    />
-                    {submitted && !tableState.urlState && (
-                      <small className="p-error">Name is required.</small>
-                    )}
-                  </div>
-                  <div>
-                    <Button onClick={clickGenerateQrCode} leftIcon={true}>
-                      Generate QR-Code
-                    </Button>
-                  </div>
-                </div>
-                <div id="qr-code">{qrcode}</div>
-              </Dialog>
-            </form>
-
-            <div className="card flex justify-content-center">
-              <Dialog
-                header="Generate QR code"
-                visible={openQrModalDialog}
-                style={{ width: '50vw' }}
-                onHide={() => setOpenQrModalDialog(false)}
-                footer={footerContent}
-              >
-                <p className="m-0">
-                  Are you sure that you want to generate ” `${quantityState}` ”
-                  QR codes för “ `${quantityState}` ” tabkles?
-                </p>
-              </Dialog>
+              <div className="card flex justify-content-center">
+                <Dialog
+                  header="Generate QR code"
+                  visible={openQrModalDialog}
+                  style={{ width: '50vw' }}
+                  onHide={() => setOpenQrModalDialog(false)}
+                  footer={footerContent}
+                >
+                  <p className="m-0">
+                    Are you sure that you want to generate ” `${quantityState}`
+                    ” QR codes för “ `${quantityState}` ” tabkles?
+                  </p>
+                </Dialog>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </AppLayout>
   );
 }
 

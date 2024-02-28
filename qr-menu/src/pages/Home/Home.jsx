@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styles from './Home.module.scss'
+import styles from './Home.module.scss';
 import Header from '../../components/Header/Header.jsx';
 import IconMenu from '../../SVG/IconMenu.jsx';
 import IconSetting from '../../SVG/IconSetting.jsx';
@@ -24,8 +24,12 @@ const Home = () => {
           <h1>Welcome</h1>
           <h3>to your restourant account </h3>
         </div>
-        <div className={styles.home_logo}><LogoImg/></div>
-        <Link to={'/table'} style={{ textDecoration: 'none' }}>
+
+        <div className={styles.home_logo}>
+          <LogoImg />
+        </div>
+        <Link to={'/tables'} style={{ textDecoration: 'none' }}>
+
           <button className={styles.button_page}>
             <div className={styles.home_vector}>
               <IconTable/>
