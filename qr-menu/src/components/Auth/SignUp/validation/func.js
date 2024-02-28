@@ -1,11 +1,13 @@
 import {regexEmail, regexName} from "../../../../regex/regex"
-
+ 
 
 const validate = (values) => {
     const errors = {};
+    console.log('values.email')
     if (!values.email) {
       errors.email = "Email is Required!";
     } else if(!regexEmail.test(values.email)){
+     
       errors.email = "Email is Entered Incorrectly!";
     }
     if (!values.restourant) {

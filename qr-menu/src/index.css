@@ -77,3 +77,8 @@ body {
   height: 100%;
   width: 100%;
 } */
+.p-toast-message {
+  background-color: #15C5CE; /* Измените на желаемый цвет фона */
+  color: white;
+  text-align: center;
+}
