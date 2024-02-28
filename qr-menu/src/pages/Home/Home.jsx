@@ -24,11 +24,11 @@ const Home = () => {
           <h1>Welcome</h1>
           <h3>to your restourant account </h3>
         </div>
-        <div className={styles.home_logo}><LogoImg /></div>
+        <div className={styles.home_logo}><LogoImg/></div>
         <Link to={'/table'} style={{ textDecoration: 'none' }}>
           <button className={styles.button_page}>
             <div className={styles.home_vector}>
-              <IconTable />
+              <IconTable/>
             </div>
             Table
           </button>
