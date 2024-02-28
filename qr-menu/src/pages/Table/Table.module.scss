@@ -49,9 +49,8 @@ $color-neutral: #fafafa;
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  height: 100%;
-  width: 100%;
+  width: 58.125rem;
+  height: 29.75rem;
   padding: 0px;
 }
 
@@ -60,11 +59,10 @@ $color-neutral: #fafafa;
   background: $color-neutral;
 
   .page_right {
-    width: 77%;
+    max-width: 58.125rem;
     min-height: 100%;
     float: right;
-    margin: 0;
-    padding: 0;
+    padding-left: 2.5rem;
     background: $color-white;
 
     .page_title {
