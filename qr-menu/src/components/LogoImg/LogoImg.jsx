@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-
 function LogoImg() {
   const [imgUrl, setImgUrl] = useState(null);
   const [fileUploadStatus, setFileUploadStatus] = useState('idle');
