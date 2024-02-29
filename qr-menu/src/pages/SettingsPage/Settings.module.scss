@@ -30,15 +30,26 @@ $color-neutral: #fafafa;
     padding: 0;
     background: $color-white;
 
-    .page-title {
-      padding-top: 57px;
-      padding-left: 88px;
-      color: $Primary-600;
-      font-family: 'Poppins';
-      font-size: 35px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
-    }
+    
   }
+}
+.pageTitle {
+  padding-top: 57px;
+  // padding-left: 88px;
+  color: $Primary-600;
+  font-family: 'Poppins';
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+}
+section{
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }

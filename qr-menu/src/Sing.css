@@ -260,8 +260,6 @@ main > div + div + div {
 main {
     height: 100%;
     width: 100%;
-
-
     display: flex;
     justify-content: baseline;
     align-items: center;
@@ -284,6 +282,7 @@ main {
     z-index: 10;
     margin: 0 0 0 calc(4vw * 4);
 }
+
 
 .sign-into-container > .sign-into-headers > h3 {
     font-size: 2rem;
@@ -374,6 +373,21 @@ main {
 #sign input:focus {
     border-color: var(--main-color);
 }
+
+#signIn {
+    max-width: 310px;
+    z-index: 10;
+  }
+  #signIn input {
+    padding: 0.8rem 1rem;
+    outline: none;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+  }
+  
+  #signIn input:focus {
+    border-color: var(--main-color);
+  }
 
 .sign-into-container > .sign-into-remember-me-section {
     font-size: 0.7rem;
