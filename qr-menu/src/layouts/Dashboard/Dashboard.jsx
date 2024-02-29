@@ -9,13 +9,10 @@ import { Sidebar } from '../../components/Sidebar/Sidebar.jsx';
 const Dashboard = () => {
   return (
     <div className={styles.dashboard_style}>
-      <header></header>
-
       <Suspense>
         <Outlet />
       </Suspense>
-
-      <footer>Hello colleagues! Let's get to work!</footer>
+      {/* <footer>Hello colleagues! Let's get to work!</footer> */}
     </div>
   );
 };

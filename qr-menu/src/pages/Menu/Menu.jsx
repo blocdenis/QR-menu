@@ -1,6 +1,4 @@
 import React from 'react';
-import NavbarSystem from '../../components/NavBar/NavbarSystem.jsx';
-import HeaderSystem from '../../components/Header/HeaderSystem.jsx';
 import Button from '../../components/Button/Button.jsx';
 import styles from './Menu.module.scss';
 import { AppLayout } from '../../layouts/AppLayout/AppLayout.jsx';
