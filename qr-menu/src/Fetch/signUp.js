@@ -19,16 +19,14 @@ export const obj = (method, body, headers = {"Content-type": "application/json"}
 }
 
 export async function apiRequest(url, obj) {
-  try {
+
       const request = await fetch(url, obj);
-      
-      if (!request.ok) throw new Error(`status: ${request.status}, body: ${request.body}`);
+      console.log(request.ok)
+      if (!request.ok) return request.ok;
     
       const response = await request.json();
-    
+    console.log(response)
       return response;
-  } catch (error) {
-      throw new Error(error);
-  }
+  
 
 }

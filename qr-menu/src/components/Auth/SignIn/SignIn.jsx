@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
-import {validate} from "./validation/func"
+import validate from "./validation/func"
 import { Toast } from 'primereact/toast';
 import CreateInput from "../../Input/CreateInput";
 import showSuccess from "../ShowSucces/func"
@@ -42,14 +42,14 @@ const SignIn = ({checkUser}) => {
     const handleSubmit = async (e) => {      
         e.preventDefault();
         
-        const error = validate(formValues);       
+        const error = validate(formValues);    
         setFormErrors(error);
 
         if(Object.keys(error).length === 0){ 
             const login = await submitForm(formValues) 
-            
+            showSuccess(toast);
             if (login) {
-                showSuccess(toast);
+               
                 setFormValues({  
                     email: "",    
                     password: "", 
@@ -57,7 +57,7 @@ const SignIn = ({checkUser}) => {
                 });    
     
                 setFormErrors({}); 
-                navigate('/home');
+             setTimeout(()=> navigate('/home'), 1000)   
             } else {
                 throw new Error("Помилка під час входу");
             }
@@ -80,12 +80,14 @@ const SignIn = ({checkUser}) => {
     
         try {
             const request = await apiRequest(USER_LOGIN, obj("POST", data));
+            console.log(request)
+            
             Cookies.set(COOKIE_KEY, request.token, {expires: remember ? data.number * 7 : 1});
-            status = true;
+            if(!request) return status = false;
+            status= true;
         } catch (error) {
             Cookies.remove(COOKIE_KEY);
             status = false;
-            throw error;
         }
 
         return status;
