@@ -1,6 +1,4 @@
 import React from 'react';
-import NavbarSystem from '../../components/NavBar/NavbarSystem';
-import HeaderSystem from '../../components/Header/HeaderSystem';
 import './Settings.scss';
 
 import Button from '../../components/Button/Button';

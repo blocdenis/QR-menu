@@ -10,7 +10,7 @@ export const AppLayout = ({ children }) => {
       </div>
       <div className="applayout_container">
         <Sidebar />
-        <main>{children}</main>
+        <main className="main_container">{children}</main>
       </div>
     </div>
   );

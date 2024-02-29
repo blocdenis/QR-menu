@@ -1,16 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useRef, useMemo, useEffect } from 'react';
-import NavbarSystem from '../../components/NavBar/NavbarSystem.jsx';
-import HeaderSystem from '../../components/Header/HeaderSystem.jsx';
 import TableQr from '../../layouts/TableQr/TableQr.jsx';
 import Button from '../../components/Button/Button.jsx';
 import { Dialog } from 'primereact/dialog';
-// import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { Toast } from 'primereact/toast';
 import { InputText } from 'primereact/inputtext';
-import { Tag } from 'primereact/tag';
-import { InputTextarea } from 'primereact/inputtextarea';
 import { QRCodeSVG } from 'qrcode.react';
 import CounterTable from '../../layouts/CounterTable/CounterTable.jsx';
 import styles from './Table.module.scss';
