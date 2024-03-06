@@ -25,7 +25,7 @@ const Button = ({
     <button className={buttonClass} onClick={handleClick} disabled={disabled}>
       {leftIcon && (
         <span className="icon">
-          <PlusIcon />
+          <PlusIcon/>
         </span>
       )}
       {children}
