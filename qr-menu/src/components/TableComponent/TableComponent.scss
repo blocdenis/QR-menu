@@ -1,6 +1,6 @@
 @use '../../scss/abstracts/' as *;
 .table_header {
-  background-color: #fafafa;
+  background-color: $color-table;
   th {
     padding: 13px 16px;
     line-height: 22px;

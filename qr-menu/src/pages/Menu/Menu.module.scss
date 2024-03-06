@@ -11,15 +11,17 @@ $color-neutral: #fafafa;
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  height: 100%;
-  width: 100%;
+  width: 58.125rem;
+  height: 29.75rem;
   padding: 0px;
 }
 
 .container_page {
-  width: 100%;
-  background: $color-neutral;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-bottom: 40px;
+  color: $Primary-600;
 
   .page_right {
     width: 77%;
@@ -29,15 +31,5 @@ $color-neutral: #fafafa;
     padding: 0;
     background: $color-white;
 
-    .page_title {
-      padding-top: 57px;
-      padding-left: 88px;
-      color: $Primary-600;
-      font-family: 'Poppins';
-      font-size: 35px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
-    }
   }
 }

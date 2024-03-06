@@ -1,0 +1,52 @@
+@use "../../scss/abstracts/" as *;
+
+.imgdiv {
+  display: flex;
+  flex-direction: row;
+  gap: 4.87rem;
+}
+.image-uploader {
+  display: flex;
+  flex-direction: column;
+  width: 10.1875rem;
+  height: 7.4685rem;
+  padding: 2.1875rem 0.84375rem 2.156rem 0.90625rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  border: 1px dashed $color-input;
+  background: $color-white;
+  .label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    width: 8.43rem;
+  }
+  .plusicon {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.5rem;
+    color: $color-input-text;
+  }
+  .uploaded-image-container {
+    width: 9rem;
+    height: 6.9375rem;
+    border-radius: 4px;
+    overflow: hidden;
+    padding-bottom: 0.53rem;
+  }
+}
+#img-input {
+  font: $regular14-400;
+  width: 7.1rem;
+}
+.action {
+  display: inline-flex;
+  align-items: flex-start;
+  position: absolute;
+  gap: 1.25rem;
+  padding: 2.87rem 2.61rem;
+  z-index: 3;
+}
