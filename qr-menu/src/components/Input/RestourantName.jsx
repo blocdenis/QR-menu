@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+
 import CreateInput from "./CreateInput";
-function PasswordInput({onChange, handleCheckInput, formErrors}){
+function RestourantName({onChange, handleCheckInput, formErrors}){
   
     const handleChange = (e) => {  
         onChange(e) ;
@@ -14,23 +14,22 @@ function PasswordInput({onChange, handleCheckInput, formErrors}){
     return(
         <>
         <div className="sign-into-input-password">
-<label htmlFor="password">Password</label>
+<label htmlFor="restourant">Restourant Name</label>
 
 <CreateInput 
-type='password' 
-placeholder="Enter your Password" 
-onBlur={handleLoseFocus}
-name="password"
+type='text' 
+placeholder="Enter your restourant name" 
+name="restourant"
 onChange={handleChange}
-className={formErrors.password}
-style={formErrors.password ? { borderColor: "red" } : {}}
+className={formErrors.restourant}
+style={formErrors.restourant ? { borderColor: "red" } : {}}
 />
 <br/>
-{formErrors.password && (
-    <span className="error" style={{ color:"red"}}>{formErrors.password}</span> 
+{formErrors.restourant && (
+    <span className="error" style={{ color:"red"}}>{formErrors.restourant}</span> 
 )}
 </div>
         </>
     )
 }
-export default PasswordInput;
+export default RestourantName;
