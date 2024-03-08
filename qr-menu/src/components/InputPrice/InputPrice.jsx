@@ -5,7 +5,7 @@ function InputPrice() {
   const [currency, setCurrency] = useState('UAH');
 
   const handlePriceChange = event => {
-    const newPrice = event.target.value.replace(/[^0-9.]/g, ''); // Allow only numbers and decimal point
+    const newPrice = event.target.value.replace(/[^0-9.]/g, '');
     setPrice(newPrice);
   };
 
@@ -39,12 +39,14 @@ function InputPrice() {
             onChange={handlePriceChange}
             placeholder="Enter price"
           />
-          <span className="currency-symbol">{getCurrencySymbol()}</span>
-          <select value={currency} onChange={handleCurrencyChange}>
+          <div className='currency-symbol '>
+          <span className="sumbol-style ">{getCurrencySymbol()}</span>
+          <select className="style-input" value={currency} onChange={handleCurrencyChange}>
             <option value="UAH">UAH</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
           </select>
+          </div>
         </div>
     </div>
   )

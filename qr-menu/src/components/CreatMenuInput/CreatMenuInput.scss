@@ -49,6 +49,13 @@
   gap: 0.5625rem 4.875rem;
   flex-wrap: wrap;
 }
+.input-pricegroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5625rem;
+}
 .input-ingredgroup {
   display: flex;
   width: 45.375rem;
@@ -60,6 +67,24 @@
     width: 45.3125rem;
     height: 6.6875rem;
   }
-}
-
-
+  
+    .line-style {
+      width: 21.3125rem;
+      height: 0.0625rem;
+      background: $color-line;
+    }
+    .title-style {
+      font: $medium14;
+      color: $color-grey-text;
+    }
+  }
+  .ingred-block {
+    display: flex;
+    flex-direction: row;
+    width: 43.375rem;
+    height: 17.625rem;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    padding-top: 0.5rem;
+  }
