@@ -5,7 +5,7 @@ import IconSearch from '../../SVG/IconSearch.jsx';
 function InputSearch() {
   return (
     <div>
-            <div className="allingred-group style-input">
+      
         <div className="iconclose">
           <IconClose />
         </div>
@@ -17,16 +17,15 @@ function InputSearch() {
               className="form-control"
               placeholder="Search"
             />
-            <span className='iconsearch'>
-              <IconSearch/>
+            <span className="iconsearch">
+              <IconSearch />
             </span>
             <ul className="suggestions-list" id="suggestions-list"></ul>
           </div>
         </div>
       </div>
-
-    </div>
-  )
+    
+  );
 }
 
-export default InputSearch
+export default InputSearch;

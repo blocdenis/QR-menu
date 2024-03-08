@@ -1,23 +1,19 @@
 @use "../../scss/abstracts/" as *;
-.input-pricegroup {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 0.5625rem;
 
-  .input-price {
-    border-radius: 0.25rem;
-    padding: 1.13rem 3.38rem;
-    color: $color-grey-text;
-  }
-  
-  .currency-symbol{
-    position: relative;
-    display: inline-block;
-    flex-direction: row;
-    z-index: 4;
+.input-price {
+  border-radius: 0.25rem;
+  padding: 1.13rem 3.38rem;
+  color: $color-grey-text;
+}
+
+.currency-symbol {
+  position: relative;
+  display: inline-block;
+  flex-direction: row;
+  padding: 0.625rem;
+  color: $color-grey-text;
+
+  .sumbol-style{
     padding: 0.3125rem;
-    color: $color-grey-text;
   }
 }

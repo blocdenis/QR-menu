@@ -10,11 +10,9 @@
 }
 .container-page {
   display: flex;
-  width: 52.25rem;
   flex-direction: column;
   align-items: flex-start;
   gap: 2.5rem;
-  // color: $Primary-600;
 }
 .page-titleMenu {
   color: $Primary-600;

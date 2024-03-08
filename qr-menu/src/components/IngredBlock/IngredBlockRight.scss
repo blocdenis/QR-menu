@@ -1,0 +1,58 @@
+@use "../../scss/abstracts/" as *;
+.selectright-block {
+  padding: 0.0625rem 0.0625rem 6.9375rem 0.04rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-radius: 0.25rem;
+  border: 1px solid $color-input;
+
+  .titleselect-block {
+    width: 21.3125rem;
+    height: 2.375rem;
+    border-radius: 0.25rem 0.25rem 0rem 0rem;
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+
+    .btn-clear {
+      color: $color-input-text;
+      font: $regular12-400;
+      border: none;
+      background-color: $color-white;
+      cursor: pointer;
+    }
+  }
+  .selected-li {
+    display: flex;
+    width: 20.4375rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+
+    .li-selectgroup {
+      display: flex;
+      height: 2.25rem;
+      padding: 0.46875rem 0.5rem;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15rem;
+      align-self: stretch;
+      border-radius: 0.25rem;
+      background: $color-neutral;
+      margin-bottom: 0.1875rem;
+      .block-labelselect {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        #label-select {
+          font: $medium14;
+        }
+      }
+    }
+  }
+}

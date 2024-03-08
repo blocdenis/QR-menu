@@ -3,6 +3,8 @@ import ImgUploader from '../ImgUploader/ImgUploader';
 import InputPrice from '../InputPrice/InputPrice';
 import Button from '../../components/Button/Button.jsx';
 import InputSearch from '../InputSearch/InputSearch.jsx';
+import IngredBlockRight from '../IngredBlock/IngredBlockRight.jsx';
+import IngredBlockLeft from '../IngredBlock/IngredBlockLeft.jsx';
 function CreatMenuInput() {
   const openCreatMenu = () => {};
   return (
@@ -42,14 +44,20 @@ function CreatMenuInput() {
         <label htmlFor="ingredients" className="input-subtitle">
           Ingredients
         </label>
-        <input className="input-ingred style-input" type="text" />
+        <div className="input-ingred style-input" type="text"></div>
+        <div>
+          <Button leftIcon={true} size="medium" onClick={openCreatMenu}>
+            Add ingredient{''}
+          </Button>
+        </div>
+        <div className="allingred-group style-input">
+          <InputSearch />
+          <div className="ingred-block">
+          <IngredBlockLeft/>
+          <IngredBlockRight/>
+          </div>
+        </div>
       </div>
-      <div>
-        <Button leftIcon={true} size="medium" onClick={openCreatMenu}>
-          Add ingredient{''}
-        </Button>
-      </div>
-      <InputSearch/>
       <div className="input-weightgroup">
         <h3 className="input-subtitle">Weight</h3>
         <input className="style-input" type="text" />
