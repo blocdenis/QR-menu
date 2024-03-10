@@ -1,6 +1,8 @@
 import React from 'react';
+
 import styles from './Settings.module.scss';
 import { useRef, useState } from "react";
+
 import Button from '../../components/Button/Button';
 import { AppLayout } from '../../layouts/AppLayout/AppLayout';
 import PasswordInput from '../../components/Input/PasswordInput';

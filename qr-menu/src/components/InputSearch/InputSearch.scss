@@ -1,0 +1,26 @@
+@use "../../scss/abstracts/" as *;
+
+.iconclose {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.input-search {
+  width: 43.375rem;
+  padding-left: 0.75rem;
+
+  .input-group {
+    display: flex;
+    .form-control {
+      width: 40.375rem;
+      color: $color-search-text;
+      font: $regular14-400;
+      padding-top: 0.4rem;
+      border: none;
+    }
+    .iconsearch {
+      padding: 0.62rem 0.75rem;
+    }
+  }
+}

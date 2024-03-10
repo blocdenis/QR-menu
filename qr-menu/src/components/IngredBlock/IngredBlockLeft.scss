@@ -1,0 +1,53 @@
+@use "../../scss/abstracts/" as *;
+.allingred-group {
+  width: 45.375rem;
+  height: 27.75rem;
+  padding: 1rem;
+}
+
+  .allingred-left-block {
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 0.25rem;
+    border: 1px solid $color-input;
+
+    .titleingred-block {
+      width: 21.3125rem;
+      height: 2.375rem;
+      border-radius: 0.25rem 0.25rem 0rem 0rem;
+      padding: 0.5rem 0.75rem;
+    }
+
+    .ingred-li {
+      width: 9.75rem;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding-left: 0.75rem;
+      padding-top: 0.66rem;
+
+      .li-ingredgroup {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      #check-ingred input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.625rem;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 0.125rem;
+        background: $color-white;
+        padding-left: 0.69rem;
+        margin: auto;
+
+        &:hover {
+          background: $Primary-600;
+        }
+      }
+    }
+  }
+  

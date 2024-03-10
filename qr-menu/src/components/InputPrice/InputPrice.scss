@@ -1,0 +1,19 @@
+@use "../../scss/abstracts/" as *;
+
+.input-price {
+  border-radius: 0.25rem;
+  padding: 1.13rem 3.38rem;
+  color: $color-grey-text;
+}
+
+.currency-symbol {
+  position: relative;
+  display: inline-block;
+  flex-direction: row;
+  padding: 0.625rem;
+  color: $color-grey-text;
+
+  .sumbol-style{
+    padding: 0.3125rem;
+  }
+}

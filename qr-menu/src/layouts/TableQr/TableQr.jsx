@@ -6,13 +6,11 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import styles from './TableQr.module.scss';
 import { Button } from 'primereact/button';
-import { classNames } from 'primereact/utils';
 
 function TableCrud({ tables }) {
   const actionBodyTemplate = rowData => {
     return (
       <React.Fragment>
-        {/* <Button icon="pi pi-pencil" rounded outlined className="mr-2" onClick={() => editProduct(rowData)} /> */}
         <Button
           icon="pi pi-trash"
           rounded

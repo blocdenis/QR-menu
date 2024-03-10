@@ -15,7 +15,9 @@
     color: $Primary-600;
   }
 }
-
+ul {
+  padding: 0px;
+}
 li {
   list-style-type: none;
 }
@@ -29,4 +31,8 @@ li {
 }
 .aside {
   border-right: 1px solid #8e8e8e;
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
