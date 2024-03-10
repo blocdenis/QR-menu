@@ -4,9 +4,9 @@ import {regexEmail} from "../../../../regex/regex"
     const errors = {};
     console.log('values.email')
     if (!values.email) {  
-      errors.email = "Name is Required!"; 
-    }else if(!regexEmail.test(values.email)){
-      errors.email = "Email is Entered Incorrectly!";
+
+      errors.email = "Email is Required!"; 
+
     }  
     if (!values.password) {
       errors.password = "Password is Required!";

@@ -2,7 +2,24 @@ import React, { Children } from 'react';
 import HeaderSystem from '../../components/Header/HeaderSystem';
 import { Sidebar } from '../../components/Sidebar/Sidebar';
 import './AppLayout.scss';
+import { useLocation } from 'react-router-dom';
+
 export const AppLayout = ({ children }) => {
+  const location = useLocation();
+if(location.pathname !== "/") {
+  const styles = { justifyContent: 'center' };
+  return (
+    <div>
+      <div className="header">
+        <HeaderSystem />
+      </div>
+      <div className="applayout_container">
+        <Sidebar />
+        <main style={styles}>{children}</main>
+      </div>
+    </div>
+  );
+} else {
   return (
     <div>
       <div className="header">
@@ -14,4 +31,5 @@ export const AppLayout = ({ children }) => {
       </div>
     </div>
   );
+}
 };
