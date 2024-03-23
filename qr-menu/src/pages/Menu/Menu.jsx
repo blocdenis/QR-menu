@@ -4,6 +4,8 @@ import { AppLayout } from '../../layouts/AppLayout/AppLayout.jsx';
 import { useNavigate } from 'react-router-dom';
 import TableMenu from '../../components/TableMenu/TableMenu.jsx';
 import { useState } from 'react';
+
+
 const Menu = () => {
   const [tablesMenuValue, setTablesMenuValue] = useState(null);
 
@@ -11,6 +13,7 @@ const Menu = () => {
   const openCreatMenu = () => {
     navigate('/creatmenu');
   };
+
   return (
     <AppLayout>
       <div className={styles.container_wrap}>
