@@ -7,6 +7,7 @@
 .input-subtitle {
   color: $color-grey-text;
   font: $medium16;
+  padding-bottom: 0.5625rem;
 }
 .input-menu {
   width: 31.75rem;
@@ -22,6 +23,10 @@
 
   &:hover {
     border: 0.6px solid $Primary-600;
+  }
+  &:focus{
+    border: 0.6px solid $Primary-600;
+
   }
 }
 
@@ -67,24 +72,35 @@
     width: 45.3125rem;
     height: 6.6875rem;
   }
-  
-    .line-style {
-      width: 21.3125rem;
-      height: 0.0625rem;
-      background: $color-line;
-    }
-    .title-style {
-      font: $medium14;
-      color: $color-grey-text;
-    }
+
+  .line-style {
+    width: 21.3125rem;
+    height: 0.0625rem;
+    background: $color-line;
   }
-  .ingred-block {
-    display: flex;
-    flex-direction: row;
-    width: 43.375rem;
-    height: 17.625rem;
-    align-items: flex-start;
-    gap: 0.5rem;
-    flex-shrink: 0;
-    padding-top: 0.5rem;
+  .title-style {
+    font: $medium14;
+    color: $color-grey-text;
   }
+}
+.ingred-block {
+  display: flex;
+  flex-direction: row;
+  width: 43.375rem;
+  height: 17.625rem;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  padding-top: 0.5rem;
+}
+.input-commentgroup {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  margin-bottom: 95px;
+  .style-comments {
+    padding: 19px 46px;
+    border-radius: $color-input;
+    font:$regular14;
+  }
+}
