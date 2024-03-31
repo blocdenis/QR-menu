@@ -10,8 +10,8 @@ const validate = (values) => {
      
       errors.email = "Email is Entered Incorrectly!";
     }
-    if (!values.restourant) {
-      errors.restourant = "Name is Required!";
+    if (!values.restourant ) {
+      errors.restourant = "Field is Required!";
     } else if(!regexName.test(values.restourant)){
       errors.restourant = "Name is Entered Incorrectly!"
     }

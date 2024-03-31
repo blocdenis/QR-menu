@@ -1,12 +1,8 @@
 
 import CreateInput from "./CreateInput";
-function RestourantName({onChange, handleCheckInput, formErrors}){
-  
+function TextInput({onChange, handleCheckInput, formErrors, placeHolder, labelName}){
     const handleChange = (e) => {  
-        onChange(e) ;
-        // const { name, value } = e.target;      
-        // setFormValues({ ...formValues, [name]:value });    
-        // console.log(formValues)      
+        onChange(e) ; 
     }; 
  const  handleLoseFocus = (e) => {
     handleCheckInput(e)
@@ -14,12 +10,12 @@ function RestourantName({onChange, handleCheckInput, formErrors}){
     return(
         <>
         <div className="sign-into-input-password">
-<label htmlFor="restourant">Restourant Name</label>
+<label htmlFor={labelName}>{labelName}</label>
 
 <CreateInput 
 type='text' 
-placeholder="Enter your restourant name" 
-name="restourant"
+placeholder={placeHolder} 
+name={labelName}
 onChange={handleChange}
 className={formErrors.restourant}
 style={formErrors.restourant ? { borderColor: "red" } : {}}
@@ -32,4 +28,4 @@ style={formErrors.restourant ? { borderColor: "red" } : {}}
         </>
     )
 }
-export default RestourantName;
+export default TextInput;
