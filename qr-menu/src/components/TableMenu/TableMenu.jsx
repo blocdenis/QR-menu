@@ -1,15 +1,28 @@
 import './TableMenu.scss';
 import IconEdit from '../../SVG/IconEdit';
 import IconDelete from '../../SVG/IconDelete';
-const TableMenu = () => {
-  const dataMenuItems = [
-    {
-      menuNames: '',
-      categories: '',
-      actionsedit: 'Edit',
-      actiondelete: 'Delete',
-    },
-  ];
+import { useState, useEffect } from 'react';
+
+// eslint-disable-next-line react/prop-types
+const TableMenu = ({rows, setRows}) => {
+  // const [edit, setEdit] = useState(null);
+  // const handleEdit = id => {
+  //   const findData = rows.find(data => data.id === id);
+  //   setEdit(findData);
+  // };
+  const handleDel = (id) => {
+    let delRow = rows.filter(item => item.id !== id);
+    setRows(delRow);
+    console.log(delRow);
+  };
+  // consformState [input, setInput] = useState('');
+  // useEffect(() => {
+  //   if (edit) {
+  //     setInput(edit.menuNames);
+  //   } else {
+  //     setInput('');
+  //   }
+  // }, [setInput, edit]);
   return (
     <div className="tablemenu-container">
       <table>
@@ -20,26 +33,35 @@ const TableMenu = () => {
             <th>Action</th>
           </tr>
         </thead>
-        {dataMenuItems.length > 0 ? (
         <tbody>
-        {dataMenuItems.map(item => (
-          <tr key={item.menuNames}>
-            <td>{item.menuNames}</td>
-            <td>{item.categories}</td>
-            <td className='item-td'>
-            <IconEdit/>
-            <IconDelete/>
-            </td>
-            <td></td>
-          </tr>
-          ))}
+          {rows && rows.map((item) => {
+            const categorText = item.categories
+              ? item.categories.charAt(0).toUpperCase() +
+                item.categories.slice(1)
+              : '';
+            return (
+              <tr key={item.id} className="tr-style">
+                <td className="style-td-name">{item.menuName}</td>
+                <td className="style-td">
+                  <span className={`label-${item.categories}`}>
+                    {categorText}
+                  </span>
+                </td>
+                <td className="item-td">
+                  <div>
+                    <IconEdit  />
+                  </div>
+                  <div onClick={() => handleDel(item.id)}>
+                    <IconDelete />
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
-        ) : (
-          <p>The menu is empty</p>
-        )}
       </table>
     </div>
   );
-}
+};
 
 export default TableMenu;
