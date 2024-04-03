@@ -18,6 +18,11 @@ function CreatMenuInput({ rows, setRows, closeCreatMenu }) {
   console.log(id);
 
   const handleSubmit = () => {
+    const existingDish = rows.find(row => row.menuName === form && row.categories === categor);
+    if (existingDish) {
+      alert ('This dish already exists!');
+      return;
+    }
     const newRow = {
       id: Math.random(id),
       menuName: form,
