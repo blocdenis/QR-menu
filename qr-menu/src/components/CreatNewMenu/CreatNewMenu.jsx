@@ -1,4 +1,3 @@
-import { AppLayout } from '../../layouts/AppLayout/AppLayout.jsx';
 import CreatMenuInput from '../CreatMenuInput/CreatMenuInput.jsx';
 import './CreatNewMenu.scss';
 

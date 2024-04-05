@@ -22,8 +22,7 @@ function InputCategor({ value, onChange, id, categories }) {
 
   // };
   return (
-    <div>
-      
+    <div className='categor-container'>
         <select
           className="select-categ style-input"
           id={id}
