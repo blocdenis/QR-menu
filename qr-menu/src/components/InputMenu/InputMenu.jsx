@@ -1,14 +1,14 @@
 import './InputMenu.scss';
 
 // eslint-disable-next-line react/prop-types
-function InputMenu({value, onChange, id}) {
+function InputMenu({ value, onChange, id, menuName }) {
   return (
-    <div>
+    <div className='menu-contain'>
       <input
-         id={id}
+        id={id}
         className="input-menu style-input"
         type="text"
-        value={value}
+        value={menuName}
         onChange={onChange}
         placeholder="ex “Fresh pasta with seefood”"
       />

@@ -14,7 +14,7 @@ function InputWeight() {
 
   return (
     <div>
-      <h3 className="input-subtitle">Weight</h3>
+      
       <div className="div-weight">
         <button className="btn-decrement" onClick={decrement}>
           -
