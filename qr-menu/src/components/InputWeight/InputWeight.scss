@@ -1,12 +1,7 @@
 @use "../../scss/abstracts/" as *;
 
-.input-weightgroup{
-  width: 767px;
-.input-subtitle{
-  color: $color-grey-text;
-  font: $medium16;
-  padding-bottom: 24px;
-}
+
+
 .div-weight{
   width: 182px;
   height: 42px;
@@ -32,5 +27,4 @@
   padding-top: 30px;
   color: $color-input-text;
   font: $regular14;
-}
 }

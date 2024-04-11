@@ -6,7 +6,7 @@
   cursor: pointer;
   color: $color-input-text;
   padding-left: 2.03rem;
-
+  
   &:hover {
     border: 0.6px solid $Primary-600;
   }
@@ -16,7 +16,8 @@
   }
 }
 
-
+.categor-container{
+}
 .select-categ {
   width: 17.5625rem;
   height: 3.6875rem;

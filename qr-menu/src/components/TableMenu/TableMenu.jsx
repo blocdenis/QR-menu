@@ -1,18 +1,17 @@
 import './TableMenu.scss';
 import IconEdit from '../../SVG/IconEdit';
 import IconDelete from '../../SVG/IconDelete';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import ModalDelMenu from '../ModalDelMenu/ModalDelMenu.jsx';
+import CreatMenuInput from '../CreatMenuInput/CreatMenuInput.jsx';
+const MenuContext = createContext(null);
 // eslint-disable-next-line react/prop-types
 const TableMenu = ({ rows, setRows }) => {
-  const [selectedItemId, setSelectedItemId] = useState(null);
+  
   const [modalOpenRows, setModalOpenRows] = useState(false);
-
-  // const [edit, setEdit] = useState(null);
-  // const handleEdit = id => {
-  //   const findData = rows.find(data => data.id === id);
-  //   setEdit(findData);
-  // };
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [editRowId, setEditRowId] = useState(null);
+  const [editRowData, setEditRowData] = useState(null)
   const handleDel = id => {
     setModalOpenRows(prevState => ({
       ...prevState,
@@ -33,6 +32,20 @@ const TableMenu = ({ rows, setRows }) => {
     console.log(delRow);
     closeModal(id);
   };
+
+  // const handleEdit = id => {
+  //   const findData = rows.find(data => data.id === id);
+  //   setEdit(findData);
+  //   setRows([...rows, setEdit]); 
+  //   console.log(findData);
+  // };
+  const handleSaveEdit = (id) => {
+    const findData = rows.find(data => data.id === id);
+    setEditRowId(id);
+    setEditRowData(findData);    
+    console.log(findData)
+  };
+
   // useEffect(() => {
   //   if (edit) {
   //     setInput(edit.menuNames);
@@ -40,7 +53,21 @@ const TableMenu = ({ rows, setRows }) => {
   //     setInput('');
   //   }
   // }, [setInput, edit]);
+  const handleOpenEdit = id => {
+    setOpenEditModal(prevState => ({
+      ...prevState,
+      [id]: true,
+    }));
+  };
+  const closeModalEdit = id => {
+    setOpenEditModal(prevState => ({
+      ...prevState,
+      [id]: false,
+    }));
+  };
   return (
+    <MenuContext.Provider value={{ rows,  modalOpenRows, handleOpenEdit, closeModalEdit, editRowId,
+      handleSaveEdit, }}>
     <div className="tablemenu-container">
       <table>
         <thead className="tablemenu-header">
@@ -51,44 +78,60 @@ const TableMenu = ({ rows, setRows }) => {
           </tr>
         </thead>
         <tbody>
-          {rows &&
-            rows.map(item => {
-              const categorText = item.categories
-                ? item.categories.charAt(0).toUpperCase() +
-                  item.categories.slice(1)
-                : '';
-              return (
-                <tr key={item.id} className="tr-style">
-                  <td className="style-td-name">{item.menuName}</td>
-                  <td className="style-td">
-                    <span className={`label-${item.categories}`}>
-                      {categorText}
-                    </span>
-                  </td>
-                  <td className="item-td">
-                    <div>
-                      <IconEdit />
-                    </div>
-                    <div id={item.id} onClick={() => handleDel(item.id)}>
-                      <IconDelete />
-                    </div>
-                    <br />
-                    {modalOpenRows[item.id] && (
-                      <ModalDelMenu
+          {rows.map(item => {
+            const categorText = item.categories
+              ? item.categories.charAt(0).toUpperCase() +
+                item.categories?.slice(1)
+              : '';
+
+            return (
+              <tr key={item.id} className="tr-style">
+                <td className="style-td-name">{item.menuName}</td>
+                <td className="style-td">
+                  <span className={`label-${item.categories}`}>
+                    {categorText}
+                  </span>
+                </td>
+                <td className="item-td">
+                  <div id={item.id} onClick={() => handleOpenEdit(item.id)}>
+                    <IconEdit />
+                  </div>
+                  {openEditModal && openEditModal[item.id] && (
+                    <div className="edit-container">
+                      <h1 className="title-edit">Edit</h1>
+                      <CreatMenuInput
                         key={item.id}
-                        closeModal={() => closeModal(item.id)}
+                        closeModalEdit={() => closeModalEdit(item.id)}
                         id={item.id}
-                        handleDelete={() => handleDelete(item.id)}
-                        menu={item.menuName}
+                        menuName={editRowData?.menuName}
+                        categories= {editRowData?.categories}
+                        // handleEdit={() => handleEdit(item.id)}
+                        handleSaveEdit={handleSaveEdit}
+                        editRowData={editRowData}
+
                       />
-                    )}
-                  </td>
-                </tr>
-              );
-            })}
+                    </div>
+                  )}
+                  <div id={item.id} onClick={() => handleDel(item.id)}>
+                    <IconDelete />
+                  </div>
+                  {modalOpenRows[item.id] && (
+                    <ModalDelMenu
+                      key={item.id}
+                      closeModal={() => closeModal(item.id)}
+                      id={item.id}
+                      handleDelete={() => handleDelete(item.id)}
+                      menu={item.menuName}
+                    />
+                  )}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
+    </MenuContext.Provider>
   );
 };
 
