@@ -9,38 +9,76 @@ import BtnCreatMenu from '../../components/BtnCreatMenu/BtnCreatMenu.jsx';
 import { useState } from 'react';
 
 // eslint-disable-next-line react/prop-types
-function CreatMenuInput({editRowData, rows, setRows, closeCreatMenu, categories, handleSaveEdit}) {
+function CreatMenuInput({
+  categories,
+  editRowData,
+  onSubmit,
+  rows,
+  setRows,
+  closeCreatMenu,
+  closeModalEdit,
+}) {
   const [id, setId] = useState(0);
-  const [form, setForm] = useState('');
+  const [form, setForm] = useState(
+    editRowData || {
+      id: '',
+      menuName: '',
+      categories: 'categor',
+    }
+  );
   const [categor, setCategor] = useState('');
-  console.log(form);
-  console.log(categor);
-  console.log(id);
-
-  const handleSubmit = () => {
-    if (!form.trim() || !categor.trim()) {
-      alert('Please fill out all fields!');
-      return;
+  const [error, setError] = useState('');
+  
+  const validForm = () => {
+    let errorField = [];
+    if (!form.menuName.trim()) {
+      errorField.push('Menu Name cannot be empty');
+    }
+    if (!form.categories.trim()) {
+      errorField.push('Category cannot be empty');
     }
     const existingDish = rows.find(
-      row => row.menuName === form && row.categories === categor
+      row =>
+        row.menuName === form.menuName &&
+        row.categories === form.categories &&
+        row.id !== '' &&
+        row.id !== form.id
     );
     if (existingDish) {
-      alert('This dish already exists!');
+      errorField.push('This dish already exists!');
+    }
+
+    if (errorField.length > 0) {
+      setError(errorField.join(', '));
+      return false;
+    }
+    setError('');
+    return true;
+  };
+
+  const handleSubmit = () => {
+    if (!validForm()) {
       return;
     }
     const newRow = {
       id: Math.random(),
-      menuName: form,
+      menuName: form.menuName,
       categories: categor,
     };
+
     setRows(rows => [...rows, newRow]);
+    //   if (editRowData === null) {
+    //   setRows([...rows, newRow])
+
+    // }else {
+    // setRows(rows.map((currRow, id) => (id !== editRowData ? currRow : newRow)));
+    //}
     setId(Math.random(id));
     setForm('');
     setCategor('');
     closeCreatMenu();
     console.log(newRow);
-
+    onSubmit(newRow);
     // const updatedData = {
     //   ...editRowData,
     //   menuName: form,
@@ -59,8 +97,8 @@ function CreatMenuInput({editRowData, rows, setRows, closeCreatMenu, categories,
           <InputMenu
             id={`menu-${id}`}
             type="text"
-            value={form}
-            onChange={e => setForm(e.target.value)}
+            value={form.menuName}
+            onChange={e => setForm({ ...form, menuName: e.target.value })}
             // value={menuName}
           />
         </div>
@@ -71,9 +109,9 @@ function CreatMenuInput({editRowData, rows, setRows, closeCreatMenu, categories,
           <InputCategor
             id={`categor-${id}`}
             type="text"
-            value={categories}
+            value={categor}
             onChange={e => setCategor(e.target.value)}
-            handleSaveEdit={handleSaveEdit}
+            // handleSaveEdit={handleSaveEdit}
           />
         </div>
         <div className="input-imagegroup">
@@ -120,6 +158,7 @@ function CreatMenuInput({editRowData, rows, setRows, closeCreatMenu, categories,
         </div>
       </div>
       <div className="btn-creatmenu-contein">
+        {error && <div className="error">{error}</div>}
         <BtnCreatMenu onSubmit={handleSubmit} />
       </div>
     </>

@@ -19,6 +19,10 @@ const Menu = () => {
     setShowTable(true);
   };
   console.log(rows);
+  const handleSubmitRow = newRow => {
+    setRows([...rows, newRow]);
+    localStorage.setItem('rows', JSON.stringify(newRow));
+  };
   return (
     <AppLayout>
       <div className={styles.container_wrap}>
@@ -34,11 +38,16 @@ const Menu = () => {
 
               <span>All categories({rows.length}) </span>
             </div>
-            <TableMenu rows={rows} setRows={setRows} />
+            <TableMenu
+              rows={rows}
+              setRows={setRows}
+              // onSubmit={handleSubmitRow}
+            />
           </div>
         )}
         {newMenu && !showTable && (
           <CreatNewMenu
+          onSubmit={handleSubmitRow}
             rows={rows}
             setRows={setRows}
             closeCreatMenu={closeCreatMenu}

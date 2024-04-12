@@ -19,6 +19,8 @@ const SignInSignUp = lazy(() => import('./pages/Sign/SignInSignUp'));
 const Orders = lazy(() => import('./pages/Orders/Orders'));
 const Categories = lazy(() => import('./pages/Categories/Categories'));
 const Support = lazy(() => import('./pages/Support/Support'));
+const EditPage = lazy(() => import('./pages/EditPage/EditPage'));
+
 const Root = () => {
   const url = useURL();
   return (
@@ -35,7 +37,7 @@ const Root = () => {
         <Route path="/orders" element={<Orders />} />
         <Route path="/categor" element={<Categories />} />
         <Route path="/support" element={<Support />} />
-
+        <Route path="/editpage" element={<EditPage />} />
       </Route>
     </Routes>
   );

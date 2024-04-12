@@ -3,7 +3,7 @@
 .tablemenu-container {
   .tablemenu-header {
     background-color: $color-table;
-
+    position: relative;
     th {
       padding: 13px 16px;
       font: $medium14;
