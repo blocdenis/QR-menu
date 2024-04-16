@@ -1,7 +1,9 @@
 import CreatMenuInput from '../CreatMenuInput/CreatMenuInput.jsx';
 import './CreatNewMenu.scss';
 
-function CreatNewMenu({ onSubmit, rows, setRows, closeCreatMenu }) {
+// eslint-disable-next-line react/prop-types
+function CreatNewMenu({onSubmit, rows, setRows, closeCreatMenu}){
+ 
   return (
     <div className="container-wrap">
       <div className="container-page">
