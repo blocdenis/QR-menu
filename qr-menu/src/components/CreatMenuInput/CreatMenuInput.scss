@@ -90,6 +90,17 @@
   }
 }
 .btn-creatmenu-contein {
-  padding-top: 95px;
+  padding-top: 50px;
   width: 100%;
+}
+.error{
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  margin: 0 auto;
+  font: $medium18;
+  color: $color-error;
+  background: $color-back-error;
+  border-radius: 3px;
+  margin-bottom: 10px;
 }

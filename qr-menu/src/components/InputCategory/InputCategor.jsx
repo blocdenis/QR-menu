@@ -3,7 +3,7 @@ import './InputCategor.scss';
 import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-function InputCategor({ value, onChange, id, categories }) {
+function InputCategor({ value, onChange, id }) {
   //const navigate = useNavigate();
 
   // const [selectedOption, setSelectedOption] = useState('');
@@ -26,6 +26,7 @@ function InputCategor({ value, onChange, id, categories }) {
         <select
           className="select-categ style-input"
           id={id}
+          name='categories'
           value={value}
           onChange={onChange}
         >
