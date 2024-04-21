@@ -9,7 +9,6 @@ import BtnCreatMenu from '../../components/BtnCreatMenu/BtnCreatMenu.jsx';
 import { useState } from 'react';
 // eslint-disable-next-line react/prop-types
 function CreatMenuInput({
-  // eslint-disable-next-line react/prop-types
   onSubmit,
   rows,
   setRows,
@@ -21,6 +20,10 @@ function CreatMenuInput({
       id: Date.now(),
       menuName: '',
       categories: '',
+      img: '',
+      price: '',
+      ingred: '',
+      weight: ''
     }
   );
   const [id, setId] = useState(Date.now());
@@ -55,9 +58,13 @@ function CreatMenuInput({
       id: Date.now(),
       menuName: form.menuName,
       categories: form.categories,
+      img: form.img,
+      price: form.price,
+      ingred: form.ingred,
+      weight: form.weight,
     };
     setRows(rows => [...rows, newRow]);
-    setId(Math.random(id));
+    setId(Date.now(id));
     setForm('');
     closeCreatMenu();
     onSubmit(form);
@@ -65,88 +72,98 @@ function CreatMenuInput({
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <div className="input-menugroup">
-            <label htmlFor="menu" className="input-subtitle">
-              Name of the menu
-            </label>
-            <InputMenu
-              id={`menuName-${form.id}`}
-              type="text"
-              value={form.menuName}
-              onChange={e => setForm({ ...form, menuName: e.target.value })}
-            />
-          </div>
-          <div className="input-categorygroup">
-            <label htmlFor="category" className="input-subtitle">
-              Category
-            </label>
-            <InputCategor
-              id={`categories-${form.id}`}
-              type="text"
-              value={form.categories}
-              onChange={e => setForm({ ...form, categories: e.target.value })}
-            />
-          </div>
-          <div className="input-imagegroup">
-            <label htmlFor="imgload" className="input-subtitle">
-              Image of the dish
-            </label>
-            <div className="input-uploader">
-              <ImgUploader
-                id={`img-${id}`}
-                type="url"
-                value={form}
-                onChange={e => setImg(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="input-pricegroup">
-            <label htmlFor="price" className="input-subtitle">
-              Price
-            </label>
-            <InputPrice />
-          </div>
-          <div className="input-ingredgroup">
-            <label htmlFor="ingredients" className="input-subtitle">
-              Ingredients
-            </label>
-            <textarea
-              className="input-ingred style-input"
-              type="text"
-            ></textarea>
-            <BtnAddIngred />
-          </div>
-          <div className="input-weightgroup">
-            <h3 className="input-subtitle">Weight</h3>
-            <InputWeight />
-          </div>
-          <div className="input-commentgroup">
-            <label htmlFor="comment" className="input-subtitle">
-              Leave a comment
-            </label>
-            <textarea
-              className="style-input style-comments"
-              name="message"
-              rows="2"
-              cols="2"
-              placeholder="ex “no ketchup”, “extra salt”"
+    <form onSubmit={handleSubmit}>
+      <div>
+        <div className="input-menugroup">
+          <label htmlFor="menu" className="input-subtitle">
+            Name of the menu
+          </label>
+          <InputMenu
+            id={`menuName-${form.id}`}
+            type="text"
+            value={form.menuName}
+            onChange={e => setForm({ ...form, menuName: e.target.value })}
+          />
+        </div>
+        <div className="input-categorygroup">
+          <label htmlFor="category" className="input-subtitle">
+            Category
+          </label>
+          <InputCategor
+            id={`categories-${form.id}`}
+            type="text"
+            value={form.categories}
+            onChange={e => setForm({ ...form, categories: e.target.value })}
+          />
+        </div>
+        <div className="input-imagegroup">
+          <label htmlFor="imgload" className="input-subtitle">
+            Image of the dish
+          </label>
+          <div className="input-uploader">
+            <ImgUploader
+              id={`img-${form.id}`}
+              type="url"
+              value={form.img}
+              onChange={e => setForm({ ...form, img: e.target.value })}
             />
           </div>
         </div>
+        <div className="input-pricegroup">
+          <label htmlFor="price" className="input-subtitle">
+            Price
+          </label>
+          <InputPrice
+            id={`price-${form.id}`}
+            type="url"
+            value={form.price}
+            onChange={e => setForm({ ...form, price: e.target.value })}
+          />
+        </div>
+        <div className="input-ingredgroup">
+          <label htmlFor="ingredients" className="input-subtitle">
+            Ingredients
+          </label>
+          <textarea className="input-ingred style-input" type="text"></textarea>
+          <BtnAddIngred
+            // id={`ingred-${form.id}`}
+            // type="text"
+            // value={form.ingred}
+            // onChange={e => setForm({ ...form, ingred: e.target.value })}
+          />
+        </div>
+        <div className="input-weightgroup">
+          <h3 className="input-subtitle">Weight</h3>
+          <InputWeight
+            id={`weight-${form.id}`}
+            type="text"
+            value={form.weight}
+            onChange={e => setForm({ ...form, weight: e.target.value })}
+          />
+        </div>
+        <div className="input-commentgroup">
+          <label htmlFor="comment" className="input-subtitle">
+            Leave a comment
+          </label>
+          <textarea
+            className="style-input style-comments"
+            name="message"
+            rows="2"
+            cols="2"
+            placeholder="ex “no ketchup”, “extra salt”"
+          />
+        </div>
+      </div>
 
-        {error && (
-          <div className="error">
-            <u>{error}</u>
-          </div>
-        )}
-        <div className="btn-creatmenu-contein">
-          <BtnCreatMenu type="submit" />
+      {error && (
+        <div className="error">
+          <u>{error}</u>
         </div>
-      </form>
-    </>
+      )}
+      <div className="btn-creatmenu-contein">
+        <BtnCreatMenu type="submit" />
+      </div>
+    </form>
   );
 }
 

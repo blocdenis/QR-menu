@@ -41,7 +41,7 @@ const TableMenu = ({ rows, setRows,handleEdit}) => {
             </tr>
           </thead>
           <tbody>
-            {rows.map((item, id) => {
+            {rows.map((item) => {
               const categorText = item.categories
                 ? item.categories.charAt(0).toUpperCase() +
                   item.categories?.slice(1)

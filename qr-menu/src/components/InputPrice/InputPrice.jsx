@@ -1,6 +1,6 @@
 import  {useState} from 'react'
 import './InputPrice.scss';
-function InputPrice() {
+function InputPrice({onChange, id, value }) {
   const [price, setPrice] = useState('');
   const [currency, setCurrency] = useState('UAH');
 
@@ -29,19 +29,21 @@ function InputPrice() {
     <div>
       <div >
           <input
-            id="price"
+            id="id"
             className="input-price style-input"
             type="number"
             name="price"
             step="1"
             min="0"
-            value={price}
-            onChange={handlePriceChange}
+            value={value}
+            onChange={onChange}
             placeholder="Enter price"
           />
           <div className='currency-symbol '>
           <span className="sumbol-style ">{getCurrencySymbol()}</span>
-          <select className="style-input" value={currency} onChange={handleCurrencyChange}>
+          <select className="style-input" 
+          
+          value={currency} onChange={handleCurrencyChange}>
             <option value="UAH">UAH</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './InputWeight.scss';
 
-function InputWeight() {
+function InputWeight({ onChange, id, value }) {
   const [weightMenu, setWeightMenu] = useState(0);
 
   const increment = () => {
@@ -14,12 +14,13 @@ function InputWeight() {
 
   return (
     <div>
-      
       <div className="div-weight">
         <button className="btn-decrement" onClick={decrement}>
           -
         </button>
-        <span className="span-style">{weightMenu}</span>
+        <span id={id} value={value} onChange={onChange} className="span-style">
+          {weightMenu}
+        </span>
         <button className="btn-increment" onClick={increment}>
           +
         </button>
