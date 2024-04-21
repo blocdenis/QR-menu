@@ -11,7 +11,6 @@ import getFullInfoUser from '../../Fetch/getFullInfo.js'
 function Setting() {
   const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Friday', 'Saturday', 'Sunday']
   const workTime = ['09:00', '10:00', '11:00', '12:00']
-  
   const [formErrors, setFormErrors] = useState({});
   const [objectUser, setobjectUser] = useState('');
   const [formValues, setFormValues] = useState(
@@ -20,6 +19,7 @@ function Setting() {
       restourant: '',
       password: '',
       confirmPassword: '',
+      'User name': ''
     });
   useEffect(() => {
     getFullInfoUser()
@@ -28,27 +28,19 @@ function Setting() {
         const restaurantName = objectUser.restaurant['name'];
         setFormValues(prevValues => ({
           ...prevValues,
-          restourant: restaurantName
+          'User name': restaurantName
         }));
-        console.log(objectUser.restaurant.name); // Здесь будет доступен результат
       })
       .catch(error => {
-        // Обработка ошибки, если необходимо
+       
       });
   }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    console.log(formValues)
-
   };
 
-  const handleCheckInput = (e) => {
-    const error = validate(formValues);
-    console.log(error)
-    setFormErrors(error);
-  }
 
   return (
     <AppLayout>
@@ -59,10 +51,10 @@ function Setting() {
             <div className="sign-into-inputs">
 
               {objectUser && <>
-                <TextInput onChange={handleChange} handleCheckInput={handleCheckInput} formErrors={formErrors} placeHolder={objectUser.restaurant.name} labelName={'User name'} />
-                <PasswordInput onChange={handleChange} handleCheckInput={handleCheckInput} formErrors={formErrors} />
-                <TextInput onChange={handleChange} handleCheckInput={handleCheckInput} formErrors={formErrors} placeHolder={'Name of the restourant'} labelName={'Restourant Name'} />
-                <TextInput onChange={handleChange} handleCheckInput={handleCheckInput} formErrors={formErrors} placeHolder={'Enter the street, number and the city'} labelName={'Adress'} />
+                <TextInput onChange={handleChange}   placeHolder={objectUser.restaurant.name} valueName={formValues['User name']} labelName={'User name'} />
+                <PasswordInput onChange={handleChange}  />
+                <TextInput onChange={handleChange}   placeHolder={'Name of the restourant'} labelName={'Restourant Name'} />
+                <TextInput onChange={handleChange}  placeHolder={'Enter the street, number and the city'} labelName={'Adress'} />
                 <div style={{ flexFlow: 'row', width: '530px' }}>
                   <p className={styles.nameField}> Select days</p>
                   <Selector selectors={weekDays} nameButton={'Select a day'} />
