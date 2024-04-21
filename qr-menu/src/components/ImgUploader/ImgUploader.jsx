@@ -3,7 +3,7 @@ import IconShow from '../../SVG/IconShow.jsx';
 import IconDeleteImg from '../../SVG/IconDeleteImg.jsx';
 import './ImgUploader.scss';
 
-function ImgUploader() {
+function ImgUploader({id, value}) {
   const [selectedImage, setSelectedImage] = useState(null);
   const imageInputRef = useRef(null);
 

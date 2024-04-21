@@ -3,8 +3,9 @@ import styles from './Menu.module.scss';
 import { AppLayout } from '../../layouts/AppLayout/AppLayout.jsx';
 import TableMenu from '../../components/TableMenu/TableMenu.jsx';
 import CreatNewMenu from '../../components/CreatNewMenu/CreatNewMenu.jsx';
-import { useState} from 'react';
+import { useState, useRef} from 'react';
 import EditComponent from '../../components/EditComponent/EditComponent.jsx';
+import saveSuccess from '../../components/ShowSaveSucces/saveSuccess';
 
 const Menu = () => {
   const [newMenu, setNewMenu] = useState(false);
@@ -12,7 +13,7 @@ const Menu = () => {
   const [rows, setRows] = useState([]);
   const [editRowData, setEditRowData] = useState(null);
   const [editRowModal, setEditRowModal] = useState(false);
-
+  const toast = useRef(null);
   const openCreatMenu = () => {
     setNewMenu(true);
     setShowTable(false);
@@ -27,16 +28,17 @@ const Menu = () => {
   };
 
   const handleSubmitRow = newRow => {
-    editRowData === null
-      ? setRows([...rows, newRow])
-      : setRows(
-          rows.map((currRow, id) => {
-            if (id !== editRowData) return currRow;
-            return newRow;
-          })
-        );
+    if (editRowData === null) {
+      setRows([...rows, newRow]);
+    } else {
+      setRows(
+        rows.map(currRow => (currRow.id === editRowData.id ? newRow : currRow))
+      );
+      setEditRowData(null);
+    }
+    saveSuccess(toast);
     console.log(newRow);
-    // localStorage.setItem('rows', JSON.stringify(newRow));
+    localStorage.setItem('rows', JSON.stringify(newRow));
   };
 
   const upDate = id => {
