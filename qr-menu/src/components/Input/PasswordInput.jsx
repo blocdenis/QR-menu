@@ -22,13 +22,10 @@ placeholder="Enter your Password"
 onBlur={handleLoseFocus}
 name="password"
 onChange={handleChange}
-className={formErrors.password}
-style={formErrors.password ? { borderColor: "red" } : {}}
+
 />
 <br/>
-{formErrors.password && (
-    <span className="error" style={{ color:"red"}}>{formErrors.password}</span> 
-)}
+
 </div>
         </>
     )
