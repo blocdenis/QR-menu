@@ -3,7 +3,8 @@ import './IngredBlockLeft.scss';
 import IconClose from '../../SVG/IconClose.jsx';
 import IconSelectIngred from '../../SVG/IconSelectIngred';
 
-function IngredBlockLeft() {
+function IngredBlockLeft({ ingredients }) {
+  console.log(ingredients);
   return (
     <div>
       <div className="allingred-left-block">
@@ -15,16 +16,11 @@ function IngredBlockLeft() {
           <ul>
             <li className="li-ingredgroup">
               <input type="checkbox" id="check-ingred" />
-              <label htmlFor="ingredient-1">Item 1</label>
-            </li>
-            <li className="li-ingredgroup">
-              <input type="checkbox" id="check-ingred" />
-              <label htmlFor="ingredient-1">Item 1</label>
+              <label htmlFor="ingredient-1">{ingredients}</label>
             </li>
           </ul>
         </div>
       </div>
-      
     </div>
   );
 }

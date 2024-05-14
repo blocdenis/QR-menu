@@ -38,7 +38,7 @@ const Menu = () => {
     }
     saveSuccess(toast);
     console.log(newRow);
-    localStorage.setItem('rows', JSON.stringify(newRow));
+    // localStorage.setItem('rows', JSON.stringify(newRow));
   };
 
   const upDate = id => {
