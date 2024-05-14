@@ -11,6 +11,7 @@ function InputCategor({ value, onChange, id }) {
     { value: 'meat', label: 'Meat' },
     { value: 'fish', label: 'Fish' },
     { value: 'salad', label: 'Salad' },
+    { value: 'others', label: 'Others' },
   ]);
 
   // const handleChange = e => {
@@ -35,7 +36,7 @@ function InputCategor({ value, onChange, id }) {
               {option.label}
             </option>
           ))}
-          <option value="othercategor">Other</option>
+          {/* <option value="othercategor">Other</option> */}
         </select>
       
     </div>

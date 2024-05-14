@@ -4,7 +4,8 @@
 }
 .allingred-group,
 .style-input {
-  border: none;
+  border: none;  border: 0.6px solid $color-input;
+
   background: $color-white;
   cursor: pointer;
   color: $color-input-text;

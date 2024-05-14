@@ -2,38 +2,52 @@ import Button from '../Button/Button.jsx';
 import InputSearch from '../InputSearch/InputSearch.jsx';
 import IngredBlockRight from '../IngredBlock/IngredBlockRight.jsx';
 import IngredBlockLeft from '../IngredBlock/IngredBlockLeft.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './BtnAddIngred.scss';
 import BtnAllIngred from '../BtnAllIngred/BtnAllIngred.jsx';
-function BtnAddIngred() {
-  const [openModal, setOpenModal] = useState(false);
+function BtnAddIngred({ ingredForm, onClick, addIngred }) {
+  const [openModalIngred, setOpenModalIngred] = useState(false);
+  const handleApply = () => {
+    addIngred(ingredForm);
+    setOpenModalIngred(false);
+  };
 
-  const closeIngredModal = () => {
-    setOpenModal(false);
-  }
+  const handleCancel = () => {
+    setOpenModalIngred(false);
+  };
+
+  console.log(ingredForm);
   return (
     <div>
       <div className="btn-conteiner">
         <Button
-          onClick={() => setOpenModal(true)}
+          onClick={() => {
+            setOpenModalIngred(true);
+            // onChange={onChange}
+          }}
           leftIcon={true}
           size="medium"
         >
           Add ingredient{''}
         </Button>
       </div>
-      {openModal && (
+      {openModalIngred && (
         <div className="allingred-group ">
           <InputSearch
             closeModal={() => {
-              setOpenModal(false);
+              setOpenModalIngred(false);
             }}
           />
           <div className="ingred-block">
-            <IngredBlockLeft />
+            <IngredBlockLeft ingredients={ingredForm} />
+
             <IngredBlockRight />
           </div>
-          <BtnAllIngred closeIngredModal={closeIngredModal} />
+          <BtnAllIngred
+            handleApply={handleApply}
+            handleCancel={handleCancel}
+            type="button"
+          />
         </div>
       )}
     </div>
