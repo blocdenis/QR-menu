@@ -38,7 +38,7 @@ export const Sidebar = () => {
           </div>
           <Link
             to={'/categor'}
-            className="btn-nav btn-link"
+            className="btn-nav-categ content"
             style={{ display: isOpenCategor ? 'block' : 'none' }}
           >
             <h4 className="btn-title-orders">Categories</h4>
