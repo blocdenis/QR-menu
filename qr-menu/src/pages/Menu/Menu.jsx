@@ -3,7 +3,7 @@ import styles from './Menu.module.scss';
 import { AppLayout } from '../../layouts/AppLayout/AppLayout.jsx';
 import TableMenu from '../../components/TableMenu/TableMenu.jsx';
 import CreatNewMenu from '../../components/CreatNewMenu/CreatNewMenu.jsx';
-import { useState, useRef} from 'react';
+import { useState, useRef } from 'react';
 import EditComponent from '../../components/EditComponent/EditComponent.jsx';
 import saveSuccess from '../../components/ShowSaveSucces/saveSuccess';
 
@@ -22,7 +22,7 @@ const Menu = () => {
   const closeCreatMenu = () => {
     setNewMenu(false);
     setShowTable(true);
-    if(editRowData){
+    if (editRowData) {
       closeEditModal();
     }
   };
@@ -43,14 +43,12 @@ const Menu = () => {
 
   const upDate = id => {
     const editRow = rows.find(row => row.id === id);
-    setRows(
-      rows.map((currRow) => (currRow.id === id ? editRow : currRow))
-    );
+    setRows(rows.map(currRow => (currRow.id === id ? editRow : currRow)));
     setEditRowModal(true);
     setShowTable(false);
     setEditRowData(editRow);
   };
-  console.log(rows,'rows');
+  console.log(rows, 'rows');
   const closeEditModal = () => {
     setEditRowModal(false);
     setEditRowData(null);
@@ -71,11 +69,7 @@ const Menu = () => {
 
               <span>All categories({rows.length}) </span>
             </div>
-            <TableMenu 
-              rows={rows} 
-              setRows={setRows} 
-              handleEdit={upDate} 
-            />
+            <TableMenu rows={rows} setRows={setRows} handleEdit={upDate} />
           </div>
         )}
         {newMenu && !showTable && (
