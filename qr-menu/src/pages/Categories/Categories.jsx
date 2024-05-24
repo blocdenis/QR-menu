@@ -5,34 +5,37 @@ import { AppLayout } from '../../layouts/AppLayout/AppLayout.jsx';
 import Button from '../../components/Button/Button.jsx';
 import TableCategor from '../../components/TableCategor/TableCategor.jsx';
 function Categories() {
-  const [selectedCategory, setSelectedCategory] = useState('meat');
-  const [categories, setCategories] = useState([
-    { value: 'meat', label: 'Meat' },
-    { value: 'fish', label: 'Fish' },
-    { value: 'salad', label: 'Salad' },
-  ]);
+  // const [categor, setCategor] = useState([
+  //   { value: 'meat', label: 'Meat' },
+  //   { value: 'fish', label: 'Fish' },
+  //   { value: 'salad', label: 'Salad' },
+  // ]);
 
-  const [newCategor, setNewCategor] = useState(false);
-  const [showCategor, setShowCategor] = useState(true);
   const [rowsCategor, setRowsCategor] = useState([]);
+  const [modalOpenCategor, setModalOpenCategor] = useState(false);
 
-  const openCreatCategor = () => {
-    setNewCategor(true);
-    setShowCategor(false);
+  const openCreatCategor = id => {
+    setModalOpenCategor(prevState => ({
+      ...prevState,
+      [id]: true,
+    }));
+    console.log('hi open category');
   };
+  const handleNewCategorySubmit = newCategory => {
+    setRowsCategor([...rowsCategor, newCategory]);
+    console.log('Get NewCategor', newCategory);
+  }; // const closeCreatCategor = () => {
+  //   setNewCategor(false);
+  //   setShowCategor(true);
+  // };
+  // const handleChange = e => {
+  //   const selectedValue = e.target.value;
+  //   setSelectedCategory(selectedValue);
+  // };
 
-  const closeCreatCategor = () => {
-    setNewCategor(false);
-    setShowCategor(true);
-  };
-  const handleChange = e => {
-    const selectedValue = e.target.value;
-    setSelectedCategory(selectedValue);
-  };
-
-  const handleAddCategory = newCategory => {
-    setCategories([...categories, newCategory]);
-  };
+  // const handleAddCategory = newCategory => {
+  //   setCategories([...categories, newCategory]);
+  // };
   return (
     <AppLayout>
       <div className={styles.container_wrap}>
@@ -46,25 +49,28 @@ function Categories() {
 
           <span>All categories({rowsCategor.length}) </span>
         </div>
+
         <div className={styles.list_categ}>
-          <span className={styles.block_categ}>
-            <p>Burger</p>
-          </span>
-          <span className={styles.block_categ}>
-            <p>Cola</p>
-          </span>
+          {rowsCategor.map(item => {
+            const categorText = item.categor
+              ? item.categor.charAt(0).toUpperCase() + item.categor.slice(1)
+              : '';
+
+            return (
+              <div key={item.id} className={styles.block_categ}>
+                <span className={`label-color${item.categor}`}> {categorText} </span>
+              </div>
+            );
+          })}
         </div>
-
-        <TableCategor/>
-
-        {/* <InputCategor
-          type="text"
-          onChange={handleChange}
-          value={selectedCategory}
-          categories={categories}
-        />
-        <input type="text" value={selectedCategory} onChange={handleChange} />
-        <button onClick={handleAddCategory}>Add Category</button> */}
+        {modalOpenCategor && (
+          <TableCategor
+            rowsCategor={rowsCategor}
+            setRowsCategor={setRowsCategor}
+            setModalOpenCategor={setModalOpenCategor}
+            onNewCategorySubmit={handleNewCategorySubmit}
+          />
+        )}
       </div>
     </AppLayout>
   );

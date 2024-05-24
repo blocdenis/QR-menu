@@ -1,8 +1,44 @@
 import React from 'react';
 import BtnCreatMenu from '../../components/BtnCreatMenu/BtnCreatMenu.jsx';
 import './TableCategor.scss';
+import { useState } from 'react';
+
 import IconCheck from '../../SVG/IconCheck.jsx';
-function TableCategor() {
+function TableCategor({
+  onNewCategorySubmit,
+  rowsCategor,
+  setRowsCategor,
+  setModalOpenCategor,
+}) {
+  const [newCategoryName, setNewCategoryName] = useState('');
+  const [highlightColor, setHighlightColor] = useState('');
+
+  const handleNewCategoryNameChange = e => {
+    setNewCategoryName(e.target.value);
+    console.log('setNewCategoryName', e.target.value);
+  };
+
+  const handleHighlightColorChange = color => {
+    setHighlightColor(color);
+    console.log('setHighlightColor', color);
+  };
+
+  const handleSubmit = () => {
+    if (newCategoryName && highlightColor) {
+      const newCategory = {
+        id: rowsCategor.length + 1,
+        categor: newCategoryName,
+        color: highlightColor,
+      };
+      setRowsCategor([...rowsCategor, newCategory]);
+      onNewCategorySubmit(newCategory);
+      setModalOpenCategor(false);
+      console.log('newCategor', newCategory);
+    } else {
+      alert('Please enter category name and select a highlight color.');
+    }
+  };
+
   return (
     <>
       <div className="block-categor">
@@ -14,47 +50,39 @@ function TableCategor() {
             type="text"
             className="inputcateg"
             placeholder="salad, burger, pasta etc."
+            value={newCategoryName}
+            onChange={handleNewCategoryNameChange}
           />
         </div>
         <div className="block-categcolor">
-          <div className="nameCategor">
-            <h1 className="titlename-categor ">Choose a highlight color</h1>
+          <div className="divname-categor">
+            <h1 className="titlename-categor">Choose a highlight color</h1>
           </div>
           <div className="block-choosecolor">
-          <div className="square-block-categ">
-            
-            <div className="style-square size-square-color1">
-              <span className="iconcheck-style">
-                <IconCheck />
-              </span>
+            <div className="square-block-categ">
+              {['color1', 'color2', 'color3', 'color4'].map(color => (
+                <div
+                  key={color}
+                  className={`style-square size-square-${color}`}
+                  value={highlightColor}
+                  onClick={() => handleHighlightColorChange(color)}
+                >
+                  {highlightColor === color && (
+                    <span className="iconcheck-style">
+                      <IconCheck />
+                    </span>
+                  )}
+                </div>
+              ))}
             </div>
-
-            <div className="style-square size-square-color2">
-              <span className="iconcheck-style">
-                <IconCheck />
-              </span>
+            <div className={`div-color-btn div-color-btn-${highlightColor}`}>
+              <span className="h2-namebtn">{newCategoryName}</span>
             </div>
-
-            <div className="style-square size-square-color3">
-              <span className="iconcheck-style">
-                <IconCheck />
-              </span>
-            </div>
-
-            <div className="style-square size-square-color4">
-              <span className="iconcheck-style">
-                <IconCheck />
-              </span>
-            </div>
-          </div>
-          <div className="div-color-btn">
-            <span className='h2-namebtn'><p>Burger</p></span>
-          </div>
           </div>
         </div>
       </div>
       <div className="btn-creatmenu-contein">
-        <BtnCreatMenu type="submit" />
+        <BtnCreatMenu type="button" onSubmitCategor={handleSubmit} />
       </div>
     </>
   );
