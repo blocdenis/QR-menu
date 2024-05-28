@@ -32,16 +32,18 @@
   gap: 40px;
   margin-bottom: 39px;
   padding: 0px 40px 0px 80px;
+  
 }
-.block_categ {
+.field_category {
   display: flex;
   width: 106px;
   height: 57px;
   padding: 1px 6px;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0;
+  // margin-top: 39px;
   font: $regular14;
+  cursor: pointer;
 
   &.div-color-btn-color1 {
     background-color: $color-span-salad;
@@ -62,4 +64,7 @@
     background-color: $color-span-fish;
     color: $color-span-fish-text;
   }
+}
+.move_down {
+  margin-top: 210px;
 }
