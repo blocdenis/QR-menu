@@ -42,23 +42,24 @@
   align-items: center;
   flex-shrink: 0;
   font: $regular14;
-}
-.label-color1 {
-  color: $color-span-salad-text;
-  background-color: $color-span-salad;
-}
 
-.label-color2 {
-  color: $color-span-text-meat;
-  background-color: $color-span-meat;
-}
+  &.div-color-btn-color1 {
+    background-color: $color-span-salad;
+    color: $color-span-salad-text;
+  }
 
-.label-color3 {
-  color: $color-span-text-burger;
-  background-color: $color-span-burger;
-}
+  &.div-color-btn-color2 {
+    background-color: $color-span-meat;
+    color: $color-span-text-meat;
+  }
 
-.label-color4 {
-  color: $color-span-fish-text;
-  background-color: $color-span-fish;
+  &.div-color-btn-color3 {
+    background-color: $color-span-burger;
+    color: $color-span-text-burger;
+  }
+
+  &.div-color-btn-color4 {
+    background-color: $color-span-fish;
+    color: $color-span-fish-text;
+  }
 }

@@ -14,16 +14,13 @@ function Categories() {
   const [rowsCategor, setRowsCategor] = useState([]);
   const [modalOpenCategor, setModalOpenCategor] = useState(false);
 
-  const openCreatCategor = id => {
-    setModalOpenCategor(prevState => ({
-      ...prevState,
-      [id]: true,
-    }));
-    console.log('hi open category');
-  };
+  const openCreatCategor = () => {
+    setModalOpenCategor(true);
+    };
+    
   const handleNewCategorySubmit = newCategory => {
     setRowsCategor([...rowsCategor, newCategory]);
-    console.log('Get NewCategor', newCategory);
+    console.log('Get NewCategor');
   }; // const closeCreatCategor = () => {
   //   setNewCategor(false);
   //   setShowCategor(true);
@@ -40,7 +37,7 @@ function Categories() {
     <AppLayout>
       <div className={styles.container_wrap}>
         <div className={styles.container_page}>
-          <h1 className={styles.page_title}>Categor</h1>
+          <h1 className={styles.page_title}>Categories</h1>
           <div>
             <Button leftIcon={true} size="medium" onClick={openCreatCategor}>
               Creat a new category{''}
@@ -57,8 +54,10 @@ function Categories() {
               : '';
 
             return (
-              <div key={item.id} className={styles.block_categ}>
-                <span className={`label-color${item.categor}`}> {categorText} </span>
+              <div key={item.id} className={`${styles.block_categ} ${styles[`div-color-btn-${item.color}`]}`}>
+                <span >
+                  {categorText}
+                </span>
               </div>
             );
           })}
