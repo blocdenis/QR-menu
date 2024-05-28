@@ -64,7 +64,7 @@ function TableCategor({
                 <div
                   key={color}
                   className={`style-square size-square-${color}`}
-                  value={highlightColor}
+                  // value={highlightColor}
                   onClick={() => handleHighlightColorChange(color)}
                 >
                   {highlightColor === color && (
