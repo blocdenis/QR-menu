@@ -4,6 +4,8 @@ import ModalDelCategor from '../../components/ModalDelCategor/ModalDelCategor.js
 import { AppLayout } from '../../layouts/AppLayout/AppLayout.jsx';
 import Button from '../../components/Button/Button.jsx';
 import TableCategor from '../../components/TableCategor/TableCategor.jsx';
+import CreatMenuInput from '../../components/CreatMenuInput/CreatMenuInput.jsx';
+
 function Categories() {
   const [modalOpenDelCategor, setModalOpenDelCategor] = useState(false);
   const [rowsCategor, setRowsCategor] = useState([]);
@@ -37,7 +39,9 @@ function Categories() {
     closeModalCategor(id);
   };
   useEffect(() => {
-    const anyModalOpen = Object.values(modalOpenDelCategor).some(isOpen => isOpen);
+    const anyModalOpen = Object.values(modalOpenDelCategor).some(
+      isOpen => isOpen
+    );
     setIsAnyModalOpen(anyModalOpen);
   }, [modalOpenDelCategor]);
   return (
@@ -64,14 +68,16 @@ function Categories() {
               <div key={item.id}>
                 <div
                   onClick={() => openModalDelCateg(item.id)}
-                  className={`${styles.field_category} ${styles[`div-color-btn-${item.color}`]}`}
+                  className={`${styles.field_category} ${
+                    styles[`div-color-btn-${item.color}`]
+                  }`}
                 >
                   <span>{categorText}</span>
                 </div>
                 {modalOpenDelCategor[item.id] && (
                   <ModalDelCategor
                     key={item.id}
-                    closeModal={() => closeModalCategor(item.id)}
+                    closeModalCategor={() => closeModalCategor(item.id)}
                     id={item.id}
                     handleDelete={() => handleDelateCategor(item.id)}
                     categor={item.categor}
@@ -91,6 +97,13 @@ function Categories() {
             />
           )}
         </div>
+        <div style={{display:'none'}}>
+        <CreatMenuInput
+          rowsCategor={rowsCategor}
+          
+        />
+        </div>
+        
       </div>
     </AppLayout>
   );

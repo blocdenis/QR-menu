@@ -9,6 +9,7 @@ function TableCategor({
   rowsCategor,
   setRowsCategor,
   setModalOpenCategor,
+  onChange
 }) {
   const [newCategoryName, setNewCategoryName] = useState('');
   const [highlightColor, setHighlightColor] = useState('');
@@ -64,7 +65,6 @@ function TableCategor({
                 <div
                   key={color}
                   className={`style-square size-square-${color}`}
-                  // value={highlightColor}
                   onClick={() => handleHighlightColorChange(color)}
                 >
                   {highlightColor === color && (

@@ -16,6 +16,7 @@ function CreatMenuInput({
   setRows,
   closeCreatMenu,
   editRowData,
+  rowsCategor,
 }) {
   const [form, setForm] = useState(
     editRowData || {
@@ -31,7 +32,7 @@ function CreatMenuInput({
   );
   const [id, setId] = useState(Date.now());
   const [error, setError] = useState('');
-  // const [ingred, setIngred] = useState([]);
+  const [categories, setNewCategor] = useState('');
 
   const validForm = () => {
     let errorField = [];
@@ -70,7 +71,6 @@ function CreatMenuInput({
     };
     setRows(rows => [...rows, newRow]);
     setId(Date.now(id));
-    // addIngred(form);
     setForm('');
     closeCreatMenu();
     onSubmit(form);
@@ -79,7 +79,10 @@ function CreatMenuInput({
   const handlePriceChange = priceData => {
     setForm({ ...form, price: priceData.price, currency: priceData.currency });
   };
-
+  const handleImageChange = newImage => {
+    setForm({ ...form, img: newImage });
+    console.log('img added');
+  };
   const addIngred = newIngredient => {
     if (newIngredient) {
       setForm({ ...form, ingred: newIngredient });
@@ -87,7 +90,14 @@ function CreatMenuInput({
     setForm({ ...form, ingred: '' });
     console.log('HELLO', form.ingred);
   };
-
+  useEffect(() => {
+    if (categories && categories.length > 0) {
+      setNewCategor(categories);
+    }
+  }, [categories]);
+  useEffect(() => {
+    console.log(rowsCategor, 'rowsCategor');
+  }, [rowsCategor]);
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-menugroup">
@@ -105,12 +115,18 @@ function CreatMenuInput({
         <label htmlFor="category" className="input-subtitle">
           Category
         </label>
-        <InputCategor
-          id={`categories-${form.id}`}
-          type="text"
-          value={form.categories}
-          onChange={e => setForm({ ...form, categories: e.target.value })}
-        />
+        {rowsCategor?.length > 0 && (
+          <InputCategor
+            id={`categories-${form.id}`}
+            type="text"
+            value={form.categories}
+            onChange={e => setForm({ ...form, categories: e.target.value })}
+            options={rowsCategor.map(row => ({
+              value: row.categor,
+              label: row.categor,
+            }))}
+          />
+        )}
       </div>
       <div className="input-imagegroup">
         <label htmlFor="imgload" className="input-subtitle">
@@ -121,7 +137,7 @@ function CreatMenuInput({
             id={`img-${form.id}`}
             type="url"
             value={form.img}
-            onChange={e => setForm({ ...form, img: e.target.value })}
+            onChange={handleImageChange}
           />
         </div>
       </div>

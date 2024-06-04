@@ -3,7 +3,7 @@ import IconShow from '../../SVG/IconShow.jsx';
 import IconDeleteImg from '../../SVG/IconDeleteImg.jsx';
 import './ImgUploader.scss';
 
-function ImgUploader({id, value}) {
+function ImgUploader({id, value, onChange}) {
   const [selectedImage, setSelectedImage] = useState(null);
   const imageInputRef = useRef(null);
 
@@ -34,6 +34,7 @@ function ImgUploader({id, value}) {
           const resizedDataURL = canvas.toDataURL('image/jpeg', 0.8); // Adjust quality (0-1)
 
           setSelectedImage(resizedDataURL);
+          onChange(resizedDataURL); // Call the onChange prop with the new image URL
         };
         image.src = e.target.result;
       };

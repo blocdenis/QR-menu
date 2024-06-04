@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import './InputCategor.scss';
-import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-function InputCategor({ value, onChange, id }) {
+function InputCategor({ value, onChange, id, options }) {
   //const navigate = useNavigate();
 
   // const [selectedOption, setSelectedOption] = useState('');
-  const [options, setOptions] = useState([
-    { value: 'meat', label: 'Meat' },
-    { value: 'fish', label: 'Fish' },
-    { value: 'salad', label: 'Salad' },
-    { value: 'others', label: 'Others' },
-  ]);
+  // const [options, setOptions] = useState([
+  //   { value: 'meat', label: 'Meat' },
+  //   { value: 'fish', label: 'Fish' },
+  //   { value: 'salad', label: 'Salad' },
+  //   { value: 'others', label: 'Others' },
+  // ]);
 
   // const handleChange = e => {
   //   const value = e.target.value;
@@ -22,6 +21,7 @@ function InputCategor({ value, onChange, id }) {
   //   }
 
   // };
+  console.log(options)
   return (
     <div className='categor-container'>
         <select
@@ -33,7 +33,7 @@ function InputCategor({ value, onChange, id }) {
         >
           {options && options.map(option => (
             <option key={option.value} value={option.value}>
-              {option.label}
+              {option.value}
             </option>
           ))}
           {/* <option value="othercategor">Other</option> */}

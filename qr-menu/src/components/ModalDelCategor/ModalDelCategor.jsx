@@ -4,7 +4,7 @@ import './ModalDelCategor.scss';
 
 function ModalDelCategor({ closeModalCategor, id, handleDelete, categor}) {
   const handleCancel = () => {
-    closeModal();
+    closeModalCategor();
   };
 
   
@@ -12,7 +12,7 @@ function ModalDelCategor({ closeModalCategor, id, handleDelete, categor}) {
       <div id="modal-show">
         <div className="modal-div">
           <div className="title-style">
-            <h3 className="modal-title">Name</h3>
+            <h3 className="modal-title">Name Category</h3>
             <div onClick={closeModalCategor}>
               <IconClose />
             </div>
