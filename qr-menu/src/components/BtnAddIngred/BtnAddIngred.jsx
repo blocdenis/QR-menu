@@ -27,6 +27,7 @@ function BtnAddIngred({ ingredForm, onClick, addIngred }) {
           }}
           leftIcon={true}
           size="medium"
+          type='button'
         >
           Add ingredient{''}
         </Button>

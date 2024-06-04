@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header.jsx';
 import IconMenu from '../../SVG/IconMenu.jsx';
 import IconSetting from '../../SVG/IconSetting.jsx';
 import IconTable from '../../SVG/IconTable.jsx';
+import { SupportIcon } from '../../assets/SupportIcon.jsx';
 import LogoImg from '../../components/LogoImg/LogoImg.jsx';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -53,6 +54,15 @@ const Home = () => {
               <IconSetting />
             </div>
             Settings
+          </button>
+        </Link>
+
+        <Link to={'/support'} style={{ textDecoration: 'none' }}>
+          <button className={styles.button_page}>
+            <div className={styles.home_vector} style={{color: 'white'}}>
+              <SupportIcon />
+            </div>
+            Support
           </button>
         </Link>
       </div>
