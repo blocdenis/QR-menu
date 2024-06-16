@@ -21,25 +21,26 @@ const TableMenu = () => {
           </tr>
         </thead>
         {dataMenuItems.length > 0 ? (
-        <tbody>
-        {dataMenuItems.map(item => (
-          <tr key={item.menuNames}>
-            <td>{item.menuNames}</td>
-            <td>{item.categories}</td>
-            <td className='item-td'>
-            <IconEdit/>
-            <IconDelete/>
-            </td>
-            <td></td>
-          </tr>
-          ))}
-        </tbody>
+          <tbody>
+            {dataMenuItems.map(item => (
+              <tr key={item.menuNames}>
+                <td>{item.menuNames}</td>
+                <td>{item.categories}</td>
+                <td>{item.categories}</td>
+                <td className="item-td">
+                  <IconEdit />
+                  <IconDelete />
+                </td>
+                <td></td>
+              </tr>
+            ))}
+          </tbody>
         ) : (
           <p>The menu is empty</p>
         )}
       </table>
     </div>
   );
-}
+};
 
 export default TableMenu;

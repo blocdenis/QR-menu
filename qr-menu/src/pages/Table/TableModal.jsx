@@ -23,7 +23,8 @@ const TableModal = ({ isOpen, closeModal }) => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ tablesQty }),
+        credentials: 'include',
+        body: JSON.stringify({ table_number: tablesQty }),
       });
 
       if (response.ok) {
