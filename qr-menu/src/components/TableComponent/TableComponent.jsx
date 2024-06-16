@@ -1,31 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './TableComponent.scss';
+import Cookies from 'js-cookie';
+import { COOKIE_KEY, TABLES_GET } from '../../Fetch/settings';
 
 const TableComponent = () => {
-  const data = [
-    {
-      tableNumber: 1,
-      menuLink: '/menu/1',
-      qrCode: '123456',
-      startDate: '2024-03-01',
-      action: 'Edit',
-    },
-    {
-      tableNumber: 2,
-      menuLink: '/menu/2',
-      qrCode: '789012',
-      startDate: '2024-03-02',
-      action: 'Edit',
-    },
-    {
-      tableNumber: 3,
-      menuLink: '/menu/3',
-      qrCode: '345678',
-      startDate: '2024-03-03',
-      action: 'Edit',
-    },
-  ];
+  const [data, setData] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
+  const getTables = async () => {
+    try {
+      const token = Cookies.get(COOKIE_KEY);
+
+      const response = await fetch(`${TABLES_GET}?page=${currentPage}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        credentials: 'include',
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+        setData(result.data || []);
+        setTotalPages(result.total_pages || 0);
+        setCurrentPage(result.page || 1);
+        console.log(result.page);
+      } else {
+        console.error('Failed to fetch data');
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(prevPage => prevPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prevPage => prevPage - 1);
+    }
+  };
+  useEffect(() => {
+    getTables(currentPage);
+  }, [currentPage]);
+  console.log(currentPage);
   return (
     <div className="table_container">
       <table>
@@ -34,19 +58,25 @@ const TableComponent = () => {
             <th>Table #</th>
             <th>Menu Link</th>
             <th>QR Code</th>
-            <th>Start Date</th>
             <th>Action</th>
           </tr>
         </thead>
         {data.length > 0 ? (
           <tbody>
-            {data.map(item => (
-              <tr key={item.tableNumber}>
-                <td>{item.tableNumber}</td>
-                <td>{item.menuLink}</td>
-                <td>{item.qrCode}</td>
-                <td>{item.startDate}</td>
-                <td>{item.action}</td>
+            {data?.map(item => (
+              <tr key={item.id}>
+                <td>{item.table_number}</td>
+                <td>{item.menu_link}</td>
+                <td>
+                  <img
+                    src={`data:image/jpeg;base64, ${item.qr}`}
+                    alt={item.table_number}
+                  />
+                </td>
+
+                <td>
+                  <button>delete</button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -54,6 +84,15 @@ const TableComponent = () => {
           <p>No results found</p>
         )}
       </table>
+      <div className="pagination">
+        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+          Previous Page
+        </button>
+        <span>{`Page ${currentPage} of ${totalPages}`}</span>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next Page
+        </button>
+      </div>
     </div>
   );
 };

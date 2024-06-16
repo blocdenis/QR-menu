@@ -55,6 +55,7 @@ const TableMenu = ({ rows, setRows, handleEdit }) => {
             <th>Action</th>
           </tr>
         </thead>
+
         <tbody>
           {rows.map(item => {
             const categorText = item.categories
