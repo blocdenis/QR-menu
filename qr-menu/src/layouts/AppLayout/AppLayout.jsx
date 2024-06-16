@@ -6,30 +6,30 @@ import { useLocation } from 'react-router-dom';
 
 export const AppLayout = ({ children }) => {
   const location = useLocation();
-if(location.pathname !== "/") {
-  const styles = { justifyContent: 'center' };
-  return (
-    <div>
-      <div className="header">
-        <HeaderSystem />
+  if (location.pathname !== '/') {
+    const styles = { justifyContent: 'center' };
+    return (
+      <div>
+        <div className="header">
+          <HeaderSystem />
+        </div>
+        <div className="applayout_container">
+          <Sidebar />
+          <main style={styles}>{children}</main>
+        </div>
       </div>
-      <div className="applayout_container">
-        <Sidebar />
-        <main style={styles}>{children}</main>
+    );
+  } else {
+    return (
+      <div>
+        <div className="header">
+          <HeaderSystem />
+        </div>
+        <div className="applayout_container">
+          <Sidebar />
+          <main className="main_container">{children}</main>
+        </div>
       </div>
-    </div>
-  );
-} else {
-  return (
-    <div>
-      <div className="header">
-        <HeaderSystem />
-      </div>
-      <div className="applayout_container">
-        <Sidebar />
-        <main className="main_container">{children}</main>
-      </div>
-    </div>
-  );
-}
+    );
+  }
 };

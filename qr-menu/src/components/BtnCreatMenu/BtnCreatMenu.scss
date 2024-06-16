@@ -1,0 +1,12 @@
+@use "../../scss/abstracts/" as *;
+
+.block-btn {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 282px 100px;
+  .btn-backmenu,
+  .btn-savemenu {
+    width: 50%;
+    height: 3.25rem;
+  }
+}

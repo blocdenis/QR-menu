@@ -1,0 +1,24 @@
+@use "../../scss/abstracts/" as *;
+.btn-conteiner {
+  padding-bottom: 40px;
+}
+.allingred-group,
+.style-input {
+  border: none;  border: 0.6px solid $color-input;
+
+  background: $color-white;
+  cursor: pointer;
+  color: $color-input-text;
+  margin: 0 auto;
+  
+}
+.ingred-block {
+  display: flex;
+  flex-direction: row;
+  width: 43.375rem;
+  height: 17.625rem;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  padding-top: 0.5rem;
+}

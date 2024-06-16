@@ -1,0 +1,30 @@
+@use "../../scss/abstracts/" as *;
+
+
+
+.div-weight{
+  width: 182px;
+  height: 42px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-btn-weight;
+
+  .btn-decrement, .btn-increment{
+    border: none;
+    background-color: $color-btn-span;
+    color: $color-grey-btn;
+    width: 25%;
+    height: 100%;
+
+  }
+  .span-style{
+    color: $color-grey-text;
+    font: $regular16;
+  } 
+}
+.text-weight{
+  padding-top: 30px;
+  color: $color-input-text;
+  font: $regular14;
+}

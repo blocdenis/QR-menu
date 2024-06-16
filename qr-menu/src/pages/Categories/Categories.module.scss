@@ -1,1 +1,70 @@
-@use '../../scss/abstracts/' as *;
+@use "../../scss/abstracts/" as *;
+.container_wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 58.125rem;
+  height: 29.75rem;
+  padding: 20px;
+}
+
+.container_page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-bottom: 40px;
+  color: $Primary-600;
+
+  .page_right {
+    width: 77%;
+    min-height: 100%;
+    float: right;
+    margin: 0;
+    padding: 0;
+    background: $color-white;
+  }
+}
+.list_categ {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 40px;
+  margin-bottom: 39px;
+  padding: 0px 40px 0px 80px;
+  
+}
+.field_category {
+  display: flex;
+  width: 106px;
+  height: 57px;
+  padding: 1px 6px;
+  justify-content: center;
+  align-items: center;
+  // margin-top: 39px;
+  font: $regular14;
+  cursor: pointer;
+
+  &.div-color-btn-color1 {
+    background-color: $color-span-salad;
+    color: $color-span-salad-text;
+  }
+
+  &.div-color-btn-color2 {
+    background-color: $color-span-meat;
+    color: $color-span-text-meat;
+  }
+
+  &.div-color-btn-color3 {
+    background-color: $color-span-burger;
+    color: $color-span-text-burger;
+  }
+
+  &.div-color-btn-color4 {
+    background-color: $color-span-fish;
+    color: $color-span-fish-text;
+  }
+}
+.move_down {
+  margin-top: 210px;
+}

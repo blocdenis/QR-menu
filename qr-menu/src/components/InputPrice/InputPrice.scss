@@ -8,12 +8,17 @@
 
 .currency-symbol {
   position: relative;
-  display: inline-block;
+  display: flex;
   flex-direction: row;
-  padding: 0.625rem;
+  padding-top: 1.25rem;
+  gap: 0.5rem;
+
   color: $color-grey-text;
 
   .sumbol-style{
     padding: 0.3125rem;
   }
+}
+.color-currency{
+  color: $color-price-color;
 }

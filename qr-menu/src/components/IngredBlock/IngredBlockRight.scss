@@ -9,6 +9,13 @@
   border-radius: 0.25rem;
   border: 1px solid $color-input;
 
+  &:hover {
+    border: 0.6px solid $Primary-600;
+  }
+  &:focus{
+    border: 0.6px solid $Primary-600;
+
+  }
   .titleselect-block {
     width: 21.3125rem;
     height: 2.375rem;

@@ -1,0 +1,22 @@
+@use "../../scss/abstracts/" as *;
+
+.container-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 58.125rem;
+  height: 29.75rem;
+  padding: 0px;
+}
+  .container-page {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
+  .page-titlemenu {
+    color: $Primary-600;
+    font: $bold30;
+  }
+  
+

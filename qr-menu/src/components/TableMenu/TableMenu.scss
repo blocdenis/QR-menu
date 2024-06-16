@@ -1,27 +1,31 @@
-@use '../../scss/abstracts/' as *;
+@use "../../scss/abstracts/" as *;
 
-.tablemenu-container{
-
-  .tablemenu-header{
+.tablemenu-container {
+  .tablemenu-header {
     background-color: $color-table;
+    position: relative;
     th {
       padding: 13px 16px;
-      line-height: 22px;
       font: $medium14;
       color: $color-grey-text;
     }
   }
+
+  tr:hover {
+    background-color: $color-tabel-menu;
+  }
   table {
     width: 100%;
     border-collapse: collapse;
-  
+    overflow: hidden;
+
     th,
     td {
       border-bottom: 1px solid $color-table-td;
-      padding: 8px;
+      padding: 12px 16px;
       text-align: left;
     }
-  
+
     th {
       background-color: $color-table-th;
       width: auto;
@@ -32,11 +36,39 @@
     td:nth-child(2) {
       font: $regular14;
     }
-    .item-td{
+    .item-td {
       display: flex;
       flex-direction: row;
       gap: 1.5rem;
     }
+    .style-td-name {
+      color: $color-grey-text;
+      font: $regular14;
+      cursor: pointer;
+    }
   }
-  
+  .label-meat {
+    background-color: $color-span-categor;
+    color: $color-span-text-meat;
+  }
+  .label-fish {
+    background-color: $color-span-fish;
+    color: $color-span-fish-text;
+  }
+  .label-salad {
+    background-color: $color-span-salad;
+    color: $color-span-salad-text;
+  }
+}
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 350px;
+  left: 2px;
+}
+.title-edit {
+  padding-bottom: 40px;
+  color: $Primary-600;
+  font: $bold30;
 }
