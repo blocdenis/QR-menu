@@ -2,82 +2,94 @@ import React, { useEffect } from 'react';
 import styles from './Settings.module.scss';
 import { useRef, useState } from "react";
 import Button from '../../components/Button/Button';
-import { AppLayout } from '../../layouts/AppLayout/AppLayout';
+import { AppLayout } from '../../layouts/AppLayout/AppLayout.jsx';
 import PasswordInput from '../../components/Input/PasswordInput';
 import validate from '../../components/Auth/SignUp/validation/func'
 import TextInput from '../../components/Input/TextInput.jsx';
 import Selector from '../../components/Selectors/selectTime.jsx';
-import getFullInfoUser from '../../Fetch/getFullInfo.js'
+import getFullInfoRestaurant from '../../Fetch/getFullInfoRestaurant.js'
+import ImgUploaderNew from '../../components/ImgUploader/ImgUpLoaderNew.jsx'
+import Schedule from '../../components/Schedules/Schedule.jsx';
+import restaurantUpdate from '../../Fetch/getUpdateRestaraunt.js';
+import logo from '../../../public/vite.svg'
+
 function Setting() {
-  const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Friday', 'Saturday', 'Sunday']
-  const workTime = ['09:00', '10:00', '11:00', '12:00']
   const [formErrors, setFormErrors] = useState({});
-  const [objectUser, setobjectUser] = useState('');
+  const [objectRestaurant, setobjectRestaurant] = useState('');
   const [formValues, setFormValues] = useState(
     {
-      email: '',
-      restourant: '',
-      password: '',
-      confirmPassword: '',
-      'User name': ''
+      
     });
+
   useEffect(() => {
-    getFullInfoUser()
-      .then(allUserData => {
-        setobjectUser(allUserData);
-        const restaurantName = objectUser.restaurant['name'];
+    getFullInfoRestaurant()
+      .then(allRestaurantData => {
+        setobjectRestaurant(allRestaurantData);
+        const restaurantName = objectRestaurant.restaurant_data['name'];
         setFormValues(prevValues => ({
           ...prevValues,
-          'User name': restaurantName
+          'name': restaurantName
         }));
       })
       .catch(error => {
-       
+
       });
   }, [])
 
   const handleChange = (e) => {
+    console.log(e.target.name)
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
+    console.log(formValues)
   };
-
+  const handleSubmitData = () => {
+    console.log(formValues)
+   restaurantUpdate(formValues)
+  }
 
   return (
     <AppLayout>
-      <div >
-        <div><h1 className={styles.pageTitle}>Settings</h1></div>
-        <div id='signIn' style={{ width: '423px' }}>
+      <div className={styles.container_wrap}>
+        <div className={styles.container_page}>
+          <h1 className={styles.pageTitle}>Settings</h1></div>
+        <div id='signIn'>
           <div className="sign-into-container" >
             <div className="sign-into-inputs">
 
-              {objectUser && <>
-                <TextInput onChange={handleChange}   placeHolder={objectUser.restaurant.name} valueName={formValues['User name']} labelName={'User name'} />
-                <PasswordInput onChange={handleChange}  />
-                <TextInput onChange={handleChange}   placeHolder={'Name of the restourant'} labelName={'Restourant Name'} />
-                <TextInput onChange={handleChange}  placeHolder={'Enter the street, number and the city'} labelName={'Adress'} />
-                <div style={{ flexFlow: 'row', width: '530px' }}>
-                  <p className={styles.nameField}> Select days</p>
-                  <Selector selectors={weekDays} nameButton={'Select a day'} />
-                  <div className={styles.to}>
-                    to
+              {objectRestaurant && <>
+                 {/* <TextInput onChange={handleChange} placeHolder={'Name of User'} valueName={formValues['User name']} labelName={'User name'} name={'User name'} /> 
+                <PasswordInput onChange={handleChange} />  */}
+                <div className="input-imagegroup">
+                  <label htmlFor="imgload" className="input-subtitle">
+                    Logo
+                  </label>
+                  <div className="input-uploader">
+                    <ImgUploaderNew
+                      id='logo'
+                      type="url"
+                      value={formValues['logo']}
+                      onChange={handleChange}
+                      src={objectRestaurant?.restaurant_data?.logo || logo}
+                    />
                   </div>
-                  <Selector selectors={weekDays} nameButton={'Select a day'} />
-                  </div>
-                  <div style={{ flexFlow: 'row', width: '530px' }}>
-                  <p className={styles.nameField}> Select a time</p>
-                  <Selector selectors={workTime} nameButton={'Select a time'}/>
-                  <div className={styles.to}>
-                    to
-                  </div>
-                  <Selector selectors={workTime} nameButton={'Select a time'}/>
-                  </div>
+                </div>
+                <TextInput onChange={handleChange} placeHolder={objectRestaurant?.restaurant_data?.name || 'Name'} labelName={'Restourant Name'} name={'name'} />
+                <TextInput onChange={handleChange} placeHolder={objectRestaurant?.restaurant_data?.address || 'Enter the street, number and the city'} labelName={'Adress'} name={'address'} />
+
+
+                <div>
+                  <h2 className="title">Schedule</h2>
+
+                  <Schedule time={true} name={'time'} optionStart={objectRestaurant?.restaurant_data?.start_time} optionEnd={objectRestaurant?.restaurant_data?.end_time} onChange={handleChange} />
+                  <Schedule time={false} name={'day'} optionStart={objectRestaurant?.restaurant_data?.start_day} optionEnd={objectRestaurant?.restaurant_data?.end_day} onChange={handleChange} />
+                </div>
               </>}
             </div>
           </div>
         </div>
         <div>
           <Button variant="custom">Back</Button>
-          <Button>Save</Button>
+          <Button onClick={handleSubmitData}>Save</Button>
         </div>
       </div>
 

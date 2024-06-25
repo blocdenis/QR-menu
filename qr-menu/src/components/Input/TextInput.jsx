@@ -1,6 +1,6 @@
 
 import CreateInput from "./CreateInput";
-function TextInput({onChange, placeHolder, labelName, valueName}){
+function TextInput({onChange, placeHolder, labelName, valueName, name}){
     const handleChange = (e) => {  
         onChange(e) ; 
     }; 
@@ -14,7 +14,7 @@ function TextInput({onChange, placeHolder, labelName, valueName}){
 value={valueName}
 type='text' 
 placeholder={placeHolder} 
-name={labelName}
+name={name}
 onChange={handleChange}
 
 />
