@@ -47,6 +47,7 @@ const SignUp = ({ checkUser }) => {
     if (Object.keys(error).length === 0) {
       try {
         const register = await submitForm(formValues);
+        console.log(register)
         checkStatus(register);
       } catch (error) {
         throw error;
