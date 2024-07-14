@@ -25,10 +25,10 @@ function Setting() {
     getFullInfoRestaurant()
       .then(allRestaurantData => {
         setobjectRestaurant(allRestaurantData);
-        const restaurantName = objectRestaurant.restaurant_data['name'];
+        const restaurantName = objectRestaurant['name'];
         setFormValues(prevValues => ({
           ...prevValues,
-          'name': restaurantName
+          "name": restaurantName
         }));
       })
       .catch(error => {
@@ -69,19 +69,19 @@ function Setting() {
                       type="url"
                       value={formValues['logo']}
                       onChange={handleChange}
-                      src={objectRestaurant?.restaurant_data?.logo || logo}
+                      src={objectRestaurant?.logo || logo}
                     />
                   </div>
                 </div>
-                <TextInput onChange={handleChange} placeHolder={objectRestaurant?.restaurant_data?.name || 'Name'} labelName={'Restourant Name'} name={'name'} />
-                <TextInput onChange={handleChange} placeHolder={objectRestaurant?.restaurant_data?.address || 'Enter the street, number and the city'} labelName={'Adress'} name={'address'} />
+                <TextInput onChange={handleChange} placeHolder={objectRestaurant?.name || 'Name'} labelName={'Restourant Name'} name={'name'} />
+                <TextInput onChange={handleChange} placeHolder={objectRestaurant?.address || 'Enter the street, number and the city'} labelName={'Adress'} name={'address'} />
 
 
                 <div>
                   <h2 className="title">Schedule</h2>
 
-                  <Schedule time={true} name={'time'} optionStart={objectRestaurant?.restaurant_data?.start_time} optionEnd={objectRestaurant?.restaurant_data?.end_time} onChange={handleChange} />
-                  <Schedule time={false} name={'day'} optionStart={objectRestaurant?.restaurant_data?.start_day} optionEnd={objectRestaurant?.restaurant_data?.end_day} onChange={handleChange} />
+                  <Schedule time={true} name={'time'} optionStart={objectRestaurant?.start_time} optionEnd={objectRestaurant?.end_time} onChange={handleChange} />
+                  <Schedule time={false} name={'day'} optionStart={objectRestaurant?.start_day} optionEnd={objectRestaurant?.end_day} onChange={handleChange} />
                 </div>
               </>}
             </div>

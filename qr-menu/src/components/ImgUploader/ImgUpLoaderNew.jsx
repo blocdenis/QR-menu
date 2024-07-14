@@ -68,7 +68,7 @@ function ImgUploaderNew({ id, value, onChange, src }) {
           <div className="uploaded-image-container">
             <div className="action">
               <IconShow />
-              <IconDeleteImg />
+              <IconDeleteImg onclick={()=>setSelectedImage(false)} />
             </div>
             <img className="imgloaded" src={selectedImage ? selectedImage : `data:image/jpeg;base64,${src}`} alt="Uploaded Image" />
           </div>
