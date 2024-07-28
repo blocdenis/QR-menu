@@ -16,7 +16,6 @@ const style = {
         zIndex: "-1"
     },
     logo: {
-        width: "clamp(30vw, 60%, 43vw)", 
         borderRadius: "50%"
     }
 
@@ -68,7 +67,7 @@ export const WelcomeScreen = () => {
                     Table #{data.table}
                 </p>
 
-                <Link to="">
+                <Link to={`${location.pathname}/view`}>
                     <button
                         style={{
                             width: "100%",

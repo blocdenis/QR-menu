@@ -21,6 +21,10 @@ const Categories = lazy(() => import('./pages/Categories/Categories'));
 const Support = lazy(() => import('./pages/Support/Support'));
 const CreatNewMenu = lazy(() => import('./pages/CreatNewMenu/CreatNewMenu'));
 const ClientPage = lazy(() => import('./pages/Client/MainClient'));
+const RestaurantMenu = lazy(() => import('./pages/Client/RestaurantMenu'))
+const RestaurantCategory = lazy(() => import('./pages/Client/RestaurantCategory/RestaurantCategory'))
+const RestaurantDish = lazy(() => import('./pages/Client/RestaurantDishDetail/RestaurantDish'))
+
 const Root = () => {
   const url = useURL();
   return (
@@ -39,7 +43,9 @@ const Root = () => {
         <Route path="/support" element={<Support />} />
         <Route path="/creatmenu" element={<CreatNewMenu />} />
         <Route path={url.Client.path} element={<ClientPage/>}/>
-        <Route path={url.ClientMenu.path} />
+        <Route path={url.ClientMenu.path} element={<RestaurantMenu/>}/>
+        <Route path={url.ClientCategory.path} element={<RestaurantCategory/>}/>
+        <Route path={url.ClientDish.path} element={<RestaurantDish/>}/>
       </Route>
     </Routes>
   );

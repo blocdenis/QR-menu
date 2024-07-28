@@ -1,11 +1,14 @@
-import { WelcomeScreen } from "./WelcomeScreen"
-import { ReastaurantDataContext } from "../MainClient";
-import { ClientFooter } from "./Footer";
+import { ReastaurantDataContext } from "./RestaurantDish.jsx";
+
+
 import { useContext } from "react";
+import { DishDetail } from "./DishDetail";
+import {ClientHeader } from "./Header";
+import { ClientFooter } from "./Footer";
 
 
 
-export const RestaurantHome = () => {
+export const RestaurantDish = () => {
     const data = useContext(ReastaurantDataContext);
 
     if (!data) return <h1 style={{height: "100vh", textAlign: "center"}}>
@@ -14,9 +17,11 @@ export const RestaurantHome = () => {
 
     return (
         <div style={{ width: "393px", margin: "0 auto"}}>  
-            <WelcomeScreen/>
+            <ClientHeader/>
+            <DishDetail/>
             <ClientFooter/>
         </div>
     )
+
 
 }
