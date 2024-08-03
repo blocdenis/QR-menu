@@ -1,6 +1,6 @@
 import { useState, createContext, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ReastaurantDataContext } from "./RestaurantDish";
+import { ReastaurantDataContext } from "../ClientData";
 import minus from "../../../assets/client/icon-minus.png"
 import plus from "../../../assets/client/icon-plus.png"
 import heart from "../../../assets/client/heart.png"

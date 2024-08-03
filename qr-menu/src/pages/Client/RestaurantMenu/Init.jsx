@@ -1,9 +1,9 @@
 
-import { ReastaurantDataContext } from "../RestaurantMenu";
-import { ClientFooter } from "./Footer";
-import { ClientHeader } from "./Header";
-import { ClientSearch } from "./Search"
-import { ListRestaurantMenu } from "./ListRestaurantMenu"
+import { ReastaurantDataContext } from "../ClientData";
+import { ClientFooter } from "../components/Footer";
+import { ClientHeader } from "../components/Header";
+import { ClientSearch } from "../components/Search";
+import { ListRestaurantMenu } from "./ListRestaurantMenu";
 import { useContext } from "react";
 
 
@@ -20,7 +20,6 @@ export const RestaurantMenu = () => {
             <ClientHeader />
             <ClientSearch />
             <ListRestaurantMenu />
-
             <ClientFooter />
         </div>
     )

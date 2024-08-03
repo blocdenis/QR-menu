@@ -1,6 +1,8 @@
 import { useContext } from "react";
-import { ReastaurantDataContext } from "./RestaurantCategory";
+import { ReastaurantDataContext }  from "../ClientData";
 import { BsGeoAlt } from "react-icons/bs";
+
+
 
 
 const style = {

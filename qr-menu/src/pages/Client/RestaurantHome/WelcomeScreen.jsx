@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { ReastaurantDataContext } from "../MainClient";
+import { ReastaurantDataContext } from "../ClientData";
 import background from "../../../assets/client/HomeBackground.png"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
+
 
 
 const style = {

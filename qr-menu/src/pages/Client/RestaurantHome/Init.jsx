@@ -1,6 +1,6 @@
 import { WelcomeScreen } from "./WelcomeScreen"
-import { ReastaurantDataContext } from "../MainClient";
-import { ClientFooter } from "./Footer";
+import { ReastaurantDataContext }  from "../ClientData";
+import { ClientFooter } from "../components/Footer";
 import { useContext } from "react";
 
 

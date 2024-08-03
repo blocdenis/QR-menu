@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ReastaurantDataContext } from "./RestaurantCategory";
+import { ReastaurantDataContext } from "../ClientData";
 
 export const CategoryDetail = () => {
     const { categoryName } = useParams();

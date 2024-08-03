@@ -1,10 +1,9 @@
-import { ReastaurantDataContext } from "./RestaurantDish.jsx";
-
-
+import { ReastaurantDataContext } from "../ClientData";
+import { ClientFooter } from "../components/Footer";
+import { ClientHeader } from "../components/Header";
 import { useContext } from "react";
 import { DishDetail } from "./DishDetail";
-import {ClientHeader } from "./Header";
-import { ClientFooter } from "./Footer";
+
 
 
 

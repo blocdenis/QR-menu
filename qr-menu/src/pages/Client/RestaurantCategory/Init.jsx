@@ -1,7 +1,7 @@
-import { ReastaurantDataContext } from "./RestaurantCategory.jsx";
-import { ClientFooter } from "./Footer.jsx";
-import { ClientHeader } from "./Header.jsx";
-import { ClientSearch } from "../RestaurantMenu/Search.jsx"
+import { ReastaurantDataContext } from "../ClientData";
+import { ClientFooter } from "../components/Footer";
+import { ClientHeader } from "../components/Header";
+import { ClientSearch } from "../components/Search";
 
 import { useContext } from "react";
 import { CategoryDetail } from "./CategoryDetail.jsx";

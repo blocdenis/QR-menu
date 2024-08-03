@@ -1,9 +1,6 @@
 import { useContext } from "react";
-import { ReastaurantDataContext } from "../RestaurantMenu";
+import { ReastaurantDataContext }  from "../ClientData";
 import { Link } from 'react-router-dom';
-
-
-
 import headerleft from "../../../assets/client/headerleft.png";
 
 export const ClientHeader = () => {
@@ -13,7 +10,7 @@ export const ClientHeader = () => {
 
     return (
         <div style={{ 
-            width: '100%', 
+            width: '393px', 
             height: '91px', 
             padding: '0 20px', 
             display: 'flex', 
