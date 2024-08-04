@@ -1,16 +1,23 @@
-import  {useState} from 'react'
+import { useState, useEffect } from 'react';
 import './InputPrice.scss';
-function InputPrice() {
+function InputPrice({ onChange, value }) {
   const [price, setPrice] = useState('');
-  const [currency, setCurrency] = useState('UAH');
-
+  const [currency, setCurrency] = useState('');
+  useEffect(() => {
+    setPrice(value.price || '');
+    setCurrency(value.currency || '');
+  }, [value]);
   const handlePriceChange = event => {
-    const newPrice = event.target.value.replace(/[^0-9.]/g, '');
-    setPrice(newPrice);
+    const newValue = event.target.value;
+    setPrice(newValue);
+    onChange({ price: newValue, currency });
+    console.log(price)
   };
 
   const handleCurrencyChange = event => {
-    setCurrency(event.target.value);
+    const newValue = event.target.value;
+    setCurrency(newValue);
+    onChange({ price, currency: newValue });
   };
   const getCurrencySymbol = () => {
     switch (currency) {
@@ -21,35 +28,41 @@ function InputPrice() {
       case 'EUR':
         return '€';
       default:
-        return '';
+        return '₴';
     }
   };
 
   return (
     <div>
-      <div >
-          <input
-            id="price"
-            className="input-price style-input"
-            type="number"
-            name="price"
-            step="1"
-            min="0"
-            value={price}
-            onChange={handlePriceChange}
-            placeholder="Enter price"
-          />
-          <div className='currency-symbol '>
+      <div>
+        <input
+          id="id"
+          className="input-price style-input"
+          type="number"
+          name="price"
+          step="1"
+          min="0"
+          value={price}
+          onChange={handlePriceChange}
+          placeholder="Enter price"
+        />
+        <div className="currency-symbol ">
           <span className="sumbol-style ">{getCurrencySymbol()}</span>
-          <select className="style-input" value={currency} onChange={handleCurrencyChange}>
+          <select
+            id='id'
+            className="style-input color-currency"
+            type="text"
+            value={currency}
+            onChange={handleCurrencyChange}
+          >
             <option value="UAH">UAH</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
           </select>
-          </div>
         </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default InputPrice
+export default InputPrice;

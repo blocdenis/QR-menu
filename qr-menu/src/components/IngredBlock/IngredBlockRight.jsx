@@ -3,13 +3,14 @@ import './IngredBlockRight.scss';
 import IconClose from '../../SVG/IconClose.jsx';
 import IconSelectIngred from '../../SVG/IconSelectIngred';
 
-export default function IngredBlockRight() {
+// eslint-disable-next-line react/prop-types
+export default function IngredBlockRight({closeModal}) {
   return (
     <div>
       <div className="selectright-block">
         <div className="titleselect-block">
           <h1 className="title-style">Selected</h1>
-          <button className="btn-clear">Clear</button>
+          <button  className="btn-clear">Clear</button>
         </div>
         <hr className="line-style"></hr>
         <div className="selected-li">
@@ -21,7 +22,7 @@ export default function IngredBlockRight() {
                   Item 1
                 </label>
               </div>
-              <div>
+              <div  onClick={closeModal}>
                 <IconClose />
               </div>
             </li>
@@ -32,7 +33,7 @@ export default function IngredBlockRight() {
                   Item 1
                 </label>
               </div>
-              <div>
+              <div  onClick={closeModal}>
                 <IconClose />
               </div>
             </li>

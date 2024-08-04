@@ -2,12 +2,13 @@ import './InputSearch.scss';
 import IconClose from '../../SVG/IconClose.jsx';
 import IconSearch from '../../SVG/IconSearch.jsx';
 
-function InputSearch() {
+// eslint-disable-next-line react/prop-types
+function InputSearch({closeModal}) {
   return (
     <div>
       
-        <div className="iconclose">
-          <IconClose />
+        <div className="iconclose" onClick={closeModal}>
+          <IconClose/>
         </div>
         <div className="input-search style-input">
           <div className="input-group">

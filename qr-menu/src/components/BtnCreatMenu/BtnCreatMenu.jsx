@@ -2,25 +2,30 @@ import './BtnCreatMenu.scss';
 import Button from '../../components/Button/Button.jsx';
 import { useNavigate } from 'react-router-dom';
 
-function BtnCreatMenu() {
+// eslint-disable-next-line react/prop-types
+function BtnCreatMenu({ onSubmit, onSubmitCategor}) {
   const navigate = useNavigate();
+
   const openMenu = () => {
     navigate('/menu');
   };
-  const saveMenu = () => {
-    navigate('/menu');
+  const handleSave = () => {
+    if (onSubmit) {
+      onSubmit();
+    }
+    if (onSubmitCategor) {
+      onSubmitCategor();
+    }
+    console.log('Submit')
   };
-
   return (
-    <div>
-      <div className="block-btn">
-        <Button className="btn-backmenu" onClick={openMenu} variant="custom">
-          Back to Menu
-        </Button>
-        <Button className="btn-savemenu" onClick={saveMenu}>
-          Save
-        </Button>
-      </div>
+    <div className="block-btn">
+      <Button className="btn-backmenu" onClick={openMenu} variant="custom">
+        Back to Menu
+      </Button>
+      <Button className="btn-savemenu" onClick={handleSave}>
+        Save
+      </Button>
     </div>
   );
 }

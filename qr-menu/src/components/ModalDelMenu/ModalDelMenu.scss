@@ -1,0 +1,53 @@
+@use "../../scss/abstracts/" as *;
+#modal-show {
+  display: flex;
+  // flex-direction: column;
+ justify-content: center;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 210px;
+  background-color: $color-modal-menu;
+}
+.modal-div {
+  padding: 24px 24px 96px 24px;
+}
+.title-style {
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.modal-content {
+  padding-bottom: 32px;
+  color: $color-grey-text;
+  font: $regular16;
+}
+h3 {
+  font: $medium18;
+  color: $color-black;
+}
+.style-btn {
+  display: flex;
+  flex-direction: row;
+  float: right;
+}
+.modal-btn {
+  width: 98px;
+  height: 38px;
+  border: none;
+  border-radius: 4px;
+  gap: 8px;
+}
+.btn-cancel {
+  background-color: $color-modal-menu;
+  font: $medium16;
+  color: $color-grey-text;
+}
+.btn-delete {
+  background-color: $color-btn-modal;
+  color: $color-white;
+  font: $medium16;
+}

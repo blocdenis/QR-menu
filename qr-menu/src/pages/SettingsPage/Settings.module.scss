@@ -8,19 +8,19 @@ $color-elips: #fff6f3;
 $color-green: #47b881;
 $color-neutral: #fafafa;
 
-.container-wrap {
+.container_wrap {
   position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   height: 100%;
-  width: 100%;
+  width: 58.125rem;
   padding: 0px;
 }
 
-.container-page {
+.container_page {
   width: 100%;
-  background: $color-neutral;
+ 
 
   .page-right {
     width: 77%;
@@ -35,21 +35,28 @@ $color-neutral: #fafafa;
 }
 .pageTitle {
   padding-top: 57px;
-  // padding-left: 88px;
+  padding-left: 88px;
   color: $Primary-600;
   font-family: 'Poppins';
   font-size: 35px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  text-align: center;
+
 }
 section{
 
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
 
+
+}
+.to{
+  width: 40px; 
+  text-align: center;
+}
+.nameField{
+  // margin-right:20px;
+  align-content: center
 }

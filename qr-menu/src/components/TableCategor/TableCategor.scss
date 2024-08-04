@@ -1,0 +1,119 @@
+@use "../../scss/abstracts/" as *;
+.block-categor {
+  display: flex;
+  width: 913px;
+  height: 225.553px;
+  padding: 0px 40px 0px 80px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 100px;
+
+  .block-name {
+    padding-bottom: 1px;
+  }
+  .titlename-categor {
+    font: $medium16;
+    color: $color-grey-text;
+  }
+  .subtitlename-categor {
+    width: 726px;
+    height: 59px;
+    flex-shrink: 0;
+    border: 0.6px solid $color-input;
+    border-radius: 6px;
+    margin-bottom: 40px;
+    padding-top: 19px;
+    padding-left: 46px;
+  }
+  .inputcateg {
+    border: none;
+    color: $color-input-text;
+    font: $regular14;
+
+    &:hover {
+      border: 0.6px solid $Primary-600;
+    }
+    &::selection {
+      border: 0.6px solid $Primary-600;
+    }
+  }
+  .block-categcolor {
+    width: 396px;
+
+    .divname-categor {
+      width: 100%;
+      padding-left: 0px;
+      margin-bottom: 33px;
+    }
+    .block-choosecolor {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .square-block-categ {
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 234px;
+      height: 36px;
+      padding-bottom: 0px;
+      gap: 22px;
+    }
+    .style-square {
+      display: flex;
+      width: 34px;
+      height: 32px;
+      padding: 2px 4px;
+      border-radius: 4px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .size-square-color1 {
+      background-color: $color-span-salad;
+    }
+    .size-square-color2 {
+      background-color: $color-span-meat;
+    }
+    .size-square-color3 {
+      background-color: $color-span-burger;
+    }
+    .size-square-color4 {
+      background-color: $color-span-fish;
+    }
+    .iconcheck-style {
+      padding: 5px 8px;
+    }
+    .div-color-btn {
+      display: flex;
+      width: 106px;
+      height: 57px;
+      padding: 1px 6px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 2px;
+      .h2-namebtn {
+        font: $regular14;
+        
+      }
+    }
+    .div-color-btn-color1 {
+      background-color: $color-span-salad;
+      color: $color-span-salad-text;
+    }
+    
+    .div-color-btn-color2 {
+      background-color: $color-span-meat;
+      color: $color-span-text-meat;
+    }
+    
+    .div-color-btn-color3 {
+      background-color: $color-span-burger;
+      color: $color-span-text-burger;
+    }
+    
+    .div-color-btn-color4 {
+      background-color: $color-span-fish;
+      color: $color-span-fish-text;
+    }
+  }
+}

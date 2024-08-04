@@ -1,103 +1,183 @@
 import './CreatMenuInput.scss';
-import ImgUploader from '../ImgUploader/ImgUploader';
-import InputPrice from '../InputPrice/InputPrice';
-import Button from '../../components/Button/Button.jsx';
-import InputSearch from '../InputSearch/InputSearch.jsx';
-import IngredBlockRight from '../IngredBlock/IngredBlockRight.jsx';
-import IngredBlockLeft from '../IngredBlock/IngredBlockLeft.jsx';
+import ImgUploader from '../ImgUploader/ImgUploader.jsx';
+import InputPrice from '../InputPrice/InputPrice.jsx';
 import InputWeight from '../InputWeight/InputWeight.jsx';
-import { useState } from 'react';
-function CreatMenuInput() {
-  const openCreatMenu = () => {};
-  const [nameMenu, setNameMenu] = useState('');
-  console.log(nameMenu);
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [customCategory, setCustomCategory] = useState('');
-  const [categories, setCategories] = useState(['Category 1', 'Category 2', 'Category 3']);
+import InputCategor from '../InputCategory/InputCategor.jsx';
+import InputMenu from '../InputMenu/InputMenu.jsx';
+import BtnCreatMenu from '../../components/BtnCreatMenu/BtnCreatMenu.jsx';
+import { useState, useEffect } from 'react';
+import TextAddIngred from '../../components/TextAddIngred/TextAddIngred';
+import BtnAddIngred from '../BtnAddIngred/BtnAddIngred.jsx';
 
-  const handleSelectChange = (event) => {
-    setSelectedCategory(event.target.value);
-  };
-
-  const handleCustomCategoryChange = (event) => {
-    setCustomCategory(event.target.value);
-  };
-
-  const handleAddCustomCategory = () => {
-    if (customCategory.trim() !== '' && !categories.includes(customCategory)) {
-      setCategories([...categories, customCategory]);
-      setSelectedCategory(customCategory);
-      setCustomCategory('');
+// eslint-disable-next-line react/prop-types
+function CreatMenuInput({
+  onSubmit,
+  rows,
+  setRows,
+  closeCreatMenu,
+  editRowData,
+  rowsCategor,
+}) {
+  const [form, setForm] = useState(
+    editRowData || {
+      id: Date.now(),
+      menuName: '',
+      categories: 'Meat',
+      img: '',
+      price: '',
+      currency: '',
+      ingred: '',
+      weight: '',
     }
+  );
+  const [id, setId] = useState(Date.now());
+  const [error, setError] = useState('');
+  const [categories, setNewCategor] = useState('');
+
+  const validForm = () => {
+    let errorField = [];
+    if (!form.menuName || !form.categories) {
+      errorField.push('Please include fields!');
+    }
+    const existingDish = rows.find(
+      row =>
+        row.menuName === form.menuName && row.categories === form.categories
+    );
+    if (existingDish) {
+      errorField.push('This dish already exists!');
+    }
+    if (errorField.length > 0) {
+      setError(errorField.join(', '));
+      return false;
+    }
+    setError('');
+    return true;
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (!validForm()) {
+      return;
+    }
+    const newRow = {
+      id: Date.now(),
+      menuName: form.menuName,
+      categories: form.categories,
+      img: form.img,
+      price: form.price,
+      currency: form.currency,
+      ingred: form.ingred,
+      weight: form.weight,
+    };
+    setRows(rows => [...rows, newRow]);
+    setId(Date.now(id));
+    setForm('');
+    closeCreatMenu();
+    onSubmit(form);
+    console.log(newRow, 'save');
+  };
+  const handlePriceChange = priceData => {
+    setForm({ ...form, price: priceData.price, currency: priceData.currency });
+  };
+  const handleImageChange = newImage => {
+    setForm({ ...form, img: newImage });
+    console.log('img added');
+  };
+  const addIngred = newIngredient => {
+    if (newIngredient) {
+      setForm({ ...form, ingred: newIngredient });
+    }
+    setForm({ ...form, ingred: '' });
+    console.log('HELLO', form.ingred);
+  };
+  useEffect(() => {
+    if (categories && categories.length > 0) {
+      setNewCategor(categories);
+    }
+  }, [categories]);
+  useEffect(() => {
+    console.log(rowsCategor, 'rowsCategor');
+  }, [rowsCategor]);
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <div className="input-menugroup">
-        <label id="menu" className="input-subtitle">
+        <label htmlFor="menu" className="input-subtitle">
           Name of the menu
         </label>
-        <input
-          id="namemenu"
-          className="input-menu style-input"
+        <InputMenu
+          id={`menuName-${form.id}`}
           type="text"
-          value={nameMenu}
-          onChange={e => setNameMenu(e.target.value)}
-          placeholder="ex “Fresh pasta with seefood”"
+          value={form.menuName}
+          onChange={e => setForm({ ...form, menuName: e.target.value })}
         />
       </div>
       <div className="input-categorygroup">
         <label htmlFor="category" className="input-subtitle">
           Category
         </label>
-        {/* <select id="category" className="select-categ style-input"> */}
-        <select className="select-categ style-input" value={selectedCategory} onChange={handleSelectChange}>
-        {categories.map((category) => (
-          <option key={category} value={category}>
-            {category}
-          </option>
-        ))}
-      {/* </select> */}
-      <input
-        type="text"
-        value={customCategory}
-        onChange={handleCustomCategoryChange}
-        placeholder="Enter custom category"
-      />
-        </select>
+        {rowsCategor?.length > 0 && (
+          <InputCategor
+            id={`categories-${form.id}`}
+            type="text"
+            value={form.categories}
+            onChange={e => setForm({ ...form, categories: e.target.value })}
+            options={rowsCategor.map(row => ({
+              value: row.categor,
+              label: row.categor,
+            }))}
+          />
+        )}
       </div>
       <div className="input-imagegroup">
         <label htmlFor="imgload" className="input-subtitle">
           Image of the dish
         </label>
-        <ImgUploader />
+        <div className="input-uploader">
+          <ImgUploader
+            id={`img-${form.id}`}
+            type="url"
+            value={form.img}
+            onChange={handleImageChange}
+          />
+        </div>
       </div>
       <div className="input-pricegroup">
         <label htmlFor="price" className="input-subtitle">
           Price
         </label>
-        <InputPrice />
+        <InputPrice
+          className="input-ingred style-input"
+          id={`price-${form.id}`}
+          type="text"
+          value={{ price: form.price, currency: form.currency }}
+          onChange={handlePriceChange}
+        />
       </div>
       <div className="input-ingredgroup">
         <label htmlFor="ingredients" className="input-subtitle">
           Ingredients
         </label>
-        <div className="input-ingred style-input" type="text"></div>
-        <div>
-          <Button leftIcon={true} size="medium" onClick={openCreatMenu}>
-            Add ingredient{''}
-          </Button>
-        </div>
-        <div className="allingred-group style-input">
-          <InputSearch />
-          <div className="ingred-block">
-            <IngredBlockLeft />
-            <IngredBlockRight />
-          </div>
-        </div>
+        <TextAddIngred
+          className="input-ingred style-input"
+          type="text"
+          id={`ingred-${form.id}`}
+          value={form.ingred}
+          onChange={e => setForm({ ...form, ingred: e.target.value })}
+        />
+        <BtnAddIngred
+          addIngred={addIngred}
+          ingredForm={form.ingred}
+          type="button"
+        />
       </div>
       <div className="input-weightgroup">
-        <InputWeight />
+        <h3 className="input-subtitle">Weight</h3>
+        <InputWeight
+          id={`weight-${form.id}`}
+          type="text"
+          value={form.weight}
+          onChange={e => setForm({ ...form, weight: e.target.value })}
+        />
       </div>
       <div className="input-commentgroup">
         <label htmlFor="comment" className="input-subtitle">
@@ -111,7 +191,16 @@ function CreatMenuInput() {
           placeholder="ex “no ketchup”, “extra salt”"
         />
       </div>
-    </>
+
+      {error && (
+        <div className="error">
+          <u>{error}</u>
+        </div>
+      )}
+      <div className="btn-creatmenu-contein">
+        <BtnCreatMenu type="submit" />
+      </div>
+    </form>
   );
 }
 

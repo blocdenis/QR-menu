@@ -1,0 +1,84 @@
+@use "../../scss/abstracts/" as *;
+#modal-show {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 210px;
+  background-color: $color-white;
+}
+.modal-namemenu {
+  width: 100%;
+}
+.modal-text{
+  padding-bottom: 26px;
+}
+.style-closeicon {
+  padding: 0 10px;
+  flex-direction: row;
+  display: flex;
+  justify-content: flex-end;
+}
+.modal-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+  color: $color-grey-text;
+  font: $regular16;
+  border: 2px solid $color-border-modal;
+  border-radius: 5px;
+}
+.modal-left{
+padding: 75px 44px 74px 36px;
+}
+.modal-right{
+  padding: 49px 32px 48px 0;
+}
+.modal-categor{
+  padding-bottom: 32px;
+}
+// span {
+//   font: $medium18;
+//   color: $color-black;
+// }
+.style-btn {
+  display: flex;
+  flex-direction: row;
+  float: right;
+}
+.modal-btn {
+  width: 98px;
+  height: 38px;
+  border: none;
+  border-radius: 4px;
+  gap: 8px;
+}
+.btn-cancel {
+  background-color: $color-modal-menu;
+  font: $medium16;
+  color: $color-grey-text;
+}
+.btn-delete {
+  background-color: $color-btn-modal;
+  color: $color-white;
+  font: $medium16;
+}
+.modal-price {
+  background-color: $color-price-bgcolor;
+  color: $color-price-color;
+ margin-top: 26px;
+}
+.modal-style {
+  color: $color-grey-text;
+  font: $medium16;
+}
+.modal-titlemenu {
+  font: $bold30;
+  color: $color-titlemenu-modal;
+  padding-bottom: 12px;
+}
+.style-closeicon {
+}
