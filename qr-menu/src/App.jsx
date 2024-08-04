@@ -19,7 +19,11 @@ const SignInSignUp = lazy(() => import('./pages/Sign/SignInSignUp'));
 const Orders = lazy(() => import('./pages/Orders/Orders'));
 const Categories = lazy(() => import('./pages/Categories/Categories'));
 const Support = lazy(() => import('./pages/Support/Support'));
-// const EditPage = lazy(() => import('./pages/EditPage/EditPage'));
+const CreatNewMenu = lazy(() => import('./pages/CreatNewMenu/CreatNewMenu'));
+const ClientPage = lazy(() => import('./pages/Client/MainClient'));
+const RestaurantMenu = lazy(() => import('./pages/Client/RestaurantMenu'))
+const RestaurantCategory = lazy(() => import('./pages/Client/RestaurantCategory/RestaurantCategory'))
+const RestaurantDish = lazy(() => import('./pages/Client/RestaurantDishDetail/RestaurantDish'))
 
 const Root = () => {
   const url = useURL();
@@ -37,7 +41,11 @@ const Root = () => {
         <Route path="/orders" element={<Orders />} />
         <Route path="/categor" element={<Categories />} />
         <Route path="/support" element={<Support />} />
-        {/* <Route path="/editpage" element={<EditPage />} /> */}
+        <Route path="/creatmenu" element={<CreatNewMenu />} />
+        <Route path={url.Client.path} element={<ClientPage/>}/>
+        <Route path={url.ClientMenu.path} element={<RestaurantMenu/>}/>
+        <Route path={url.ClientCategory.path} element={<RestaurantCategory/>}/>
+        <Route path={url.ClientDish.path} element={<RestaurantDish/>}/>
       </Route>
     </Routes>
   );

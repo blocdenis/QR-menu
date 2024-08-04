@@ -1,4 +1,4 @@
-const API_DOMAIN = 'http://127.0.0.1:8000';
+const API_DOMAIN = 'http://localhost';
 const API_PREFIX = '/api/admin/';
 const CONCATE = API_DOMAIN + API_PREFIX;
 export const COOKIE_KEY = 'token';
@@ -42,3 +42,6 @@ export const INGREDIENTS_GET = CONCATE + 'get/ingredients';
 export const INGREDIENTS_DELETE = (ingredient_id, dish_id) =>
   CONCATE +
   `delete/ingredients?ingredient_id=${ingredient_id}&dish_id=${dish_id}`;
+
+export const CLIENT_PAGE = (restaurant, id, table) => 
+  API_DOMAIN + `/api/menu/${restaurant}/${id}/${table}`;
