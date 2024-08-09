@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ReastaurantDataContext } from "../ClientData";
 import background from "../../../assets/client/HomeBackground.png"
 import { Link, useLocation } from 'react-router-dom';
-
+import defaultLogo from "../../../assets/client/default_logo.jpg"
 
 
 const style = {
