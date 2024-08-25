@@ -5,12 +5,29 @@ import { AppLayout } from '../../layouts/AppLayout/AppLayout.jsx';
 import Button from '../../components/Button/Button.jsx';
 import TableCategor from '../../components/TableCategor/TableCategor.jsx';
 import CreatMenuInput from '../../components/CreatMenuInput/CreatMenuInput.jsx';
+import { CATEGORY_GET } from '../../Fetch/settings.js';
+import axios from 'axios';
 
 function Categories() {
-  const [modalOpenDelCategor, setModalOpenDelCategor] = useState(false);
+  const [modalOpenDelCategor, setModalOpenDelCategor] = useState({});
   const [rowsCategor, setRowsCategor] = useState([]);
   const [modalOpenCategor, setModalOpenCategor] = useState(false);
   const [isAnyModalOpen, setIsAnyModalOpen] = useState(false);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(CATEGORY_GET, {
+        withCredentials: true, 
+      });
+      setRowsCategor(response.data.categories || []);
+    } catch (error) {
+      console.error('Ошибка при получении категорий:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const openCreatCategor = () => {
     setModalOpenCategor(true);
@@ -20,30 +37,43 @@ function Categories() {
     setRowsCategor([...rowsCategor, newCategory]);
     console.log('Get NewCategor');
   };
+
   const openModalDelCateg = id => {
     setModalOpenDelCategor(prevState => ({
       ...prevState,
       [id]: true,
     }));
   };
+
   const closeModalCategor = id => {
     setModalOpenDelCategor(prevState => ({
       ...prevState,
       [id]: false,
     }));
   };
+
   const handleDelateCategor = id => {
     let delRow = rowsCategor.filter(item => item.id !== id);
     setRowsCategor(delRow);
     console.log(delRow);
     closeModalCategor(id);
   };
+
   useEffect(() => {
     const anyModalOpen = Object.values(modalOpenDelCategor).some(
       isOpen => isOpen
     );
     setIsAnyModalOpen(anyModalOpen);
   }, [modalOpenDelCategor]);
+  
+  const colorMap = {
+
+    '229-245-236': 'color1', 
+    '255-0-0': 'color2',     
+    '255-234-179': 'color3',   
+    '228-242-255': 'color4'   
+  };
+
   return (
     <AppLayout>
       <div className={styles.container_wrap}>
@@ -51,7 +81,7 @@ function Categories() {
           <h1 className={styles.page_title}>Categories</h1>
           <div>
             <Button leftIcon={true} size="medium" onClick={openCreatCategor}>
-              Creat a new category{''}
+              Create a new category
             </Button>
           </div>
 
@@ -60,17 +90,17 @@ function Categories() {
 
         <div className={styles.list_categ}>
           {rowsCategor.map(item => {
-            const categorText = item.categor
-              ? item.categor.charAt(0).toUpperCase() + item.categor.slice(1)
+            const categorText = item.category
+              ? item.category.charAt(0).toUpperCase() + item.category.slice(1)
               : '';
+            const colorKey = item.color.join('-');
+            const colorClass = colorMap[colorKey] || 'default-color';
 
             return (
               <div key={item.id}>
                 <div
                   onClick={() => openModalDelCateg(item.id)}
-                  className={`${styles.field_category} ${
-                    styles[`div-color-btn-${item.color}`]
-                  }`}
+                  className={`${styles.field_category} ${styles[`div-color-btn-${colorClass}`]}`}
                 >
                   <span>{categorText}</span>
                 </div>
@@ -80,7 +110,7 @@ function Categories() {
                     closeModalCategor={() => closeModalCategor(item.id)}
                     id={item.id}
                     handleDelete={() => handleDelateCategor(item.id)}
-                    categor={item.categor}
+                    categor={item.category}
                   />
                 )}
               </div>
@@ -97,13 +127,11 @@ function Categories() {
             />
           )}
         </div>
-        <div style={{display:'none'}}>
-        <CreatMenuInput
-          rowsCategor={rowsCategor}
-          
-        />
+        <div style={{ display: 'none' }}>
+          <CreatMenuInput
+            rowsCategor={rowsCategor}
+          />
         </div>
-        
       </div>
     </AppLayout>
   );

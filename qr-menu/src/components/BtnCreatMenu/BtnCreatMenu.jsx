@@ -1,13 +1,11 @@
 import './BtnCreatMenu.scss';
 import Button from '../../components/Button/Button.jsx';
-import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 function BtnCreatMenu({ onSubmit, onSubmitCategor}) {
-  const navigate = useNavigate();
 
   const openMenu = () => {
-    navigate('/menu');
+    window.location.reload();
   };
   const handleSave = () => {
     if (onSubmit) {

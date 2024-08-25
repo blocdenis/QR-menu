@@ -1,43 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BtnCreatMenu from '../../components/BtnCreatMenu/BtnCreatMenu.jsx';
 import './TableCategor.scss';
-import { useState } from 'react';
-
+import axios from 'axios';
+import { CATEGORY_ADD } from '../../Fetch/settings.js';
 import IconCheck from '../../SVG/IconCheck.jsx';
+
 function TableCategor({
   onNewCategorySubmit,
   rowsCategor,
   setRowsCategor,
   setModalOpenCategor,
-  onChange
 }) {
   const [newCategoryName, setNewCategoryName] = useState('');
   const [highlightColor, setHighlightColor] = useState('');
 
   const handleNewCategoryNameChange = e => {
     setNewCategoryName(e.target.value);
-    console.log('setNewCategoryName', e.target.value);
   };
 
   const handleHighlightColorChange = color => {
     setHighlightColor(color);
-    console.log('setHighlightColor', color);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (newCategoryName && highlightColor) {
       const newCategory = {
-        id: rowsCategor.length + 1,
-        categor: newCategoryName,
-        color: highlightColor,
+        category: newCategoryName,
+        color: colorMap[highlightColor] || [229, 245, 236], 
       };
-      setRowsCategor([...rowsCategor, newCategory]);
-      onNewCategorySubmit(newCategory);
-      setModalOpenCategor(false);
-      console.log('newCategor', newCategory);
+
+      try {
+        const response = await axios.post(CATEGORY_ADD, newCategory, {
+          withCredentials: true, // Ensure cookies are sent
+        });
+        const addedCategory = response.data;
+        setRowsCategor([...rowsCategor, addedCategory]);
+        onNewCategorySubmit(addedCategory);
+        setModalOpenCategor(false);
+      } catch (error) {
+        console.error('Ошибка при добавлении категории:', error);
+      }
     } else {
       alert('Please enter category name and select a highlight color.');
     }
+  };
+
+  // Map color class to RGB values
+  const colorMap = {
+    'color1': [229, 245, 236],
+    'color2': [255, 0, 0],
+    'color3': [255, 234, 179],
+    'color4': [228, 242, 255],
   };
 
   return (

@@ -4,7 +4,7 @@ import IconClose from '../../SVG/IconClose.jsx';
 function MoodalNameMenu({
   closeModalName,
   id,
-  menuName,
+  name,
   categories,
   weight,
   ingred,
@@ -24,12 +24,12 @@ function MoodalNameMenu({
         <div className="modal-content">
 
           <div className="modal-left">
-            <img src={img} alt="dish-foto" />
+            <img  src={`data:image/jpeg;base64,${img}`} alt="dish-foto" />
           </div>
 
           <div className='modal-right'>
             <div className="modal-title">
-              <h1 className="modal-titlemenu">{menuName}</h1>
+              <h1 className="modal-titlemenu">{name}</h1>
             </div>
             <div className='modal-categor'>
               <span className={`label-${categories}`}> {categories} </span>
