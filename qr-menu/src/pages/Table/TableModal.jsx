@@ -30,6 +30,7 @@ const TableModal = ({ isOpen, closeModal }) => {
       if (response.ok) {
         console.log('Столы созданы');
         setTablesQty(0);
+        
       } else {
         console.error('Не удалось отправить значение столов.');
         //renove cookie

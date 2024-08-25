@@ -7,8 +7,9 @@ import MoodalNameMenu from '../ModalNameMenu/MoodalNameMenu.jsx';
 
 // eslint-disable-next-line react/prop-types
 const TableMenu = ({ rows, setRows, handleEdit }) => {
-  const [modalOpenDel, setModalOpenDel] = useState(false);
-  const [modalName, setModalName] = useState(false);
+  const [modalOpenDel, setModalOpenDel] = useState({});
+  const [modalName, setModalName] = useState({});
+
   const openModalDel = id => {
     setModalOpenDel(prevState => ({
       ...prevState,
@@ -24,9 +25,8 @@ const TableMenu = ({ rows, setRows, handleEdit }) => {
   };
 
   const handleDeleteRow = id => {
-    let delRow = rows.filter(item => item.id !== id);
+    const delRow = rows.filter(item => item.id !== id);
     setRows(delRow);
-    console.log(delRow);
     closeModal(id);
   };
 
@@ -36,15 +36,18 @@ const TableMenu = ({ rows, setRows, handleEdit }) => {
       [id]: true,
     }));
   };
+
   const closeModalName = id => {
     setModalName(prevState => ({
       ...prevState,
       [id]: false,
     }));
   };
+
   useEffect(() => {
     console.log('newrows in tablemenu:', rows);
   }, [rows]);
+
   return (
     <div className="tablemenu-container">
       <table>
@@ -58,48 +61,54 @@ const TableMenu = ({ rows, setRows, handleEdit }) => {
 
         <tbody>
           {rows.map(item => {
-            const categorText = item.categories
-              ? item.categories.charAt(0).toUpperCase() +
-                item.categories?.slice(1)
+            const categorText = item.categoryName
+              ? item.categoryName.charAt(0).toUpperCase() + item.categoryName.slice(1)
               : '';
 
             return (
-              <tr key={item.id} className="tr-style" >
-                <td className="style-td-name" onClick={()=>openNameModal(item.id)}>{item.menuName}</td>
+              <tr key={item.id} className="tr-style">
+                <td
+                  className="style-td-name"
+                  onClick={() => openNameModal(item.id)}
+                >
+                  {item.name}
+                </td>
                 <td className="style-td">
-                  <span className={`label-${item.categories}`}>
+                  <span className={`label-${item.categoryName}`}>
                     {categorText}
                   </span>
                 </td>
                 <td className="item-td">
-                  <div id={item.id} onClick={() => handleEdit(item.id)}>
+                  <div id={`edit-${item.id}`} onClick={() => handleEdit(item.id)}>
                     <IconEdit />
                   </div>
-                  <div id={item.id} onClick={() => openModalDel(item.id)}>
+                  <div id={`delete-${item.id}`} onClick={() => openModalDel(item.id)}>
                     <IconDelete />
                   </div>
                   {modalOpenDel[item.id] && (
                     <ModalDelMenu
-                      key={item.id}
+                      key={`modal-del-${item.id}`}
                       closeModal={() => closeModal(item.id)}
                       id={item.id}
+                      category_id={item.category_id}
                       handleDelete={() => handleDeleteRow(item.id)}
-                      menu={item.menuName}
+                      menu={item.name}
                     />
                   )}
                   {modalName[item.id] && (
-                    <MoodalNameMenu 
-                      key={item.id}
+                    <MoodalNameMenu
+                      key={`modal-name-${item.id}`}
                       closeModalName={() => closeModalName(item.id)}
                       id={item.id}
-                      menuName={item.menuName}
-                      categories={item.categories}
+                      name={item.name}
+                      categories={item.categoryName}
                       weight={item.weight}
                       ingred={item.ingred}
                       price={item.price}
                       currency={item.currency}
                       img={item.img}
-                    />)}
+                    />
+                  )}
                 </td>
               </tr>
             );

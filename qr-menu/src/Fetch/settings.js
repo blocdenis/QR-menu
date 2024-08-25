@@ -33,7 +33,7 @@ export const CATEGORY_DELETE = (type, category_id) =>
   CONCATE + `delete/categories?type=${type}&category_id=${category_id}`;
 
 export const DISH_ADD = CONCATE + 'add/dish';
-export const DISH_GET = CONCATE + 'get/dish';
+export const DISH_GET = (category_id) => CONCATE + `get/dish?category_id=${category_id}`;
 export const DISH_DELETE = (dish_id, category_id) =>
   CONCATE + `delete/dish?dish_id=${dish_id}&category_id=${category_id}`;
 

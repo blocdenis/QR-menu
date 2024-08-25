@@ -8,6 +8,9 @@ import BtnCreatMenu from '../../components/BtnCreatMenu/BtnCreatMenu.jsx';
 import { useState, useEffect } from 'react';
 import TextAddIngred from '../../components/TextAddIngred/TextAddIngred';
 import BtnAddIngred from '../BtnAddIngred/BtnAddIngred.jsx';
+import axios from 'axios';
+import { CATEGORY_GET } from '../../Fetch/settings.js';
+import { DISH_ADD } from '../../Fetch/settings.js';
 
 // eslint-disable-next-line react/prop-types
 function CreatMenuInput({
@@ -16,32 +19,47 @@ function CreatMenuInput({
   setRows,
   closeCreatMenu,
   editRowData,
-  rowsCategor,
 }) {
   const [form, setForm] = useState(
     editRowData || {
-      id: Date.now(),
       menuName: '',
-      categories: 'Meat',
+      category_id: '', 
       img: '',
       price: '',
       currency: '',
       ingred: '',
       weight: '',
+      comment: '', 
     }
   );
-  const [id, setId] = useState(Date.now());
+  const [categories, setCategories] = useState([]);
   const [error, setError] = useState('');
-  const [categories, setNewCategor] = useState('');
+
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(CATEGORY_GET, {
+        withCredentials: true,
+      });
+      setCategories(response.data.categories || []);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
 
   const validForm = () => {
     let errorField = [];
-    if (!form.menuName || !form.categories) {
-      errorField.push('Please include fields!');
+    if (!form.menuName || !form.category_id) {
+      errorField.push('Please include all required fields!');
     }
     const existingDish = rows.find(
       row =>
-        row.menuName === form.menuName && row.categories === form.categories
+        row.menuName === form.menuName && row.category_id === form.category_id
     );
     if (existingDish) {
       errorField.push('This dish already exists!');
@@ -54,50 +72,68 @@ function CreatMenuInput({
     return true;
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (!validForm()) {
       return;
     }
-    const newRow = {
-      id: Date.now(),
-      menuName: form.menuName,
-      categories: form.categories,
+
+    const newDish = {
+      name: form.menuName,
+      category_id: form.category_id,
       img: form.img,
       price: form.price,
       currency: form.currency,
       ingred: form.ingred,
       weight: form.weight,
+      comment: form.comment,
     };
-    setRows(rows => [...rows, newRow]);
-    setId(Date.now(id));
-    setForm('');
-    closeCreatMenu();
-    onSubmit(form);
-    console.log(newRow, 'save');
+
+    try {
+      await axios.post(DISH_ADD, newDish, {
+        withCredentials: true,
+      });
+      setRows(rows => [...rows, newDish]);
+      setForm({
+        menuName: '',
+        category_id: '',
+        img: '',
+        price: '',
+        currency: '',
+        ingred: '',
+        weight: '',
+        comment: '', // Reset comment field
+      });
+      closeCreatMenu();
+      onSubmit(newDish);
+    } catch (error) {
+      console.error('Error adding dish:', error);
+    }
   };
+
+  // Handlers for form fields
   const handlePriceChange = priceData => {
     setForm({ ...form, price: priceData.price, currency: priceData.currency });
   };
   const handleImageChange = newImage => {
-    setForm({ ...form, img: newImage });
-    console.log('img added');
+    const cleanedImage = newImage.replace(/^data:image\/[a-z]+;base64,/, '');
+    setForm({ ...form, img: cleanedImage });
   };
   const addIngred = newIngredient => {
     if (newIngredient) {
       setForm({ ...form, ingred: newIngredient });
     }
     setForm({ ...form, ingred: '' });
-    console.log('HELLO', form.ingred);
   };
-  useEffect(() => {
-    if (categories && categories.length > 0) {
-      setNewCategor(categories);
-    }
-  }, [categories]);
-  useEffect(() => {
-    console.log(rowsCategor, 'rowsCategor');
-  }, [rowsCategor]);
+
+  const handleCategoryChange = e => {
+    setForm({ ...form, category_id: e.target.value });
+  };
+
+  const handleCommentChange = e => {
+    setForm({ ...form, comment: e.target.value });
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-menugroup">
@@ -115,15 +151,16 @@ function CreatMenuInput({
         <label htmlFor="category" className="input-subtitle">
           Category
         </label>
-        {rowsCategor?.length > 0 && (
+        {categories?.length > 0 && (
           <InputCategor
             id={`categories-${form.id}`}
             type="text"
-            value={form.categories}
-            onChange={e => setForm({ ...form, categories: e.target.value })}
-            options={rowsCategor.map(row => ({
-              value: row.categor,
-              label: row.categor,
+            value={form.category_id} 
+            onChange={handleCategoryChange}
+            options={categories.map(row => ({
+              value: row.id, 
+              label: row.category, 
+
             }))}
           />
         )}
@@ -185,10 +222,12 @@ function CreatMenuInput({
         </label>
         <textarea
           className="style-input style-comments"
-          name="message"
+          name="comment"
           rows="2"
           cols="2"
           placeholder="ex “no ketchup”, “extra salt”"
+          value={form.comment} 
+          onChange={handleCommentChange} 
         />
       </div>
 
