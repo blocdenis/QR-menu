@@ -28,14 +28,15 @@ function Setting() {
         const allRestaurantData = await getFullInfoRestaurant();
         setObjectRestaurant(allRestaurantData);
         setFormValues({
-          name: allRestaurantData.restaurant_data.name || '',
-          address: allRestaurantData.restaurant_data.address || '',
-          logo: allRestaurantData.restaurant_data.logo || '',
-          start_time: allRestaurantData.restaurant_data.start_time || '',
-          end_time: allRestaurantData.restaurant_data.end_time || '',
-          start_day: allRestaurantData.restaurant_data.start_day || '',
-          end_day: allRestaurantData.restaurant_data.end_day || ''
-        });
+          name: allRestaurantData.name || '',
+          address: allRestaurantData.address || '',
+          logo: allRestaurantData.logo || '',
+          start_time: allRestaurantData.start_time || '',
+          end_time: allRestaurantData.end_time || '',
+          start_day: allRestaurantData.start_day || '',
+          end_day: allRestaurantData.end_day || ''
+        });0
+        
       } catch (error) {
         console.error("Error fetching restaurant data:", error);
       }
@@ -84,14 +85,14 @@ function Setting() {
                     placeHolder="Enter restaurant name"
                     labelName="Restaurant Name"
                     name="name"
-                    value={formValues.name}
+                    valueName={formValues.name}
                   />
                   <TextInput
                     onChange={handleChange}
                     placeHolder="Enter the street, number and the city"
                     labelName="Address"
                     name="address"
-                    value={formValues.address}
+                    valueName={formValues.address}
                   />
                   <div>
                     <h2 className="title">Schedule</h2>

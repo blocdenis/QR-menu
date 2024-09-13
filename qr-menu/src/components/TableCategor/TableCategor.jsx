@@ -28,17 +28,21 @@ function TableCategor({
         category: newCategoryName,
         color: colorMap[highlightColor] || [229, 245, 236], 
       };
-
+  
       try {
         const response = await axios.post(CATEGORY_ADD, newCategory, {
-          withCredentials: true, // Ensure cookies are sent
+          withCredentials: true, 
         });
         const addedCategory = response.data;
         setRowsCategor([...rowsCategor, addedCategory]);
         onNewCategorySubmit(addedCategory);
         setModalOpenCategor(false);
       } catch (error) {
-        console.error('Ошибка при добавлении категории:', error);
+        if (error.response && error.response.status === 500) {
+          window.location.reload();
+        } else {
+          console.error('Ошибка при добавлении категории:', error);
+        }
       }
     } else {
       alert('Please enter category name and select a highlight color.');

@@ -4,11 +4,12 @@ import Options from './Options';
 import IconClock from '../../SVG/IconClock';
 
 
-function Schedule({time, name, onChange, optionStart, optionEnd}) {
-  console.log(optionStart)
+function Schedule({ time, name, onChange, optionStart, optionEnd }) {
   const handleChange = (e) => {
- onChange(e);
-  }
+    const { name, value } = e.target;
+    onChange(name, value); 
+  };
+  
   const startName = `start_${name}`
   const endName = `end_${name}`
   return (
@@ -40,6 +41,7 @@ function Schedule({time, name, onChange, optionStart, optionEnd}) {
         </div>
       </div>
     </div>
+    
   );
 }
 

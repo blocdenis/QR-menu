@@ -124,6 +124,7 @@ function Categories() {
               setRowsCategor={setRowsCategor}
               setModalOpenCategor={setModalOpenCategor}
               onNewCategorySubmit={handleNewCategorySubmit}
+              newCategory={fetchCategories}
             />
           )}
         </div>

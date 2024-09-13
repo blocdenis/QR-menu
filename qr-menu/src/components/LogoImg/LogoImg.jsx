@@ -6,8 +6,8 @@ function LogoImg() {
   useEffect(() => {
     getFullInfoRestaurant()
       .then(allRestaurantData => {
-        if(allRestaurantData.restaurant_data['logo']){
-          setRestaurantLogo(`data:image/jpeg;base64,${allRestaurantData.restaurant_data['logo']}`)
+        if(allRestaurantData.logo){
+          setRestaurantLogo(`data:image/jpeg;base64,${allRestaurantData.logo}`)
         }
        
       })

@@ -31,7 +31,7 @@ const Menu = () => {
         });
         allDishes = [...allDishes, ...dishesResponse.data.map(dish => ({
           ...dish,
-          categoryName: category.category // Добавляем название категории в блюдо
+          categoryName: category.category 
         }))];
       }
       setRows(allDishes);

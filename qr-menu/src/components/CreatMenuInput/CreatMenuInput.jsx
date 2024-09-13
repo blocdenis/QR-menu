@@ -102,7 +102,7 @@ function CreatMenuInput({
         currency: '',
         ingred: '',
         weight: '',
-        comment: '', // Reset comment field
+        comment: '', 
       });
       closeCreatMenu();
       onSubmit(newDish);
