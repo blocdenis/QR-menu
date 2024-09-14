@@ -22,6 +22,9 @@ function Setting() {
     end_day: ''
   });
 
+  const [imageChanged, setImageChanged] = useState(false);
+  const [savedLogo, setSavedLogo] = useState('');
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -52,11 +55,25 @@ function Setting() {
 
   const handleSubmitData = () => {
     console.log(formValues);
-    restaurantUpdate(formValues);
+    const dataToSend = { ...formValues };
+
+    if (!imageChanged) {
+      delete dataToSend.logo;
+    }
+
+
+    restaurantUpdate(dataToSend).then(() => {
+      getFullInfoRestaurant().then(updatedData => {
+        setObjectRestaurant(updatedData);
+        setSavedLogo(updatedData.logo || '');
+      });
+    }).catch(error => {
+      console.error("Error updating restaurant data:", error);
+    });
   };
 
   return (
-    <AppLayout>
+    <AppLayout restaurantLogo={savedLogo}>
       <div className={styles.container_wrap}>
         <div className={styles.container_page}>
           <h1 className={styles.pageTitle}>Settings</h1>
@@ -77,6 +94,7 @@ function Setting() {
                         value={formValues['logo']}
                         onChange={(e) => handleChange({ target: { name: 'logo', value: e.target.value } })}
                         src={formValues['logo'] || logo}
+                        onImageChange={setImageChanged}
                       />
                     </div>
                   </div>

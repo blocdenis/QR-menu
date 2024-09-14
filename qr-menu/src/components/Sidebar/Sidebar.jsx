@@ -10,7 +10,7 @@ import LogoImg from '../LogoImg/LogoImg.jsx';
 import './Sidebar.scss';
 import { Link } from 'react-router-dom';
 
-export const Sidebar = () => {
+export const Sidebar = ({ restaurantLogo }) => {
   const [isOpenCategor, setIsOpenCategor] = useState(false);
   const openCategor = () => {
     setIsOpenCategor(!isOpenCategor);
@@ -18,7 +18,7 @@ export const Sidebar = () => {
 
   return (
     <aside className="aside">
-      <LogoImg />
+      <LogoImg rest_logo={restaurantLogo}/>
       <ul>
         <li>
           <SidebarItem path="/home" icon={<HomeIcon />}>

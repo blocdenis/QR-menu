@@ -1,4 +1,4 @@
-const API_DOMAIN = 'http://localhost';
+const API_DOMAIN = 'https://qr-menu.pp.ua';
 const API_PREFIX = '/api/admin/';
 const CONCATE = API_DOMAIN + API_PREFIX;
 export const COOKIE_KEY = 'token';

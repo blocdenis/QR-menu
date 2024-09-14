@@ -4,7 +4,7 @@ import { Sidebar } from '../../components/Sidebar/Sidebar';
 import './AppLayout.scss';
 import { useLocation } from 'react-router-dom';
 
-export const AppLayout = ({ children }) => {
+export const AppLayout = ({ children, restaurantLogo }) => {
   const location = useLocation();
   if (location.pathname !== '/') {
     const styles = { justifyContent: 'center' };
@@ -14,7 +14,7 @@ export const AppLayout = ({ children }) => {
           <HeaderSystem />
         </div>
         <div className="applayout_container">
-          <Sidebar />
+          <Sidebar restaurantLogo={restaurantLogo} />
           <main style={styles}>{children}</main>
         </div>
       </div>

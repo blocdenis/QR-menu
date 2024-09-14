@@ -3,7 +3,7 @@ import IconShow from '../../SVG/IconShow.jsx';
 import IconDeleteImg from '../../SVG/IconDeleteImg.jsx';
 import './ImgUpLoaderNew.scss';
 
-function ImgUploaderNew({ id, value, onChange, src }) {
+function ImgUploaderNew({ id, value, onChange, src, onImageChange }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const imageInputRef = useRef(null);
 
@@ -34,6 +34,7 @@ function ImgUploaderNew({ id, value, onChange, src }) {
           const resizedDataURL = canvas.toDataURL('image/jpeg', 0.8); 
           setSelectedImage(resizedDataURL);
           onChange({ target: { name: id, value: resizedDataURL } });
+          onImageChange(true);
         };
         image.src = e.target.result;
       };
@@ -70,7 +71,7 @@ function ImgUploaderNew({ id, value, onChange, src }) {
               <IconShow />
               <IconDeleteImg />
             </div>
-            <img className="imgloaded" src={selectedImage ? selectedImage : `data:image/jpeg;base64,${src}`} alt="Uploaded Image" />
+            <img className="imgloaded" src={selectedImage || `data:image/jpeg;base64,${src}`} alt="Uploaded Image" />
           </div>
         {/* )} */}
       </div>

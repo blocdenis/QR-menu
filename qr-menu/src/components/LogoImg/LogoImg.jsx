@@ -1,20 +1,40 @@
 import { useEffect, useState } from 'react';
 import Logo from '../../../public/vite.svg'
 import getFullInfoRestaurant from '../../Fetch/getFullInfoRestaurant';
-function LogoImg() {
+function LogoImg({ rest_logo }) {
   const [restaurantLogo, setRestaurantLogo] = useState('');
-  useEffect(() => {
-    getFullInfoRestaurant()
-      .then(allRestaurantData => {
-        if(allRestaurantData.logo){
-          setRestaurantLogo(`data:image/jpeg;base64,${allRestaurantData.logo}`)
-        }
+  // useEffect(() => {
+  //   getFullInfoRestaurant()
+  //     .then(allRestaurantData => {
+  //       if(allRestaurantData.logo){
+  //         setRestaurantLogo(`data:image/jpeg;base64,${allRestaurantData.logo}`)
+  //       }
        
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, [restaurantLogo]);
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //     });
+  // }, [restaurantLogo]);
+
+
+  useEffect(() => {
+    if (rest_logo) {
+      setRestaurantLogo(`data:image/jpeg;base64,${rest_logo}`);
+    } else {
+      getFullInfoRestaurant()
+        .then(allRestaurantData => {
+          if (allRestaurantData.logo) {
+            setRestaurantLogo(`data:image/jpeg;base64,${allRestaurantData.logo}`);
+          } else {
+            setRestaurantLogo(Logo); 
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          setRestaurantLogo(Logo); 
+        });
+    }
+  }, [rest_logo]);
 
   // const [fileUploadStatus, setFileUploadStatus] = useState('idle');
   // const fileInputRef = useRef(null);
